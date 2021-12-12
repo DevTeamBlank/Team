@@ -22,4 +22,8 @@ public class Enemy : MonoBehaviour {
     bool isAlive = true;
 
     public Reward reward;
+
+    public void GetDamage(int finalDamage) {
+        health -= finalDamage;
+    }
 }

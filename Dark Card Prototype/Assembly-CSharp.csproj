@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,16 +53,15 @@
     <UnityVersion>2020.3.24f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Enemy\Reward.cs" />
     <Compile Include="Assets\Enemy\Pattern.cs" />
+    <Compile Include="Assets\Buff\Buff00.cs" />
+    <Compile Include="Assets\Enemy\00Cultist\Pattern00.cs" />
     <Compile Include="Assets\Enemy\00Cultist\Enemy00.cs" />
     <Compile Include="Assets\Enemy\01Gangster\Enemy01.cs" />
-    <Compile Include="Assets\Enemy\00Cultist\Pattern00.cs" />
-    <Compile Include="Assets\Enemy\Reward.cs" />
-    <Compile Include="Assets\Enemy\00Cultist\Buff00.cs" />
+    <Compile Include="Assets\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Buff\Buff.cs" />
+    <Compile Include="Assets\BattleManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
