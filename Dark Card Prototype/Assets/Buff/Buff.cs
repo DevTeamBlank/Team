@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Buff : MonoBehaviour {
 
-    private GameObject gameObject;
+    private GameObject _gameObject;
     public int buffType;
-    public int value;
+    private int Value { get; set; }
 
     public enum BuffType { // Regenereation: 3
         NaN = 0,
@@ -26,7 +26,7 @@ public class Buff : MonoBehaviour {
     }
 
     public void Attach(GameObject gameObject) {
-        this.gameObject = gameObject;
+        _gameObject = gameObject;
 
     }
 

@@ -56,12 +56,14 @@
     <Compile Include="Assets\Enemy\Reward.cs" />
     <Compile Include="Assets\Enemy\Pattern.cs" />
     <Compile Include="Assets\Buff\Buff00.cs" />
+    <Compile Include="Assets\Buff\Buff.cs" />
     <Compile Include="Assets\Enemy\00Cultist\Pattern00.cs" />
+    <Compile Include="Assets\BattleManager.cs" />
     <Compile Include="Assets\Enemy\00Cultist\Enemy00.cs" />
     <Compile Include="Assets\Enemy\01Gangster\Enemy01.cs" />
     <Compile Include="Assets\Enemy\Enemy.cs" />
-    <Compile Include="Assets\Buff\Buff.cs" />
-    <Compile Include="Assets\BattleManager.cs" />
+    <Compile Include="Assets\Card\Card.cs" />
+    <Compile Include="Assets\Player\Deck\Deck.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
