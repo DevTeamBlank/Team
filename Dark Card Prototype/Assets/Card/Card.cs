@@ -20,14 +20,35 @@ public class Card : MonoBehaviour {
     }
 
     private Sprite sprite;
-    
-    public void Display(Vector2 position) {
+    private GameObject display;
+    private GameObject displayOnly;
+
+    void Start() {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         sprite = spriteRenderer.sprite;
-        Instantiate(sprite, position, Quaternion.identity);
+    }
+    
+    public void Display(Vector2 position) {
+        display = Instantiate(new GameObject(), Vector3.zero, Quaternion.identity);
+        displayOnly.AddComponent<SpriteRenderer>();
+        displayOnly.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+    public void HideDisplay() {
+        Destroy(display);
     }
 
-    public void Hide() {
-        Destroy(sprite);
+    public float displayScale;
+
+    public void DisplayOnly() {
+        displayOnly = Instantiate(new GameObject(), Vector3.zero, Quaternion.identity);
+        displayOnly.transform.localScale = new Vector2(displayScale, displayScale);
+        displayOnly.AddComponent<SpriteRenderer>();
+        displayOnly.GetComponent<SpriteRenderer>().sprite = sprite;
     }
+
+    public void HideDisplayOnly() {
+        Destroy(displayOnly);
+    }
+
+    
 }

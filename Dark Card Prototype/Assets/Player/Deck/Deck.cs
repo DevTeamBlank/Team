@@ -22,6 +22,10 @@ public class Deck : MonoBehaviour {
 
     }
 
+    public int GetDeckSize() {
+        return deckSize;
+    }
+
     // On click, Display
     public void Display() {
         Card[] cardList = deck.ToArray();
@@ -36,11 +40,11 @@ public class Deck : MonoBehaviour {
         }
     }
 
-    // On click when display, Hide
+    // 
     public void Hide() {
         Card[] cardList = deck.ToArray();
         foreach (Card card in cardList) {
-            card.Hide();
+            card.HideDisplay();
         }
     }
 
