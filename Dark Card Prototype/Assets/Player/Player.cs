@@ -14,7 +14,10 @@ public class Player : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-
+        DontDestroyOnLoad(gameObject);
+        canRevive = false;
+        gold = 0;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -40,7 +43,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+    private bool canRevive;
+
     public void Dead() {
+        if (canRevive) {
+
+        }
         health = 0;
         // GameObject battleManager = GameObject.FindGameObjectWithTag("BattleManager");
     }
@@ -48,7 +56,18 @@ public class Player : MonoBehaviour {
     public void SetGold(int value) {
         gold = value;
     }
-    public void ChangeGold(int change) {
-        gold += change;
+
+    public void EarnGold(int reward) {
+        gold += reward;
+    }
+
+    public bool PayGold(int price) {
+        int temp = gold - price;
+        if (temp < 0) {
+            return false;
+        } else {
+            gold = temp;
+            return true;
+        }
     }
 }

@@ -14,6 +14,7 @@ public class Deck : MonoBehaviour {
     public float intervalY;
 
     void Start() {
+        DontDestroyOnLoad(gameObject);
         deck = new List<Card>();
     }
 

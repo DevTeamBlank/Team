@@ -50,5 +50,8 @@ public class Card : MonoBehaviour {
         Destroy(displayOnly);
     }
 
-    
+    // Implement in inherited class
+    public virtual void Played() {
+
+    }
 }

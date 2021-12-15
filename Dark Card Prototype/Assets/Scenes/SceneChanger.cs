@@ -5,38 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour {
 
-    private int gold;
-    private GameObject deck;
-    private GameObject player;
-
     // Start is called before the first frame update
     void Start() {
-
+        DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
-    void Update() {
-
-    }
-
-    public void LoadCredit() {
-        SceneManager.LoadScene("Credit");
-
-    }
-
-    public void GetGold(int gold) {
-        this.gold = gold;
-    }
-
-    public void GetDeck(GameObject deck) {
-        this.deck = deck;
-    }
-
-    public void GetPlayer(GameObject player) {
-        this.player = player;
-    }
-
-    public int SetGold() {
-        return gold;
+    public void ChangeScene(string nextScene) {
+        Debug.Log(nextScene);
+        SceneManager.LoadScene(nextScene);
     }
 }
