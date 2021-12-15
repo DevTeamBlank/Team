@@ -9,6 +9,7 @@ TagManager:
   - Object
   - Card
   - BattleManager
+  - Dungeon
   layers:
   - Default
   - TransparentFX
