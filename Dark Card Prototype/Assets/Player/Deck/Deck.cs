@@ -7,32 +7,29 @@ public class Deck : MonoBehaviour {
     // This Deck is not for battle!
 
     private int deckSize;
-    private List<Card> deck;
-
-    public Vector2 displayStartPosition;
-    public float intervalX;
-    public float intervalY;
-
+    private List<GameObject> deck;
+    private int[] IDList;
+    
     void Start() {
         DontDestroyOnLoad(gameObject);
-        deck = new List<Card>();
-    }
-
-    // Update is called once per frame
-    void Update() {
-
+        deckSize = 0;
+        deck = new List<GameObject>();
     }
 
     public int GetDeckSize() {
         return deckSize;
     }
 
+    public Vector2 displayStartPosition;
+    public float intervalX;
+    public float intervalY;
+
     // On click, Display
     public void Display() {
-        Card[] cardList = deck.ToArray();
+        GameObject[] cardList = deck.ToArray();
         Vector2 position = displayStartPosition;
         for (int i = 0; i < deckSize; i++) {
-            cardList[i].Display(position);
+            cardList[i].GetComponent<Card>().Display(position);
             position += new Vector2(intervalX, 0);
             if (i % 5 == 4) {
                 position += new Vector2(0, intervalY);
@@ -41,34 +38,17 @@ public class Deck : MonoBehaviour {
         }
     }
 
-    // 
     public void Hide() {
-        Card[] cardList = deck.ToArray();
-        foreach (Card card in cardList) {
-            card.HideDisplay();
+        GameObject[] cardList = deck.ToArray();
+        foreach (GameObject card in cardList) {
+            card.GetComponent<Card>().HideDisplay();
         }
     }
 
-    public void AddCard(Card card) {
+    public void AddCard(GameObject card) {
         deck.Add(card);
         deckSize++;
     }
-
-    /*
-    public Deck Copy() {
-        Deck newDeck = new();
-        newDeck.deckSize = deckSize;
-        List<Card> newList = new();
-        foreach(Card cards in deck) {
-            newList.Add(cards);
-        }
-        newDeck.displayStartPosition = this.displayStartPosition;
-        newDeck.intervalX = this.intervalX;
-        newDeck.intervalY = this.intervalY;
-
-        return newDeck;
-    }
-    */
 
     public GameObject Copy() {
         return Instantiate(gameObject, transform);

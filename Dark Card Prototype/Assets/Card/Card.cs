@@ -6,6 +6,7 @@ public class Card : MonoBehaviour {
 
     public int ID;
     public string nomenclature;
+    public int upgradeLevel; // 0, 1, 2
 
     public int cost; // -1: Unusable
     public int cardType; // 0: Attack, 1: Skill, 2: Power, 3: Disturb

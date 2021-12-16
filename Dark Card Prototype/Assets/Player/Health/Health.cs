@@ -19,7 +19,12 @@ public class Health : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        if (Input.GetKey(KeyCode.H)) {
+            MaxHeal();
+        }
+        if (Input.GetKeyDown(KeyCode.D)){
+            Damaged(1);
+        }
     }
 
     public void UpdateUI() {
@@ -32,6 +37,11 @@ public class Health : MonoBehaviour {
         } else {
             health = temp;
         }
+        UpdateUI();
+    }
+
+    public void MaxHeal() {
+        health = maxHealth;
         UpdateUI();
     }
 

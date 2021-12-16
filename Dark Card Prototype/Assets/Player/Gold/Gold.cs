@@ -13,6 +13,12 @@ public class Gold : MonoBehaviour {
         UpdateUI();
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.G)) {
+            EarnGold(10);
+        }
+    }
+
     public void UpdateUI() {
         text.GetComponent<TextMeshProUGUI>().text = gold.ToString();
     }
