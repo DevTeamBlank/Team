@@ -29,7 +29,7 @@ public class Deck : MonoBehaviour {
         GameObject[] cardList = deck.ToArray();
         Vector2 position = displayStartPosition;
         for (int i = 0; i < deckSize; i++) {
-            cardList[i].GetComponent<Card>().Display(position);
+            cardList[i].GetComponent<CardDisplay>().Display(position);
             position += new Vector2(intervalX, 0);
             if (i % 5 == 4) {
                 position += new Vector2(0, intervalY);
@@ -41,7 +41,7 @@ public class Deck : MonoBehaviour {
     public void Hide() {
         GameObject[] cardList = deck.ToArray();
         foreach (GameObject card in cardList) {
-            card.GetComponent<Card>().HideDisplay();
+            card.GetComponent<CardDisplay>().HideDisplay();
         }
     }
 
