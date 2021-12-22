@@ -23,7 +23,7 @@ public class Health : MonoBehaviour {
             MaxHeal();
         }
         if (Input.GetKeyDown(KeyCode.D)){
-            Damaged(1);
+            DamageTake(1);
         }
     }
 
@@ -45,7 +45,7 @@ public class Health : MonoBehaviour {
         UpdateUI();
     }
 
-    public void Damaged(int finalDamage) {
+    public void DamageTake(int finalDamage) {
         int temp = health - finalDamage;
         if (temp <= 0) {
             Dead();
@@ -58,6 +58,7 @@ public class Health : MonoBehaviour {
     public void Dead() {
         health = 0;
         UpdateUI();
-        // GameObject battleManager = GameObject.FindGameObjectWithTag("BattleManager");
+        GameObject battleManager = GameObject.FindGameObjectWithTag("BattleManager");
+        battleManager.GetComponent<BattleManager>().BattleEnd(false);
     }
 }
