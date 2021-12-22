@@ -14,12 +14,12 @@ public class Card : MonoBehaviour {
     public int validTargetType;
     /* 0: NaN, 1: Player, 2: Enemy, 4: Object
      * Most of cards are 0, 1, 6 */
-    public void ChangeCost(int value) { // (e.g. Corruption)
+    public void ChangeCost(int value) { // (e.g. Snecko's Eye)
         cost = value;
         ChangeCostUI();
     }
 
-    public void IncreaseCost(int value) { // (e.g. Snecko's Eye)
+    public void IncreaseCost(int value) { // (e.g. Corruption)
         cost += value;
         ChangeCostUI();
     }
