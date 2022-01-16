@@ -26,7 +26,7 @@ public class Card : MonoBehaviour {
         all
     }
 
-    public virtual void Play(GameObject target) { }
+    public virtual void Play() { }
 
     public void Order() {
         // TODO

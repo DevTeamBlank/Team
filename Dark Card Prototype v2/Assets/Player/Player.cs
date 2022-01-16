@@ -16,13 +16,13 @@ public class Player : MonoBehaviour {
             GainStrength(1);
         }
         if (Input.GetKey(KeyCode.W)) {
-            GainStrength(1);
+            GainDexterity(1);
         }
     }
 
     public int maxHealth;
     [SerializeField] int health;
-    public int armor;
+    [SerializeField] int armor;
 
     [SerializeField] int vulnerable;
     [SerializeField] int weakness;
@@ -31,12 +31,17 @@ public class Player : MonoBehaviour {
     [SerializeField] int strength;
     [SerializeField] int dexterity;
 
+    public int baseEnergy;
+    [SerializeField] int energy;
+
     void Start() {
-        health = maxHealth;
         Reset();
+        BattleStart();
     }
 
     public void Reset() {
+        health = maxHealth;
+
         vulnerable = 0;
         weakness = 0;
         barricade = false;
@@ -44,6 +49,8 @@ public class Player : MonoBehaviour {
         strength = 0;
         dexterity = 0;
     }
+
+    public virtual void BattleStart() { }
 
     public bool IsVulnerable() {
         return 0 < vulnerable;
@@ -86,8 +93,19 @@ public class Player : MonoBehaviour {
         armor += (value + dexterity);
     }
 
-    public void TakeDamage(int value) {
+    public void LossArmor(int value) {
+        armor -= value;
+        if (armor < 0) armor = 0;
+    }
 
+    public void TakeDamage(int value) {
+        int temp = value;
+        if (IsVulnerable()) {
+            temp = (int)(temp * 1.5f);
+        }
+        int temp2 = temp - armor;
+        LossArmor(armor);
+        LossHealth(temp2);
     }
 
     public void HealHealth(int value) {
@@ -99,12 +117,41 @@ public class Player : MonoBehaviour {
         }
     }
     public void LossHealth(int value) {
+        if (value == 0) return;
+
         int temp = health - value;
         if (0 < temp) {
             health = temp;
         } else {
             Dead();
         }
+    }
+
+    public void GainEnergy(int value) {
+        energy += value;
+    }
+
+    public int ConsumeAllEnergy() {
+        int ret = energy;
+        energy = 0;
+        return ret;
+    }
+
+    public bool ConsumeEnergy(int value) {
+        if (value < energy) {
+            energy -= value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void TurnStartGainEnergy() {
+        energy = baseEnergy;
+    }
+
+    public void TurnEndLossArmor() {
+        if (!IsBarricade()) LossArmor(armor);
     }
 
     void Dead() {

@@ -53,11 +53,14 @@
     <UnityVersion>2020.3.24f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Cards\Card.cs" />
     <Compile Include="Assets\Cards\Card00.cs" />
-    <Compile Include="Assets\Player\Player.cs" />
-    <Compile Include="Assets\Cards\Card01.cs" />
     <Compile Include="Assets\EntityManager.cs" />
+    <Compile Include="Assets\Cards\Card01.cs" />
+    <Compile Include="Assets\Player\Player.cs" />
+    <Compile Include="Assets\Cards\Card.cs" />
+    <Compile Include="Assets\Cards\Card02.cs" />
+    <Compile Include="Assets\TurnManager.cs" />
+    <Compile Include="Assets\Entity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
