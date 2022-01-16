@@ -54,13 +54,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Cards\Card00.cs" />
-    <Compile Include="Assets\EntityManager.cs" />
+    <Compile Include="Assets\LevelManager.cs" />
+    <Compile Include="Assets\Entity.cs" />
     <Compile Include="Assets\Cards\Card01.cs" />
     <Compile Include="Assets\Player\Player.cs" />
-    <Compile Include="Assets\Cards\Card.cs" />
     <Compile Include="Assets\Cards\Card02.cs" />
     <Compile Include="Assets\TurnManager.cs" />
-    <Compile Include="Assets\Entity.cs" />
+    <Compile Include="Assets\Cards\Card.cs" />
+    <Compile Include="Assets\Enemy.cs" />
+    <Compile Include="Assets\Object.cs" />
+    <Compile Include="Assets\DungeonManager.cs" />
+    <Compile Include="Assets\CardManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

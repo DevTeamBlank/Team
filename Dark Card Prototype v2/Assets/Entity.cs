@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour { // Enemies, Objects
 
-    public int ID;
     public string nomenclature;
 
     public int maxHealth;
@@ -98,7 +97,5 @@ public class Entity : MonoBehaviour { // Enemies, Objects
         }
     }
 
-    void Dead() {
-        // GetComponentInParent<EntityManager>().
-    }
+    protected virtual void Dead() { }
 }

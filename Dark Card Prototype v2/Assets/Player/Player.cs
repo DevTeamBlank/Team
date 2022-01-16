@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Card;
 
 public class Player : MonoBehaviour {
 
@@ -12,15 +11,21 @@ public class Player : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKey(KeyCode.Q)) {
+        if (Input.GetKeyDown(KeyCode.Q)) {
             GainStrength(1);
         }
-        if (Input.GetKey(KeyCode.W)) {
+        if (Input.GetKeyDown(KeyCode.W)) {
             GainDexterity(1);
+        }
+        if (Input.GetKeyDown(KeyCode.E)) {
+            GainArmor(3);
+        }
+        if (Input.GetKeyDown(KeyCode.R)) {
+            TakeDamage(5);
         }
     }
 
-    public int maxHealth;
+    public int maxHealth = 60;
     [SerializeField] int health;
     [SerializeField] int armor;
 
@@ -31,8 +36,8 @@ public class Player : MonoBehaviour {
     [SerializeField] int strength;
     [SerializeField] int dexterity;
 
-    public int baseEnergy;
-    [SerializeField] int energy;
+    public int baseEnergy = 3;
+    public int energy;
 
     void Start() {
         Reset();
@@ -103,9 +108,12 @@ public class Player : MonoBehaviour {
         if (IsVulnerable()) {
             temp = (int)(temp * 1.5f);
         }
-        int temp2 = temp - armor;
-        LossArmor(armor);
-        LossHealth(temp2);
+        if (temp <= armor) {
+            LossArmor(temp);
+        } else {
+            LossHealth(temp - armor);
+            LossArmor(armor);
+        }       
     }
 
     public void HealHealth(int value) {
@@ -117,7 +125,7 @@ public class Player : MonoBehaviour {
         }
     }
     public void LossHealth(int value) {
-        if (value == 0) return;
+        if (value <= 0) return;
 
         int temp = health - value;
         if (0 < temp) {
@@ -155,6 +163,8 @@ public class Player : MonoBehaviour {
     }
 
     void Dead() {
+        health = 0;
+        Debug.Log("Dead");
         // TODO
         // Restart the game
     }

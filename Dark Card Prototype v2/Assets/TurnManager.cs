@@ -6,6 +6,8 @@ public class TurnManager : MonoBehaviour {
     public static TurnManager Inst { get; private set; }
 
     [SerializeField] int turn;
+    public bool isLoading;
+    public bool isMyTurn;
 
     void Awake() {
         Inst = this;
@@ -15,19 +17,23 @@ public class TurnManager : MonoBehaviour {
         
     }
 
-    public void ResetEntityManager() { // DungeonManager가 호출
+    public void ResetLevelManager() { // DungeonManager가 호출
 
     }
 
     public void PlayerTurnStart() {
+        isMyTurn = true;
         Player.Inst.TurnStartGainEnergy();
         // CardManager.Inst.Draw(5);
-        // CardManager.Inst.CanPlay();
+        CardManager.Inst.SetCardPlayStatus();
     }
     
     public void PlayerTurnEnd() {
+        CardManager.Inst.SetCardPlayStatus();
         Player.Inst.TurnEndLossArmor();
         // CardManager.Inst.DiscardAll();
-        // CardManager.Inst.Nothing();
+        isMyTurn = false;
     }
+
+
 }

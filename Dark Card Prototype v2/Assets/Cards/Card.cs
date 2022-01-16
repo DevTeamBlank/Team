@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Card : MonoBehaviour {
 
-    public int ID;
-    public string nomenclature;
+    [SerializeField] int CardID;
+    [SerializeField] string nomenclature;
 
-    public Rarity rarity;
-    public int energy;
+    [SerializeField] Rarity rarity;
+    [SerializeField] int energy;
 
     public enum Rarity {
         starter,
@@ -17,7 +17,7 @@ public class Card : MonoBehaviour {
         rare
     }
 
-    public AttackType attackType;
+    [SerializeField] AttackType attackType;
 
     public enum AttackType {
         nan,
@@ -26,7 +26,29 @@ public class Card : MonoBehaviour {
         all
     }
 
-    public virtual void Play() { }
+    [SerializeField] bool playable = true;
+
+    protected virtual void Play() { }
+
+    protected bool IsPlayble() {
+        if (CardManager.Inst.cardPlayStatus != CardManager.CardPlayStatus.canMouseDrag) {
+            Debug.Log("Not my turn.");
+            return false; // Not my turn
+        }
+        if (!playable) {
+            Debug.Log("Unplayble card.");
+            return false;
+        }
+        if (Player.Inst.energy < energy) {
+            Debug.Log("Not enough energy.");
+            return false;
+        }
+        return true;
+    }
+
+    protected void UseEnergy() {
+        Player.Inst.energy -= energy;
+    }
 
     public void Order() {
         // TODO
