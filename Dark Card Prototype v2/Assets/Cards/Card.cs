@@ -28,7 +28,18 @@ public class Card : MonoBehaviour {
 
     [SerializeField] bool playable = true;
 
-    protected virtual void Play() { }
+    protected void Play() {
+        if (IsPlayble()) {
+            UseEnergy();
+            PlayCard(); // virtual
+            // TODO
+            // DiscardPile로 이동
+        } else {
+            // 카드 제자리로
+        }
+    }
+
+    protected virtual void PlayCard() { }
 
     protected bool IsPlayble() {
         if (CardManager.Inst.cardPlayStatus != CardManager.CardPlayStatus.canMouseDrag) {

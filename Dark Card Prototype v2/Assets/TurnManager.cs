@@ -24,7 +24,7 @@ public class TurnManager : MonoBehaviour {
     public void PlayerTurnStart() {
         isMyTurn = true;
         Player.Inst.TurnStartGainEnergy();
-        // CardManager.Inst.Draw(5);
+        CardManager.Inst.DrawCards(5);
         CardManager.Inst.SetCardPlayStatus();
     }
     

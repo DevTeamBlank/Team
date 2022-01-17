@@ -90,12 +90,16 @@ public class Player : MonoBehaviour {
         return ret;
     }
 
+    public int ApplyArmor(int value) {
+        return value + dexterity;
+    }
+
     public void GainDexterity(int value) {
         dexterity += value;
     }
 
     public void GainArmor(int value) {
-        armor += (value + dexterity);
+        armor += value;
     }
 
     public void LossArmor(int value) {

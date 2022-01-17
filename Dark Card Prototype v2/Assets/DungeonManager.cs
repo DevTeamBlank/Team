@@ -18,5 +18,7 @@ public class DungeonManager : MonoBehaviour {
         levelManagers[currentLevel].SetActive(false);
         levelManagers[nextLevel].SetActive(true);
         currentLevel = nextLevel;
+        levelManagers[currentLevel].GetComponent<LevelManager>().Setting();
+        CardManager.Inst.Setting();
     }
 }

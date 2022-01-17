@@ -29,7 +29,15 @@ public class LevelManager : MonoBehaviour { // == LevelManager
     }
 
     public void GiveDamage(int damage) {
-        // MouseTarget(MousePosition())?.GetComponent<Entity>().
+        MouseTarget(MousePosition())?.GetComponent<Entity>().TakeDamage(damage);
+    }
+
+    public void ApplyVulnerable(int duration) {
+        MouseTarget(MousePosition())?.GetComponent<Entity>().ApplyVulnerable(duration);
+    }
+
+    public void ApplyWeakness(int duration) {
+        MouseTarget(MousePosition())?.GetComponent<Entity>().ApplyWeakness(duration);
     }
 
     public void Setting() { // DungeonManager가 호출
@@ -106,6 +114,7 @@ public class LevelManager : MonoBehaviour { // == LevelManager
         if (statuses[index] != Status.aliveEnemy) Debug.Log("Error");
         statuses[index] = Status.deadEnemy;
         remainingEnemies--;
+        CheckLevelClear();
     }
     
     public void ObjectDestroyed(int index) {
@@ -113,7 +122,7 @@ public class LevelManager : MonoBehaviour { // == LevelManager
         statuses[index] = Status.destroyedObject;
     }
 
-    void LevelClear() {
+    void CheckLevelClear() {
         if (remainingEnemies <= 0) {
             // TODO
             // DungeonManager에게 Clear
