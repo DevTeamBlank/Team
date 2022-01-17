@@ -16,8 +16,7 @@ public class Deck : MonoBehaviour {
     void Start() {
         size = cards.Count;
     }
-
-    // Update is called once per frame
+    
     void Update() {
 
     }
@@ -29,6 +28,7 @@ public class Deck : MonoBehaviour {
     
     public void RemoveCard(GameObject card) {
         cards.Remove(card);
+        size--;
     }
 
     public void RemoveCard(int index) {

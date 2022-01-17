@@ -17,6 +17,10 @@ public class Card : MonoBehaviour {
         rare
     }
 
+    public Rarity GetRarity() {
+        return rarity;
+    }
+
     [SerializeField] AttackType attackType;
 
     public enum AttackType {
@@ -32,8 +36,7 @@ public class Card : MonoBehaviour {
         if (IsPlayble()) {
             UseEnergy();
             PlayCard(); // virtual
-            // TODO
-            // DiscardPile로 이동
+            CardManager.Inst.Played(gameObject);
         } else {
             // 카드 제자리로
         }
@@ -44,7 +47,7 @@ public class Card : MonoBehaviour {
     protected bool IsPlayble() {
         if (CardManager.Inst.cardPlayStatus != CardManager.CardPlayStatus.canMouseDrag) {
             Debug.Log("Not my turn.");
-            return false; // Not my turn
+            return false;
         }
         if (!playable) {
             Debug.Log("Unplayble card.");
@@ -52,6 +55,10 @@ public class Card : MonoBehaviour {
         }
         if (Player.Inst.energy < energy) {
             Debug.Log("Not enough energy.");
+            return false;
+        }
+        if (attackType == AttackType.target && !GameObject.Find("LevelManager").GetComponent<LevelManager>().IsTargetValid()) {
+            Debug.Log("Unvalid target.");
             return false;
         }
         return true;

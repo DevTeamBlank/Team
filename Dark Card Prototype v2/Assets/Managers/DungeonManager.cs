@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DungeonManager : MonoBehaviour { // DungeonManager´Â ÇÑ Scene¿¡¼­ ½Ì±ÛÅæ.
+    public static DungeonManager Inst { get; private set; }
+
+    public GameObject[] levelManagers;
+    public bool[] levelCleared;
+
+    [SerializeField] int currentLevel = 0;
+
+    void Awake() {
+        Inst = this;
+    }
+
+    void Start() {
+        DungeonSetting();  
+    }
+
+    void DungeonSetting() {
+        for (int i = 0; i < levelManagers.Length; i++) {
+            levelManagers[i].SetActive(false);
+            levelCleared[i] = false;
+        }
+        levelManagers[currentLevel].SetActive(true);
+    }
+
+    public void GoNextLevel(int nextLevel) { // Interact with buttons
+        levelManagers[currentLevel].SetActive(false);
+        levelManagers[nextLevel].SetActive(true);
+        currentLevel = nextLevel;
+        levelManagers[currentLevel].GetComponent<LevelManager>().Setting();
+    }
+
+    public void LevelCleared() {
+        levelCleared[currentLevel] = true;
+        CheckDungeonClear();
+    }
+
+    public void CheckDungeonClear() {
+        for (int i = 0; i < levelCleared.Length; i++) {
+            if (!levelCleared[i]) return;
+        }
+        // TODO
+        // Reward
+        // Scene Change
+    }
+}
