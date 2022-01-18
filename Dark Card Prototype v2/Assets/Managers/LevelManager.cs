@@ -27,16 +27,102 @@ public class LevelManager : MonoBehaviour { // == LevelManager
         remainingEnemies = 0;
     }
 
-    public void GiveDamage(int damage) {
-        MouseTarget(MousePosition())?.GetComponent<Entity>().TakeDamage(damage);
+    public void GiveDamage(int damage, Card.AttackType attackType) {
+        switch (attackType) {
+            case Card.AttackType.target:
+                GiveDamageTarget(damage);
+                break;
+            case Card.AttackType.all:
+                GiveDamageAll(damage);
+                break;
+            case Card.AttackType.random:
+                GiveDamageRandom(damage);
+                break;
+            case Card.AttackType.notApplicable:
+            default:
+                Debug.Log("Unvalid attack type.");
+                break;
+        }
     }
 
-    public void ApplyVulnerable(int duration) {
-        MouseTarget(MousePosition())?.GetComponent<Entity>().ApplyVulnerable(duration);
+    void GiveDamageTarget(int damage) {
+        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingObject) {
+            MouseTarget(MousePosition())?.GetComponent<Entity>().TakeDamage(damage);
+        }
     }
 
-    public void ApplyWeakness(int duration) {
-        MouseTarget(MousePosition())?.GetComponent<Entity>().ApplyWeakness(duration);
+    void GiveDamageAll(int damage) {
+        for (int i = 0; i < 8; i++) {
+            if (IsTargetValid(true, i)) {
+                entities[i].GetComponent<Entity>().TakeDamage(damage);
+            }
+        }
+    }
+
+    void GiveDamageRandom(int damage) {
+        for (int i = 0; i < 8; i++) {
+            if (IsTargetValid(true, i)) {
+                entities[i].GetComponent<Entity>().TakeDamage(damage);
+            }
+        }
+    }
+
+    public void ApplyVulnerable(int duration, Card.AttackType attackType) {
+        switch (attackType) {
+            case Card.AttackType.target:
+                ApplyVulnerableTarget(duration);
+                break;
+            case Card.AttackType.all:
+                ApplyVulnerableAll(duration);
+                break;
+            case Card.AttackType.random:
+            case Card.AttackType.notApplicable:
+            default:
+                Debug.Log("Unvalid attack type.");
+                break;
+        }
+    }
+
+    public void ApplyVulnerableTarget(int duration) {
+        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingObject) {
+            MouseTarget(MousePosition())?.GetComponent<Entity>().ApplyVulnerable(duration);
+        }
+    }
+    public void ApplyVulnerableAll(int duration) {
+        for (int i = 0; i < 8; i++) {
+            if (IsTargetValid(true, i)) {
+                entities[i].GetComponent<Entity>().ApplyVulnerable(duration);
+            }
+        }
+    }
+
+    public void ApplyWeakness(int duration, Card.AttackType attackType) {
+        switch (attackType) {
+            case Card.AttackType.target:
+                ApplyWeaknessTarget(duration);
+                break;
+            case Card.AttackType.all:
+                ApplyWeaknessAll(duration);
+                break;
+            case Card.AttackType.random:
+            case Card.AttackType.notApplicable:
+            default:
+                Debug.Log("Unvalid attack type.");
+                break;
+        }
+    }
+
+    public void ApplyWeaknessTarget(int duration) {
+        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingObject) {
+            MouseTarget(MousePosition())?.GetComponent<Entity>().ApplyWeakness(duration);
+        }
+    }
+    public void ApplyWeaknessAll(int duration) {
+        for (int i = 0; i < 8; i++) {
+            if (IsTargetValid(true, i)) {
+                entities[i].GetComponent<Entity>().ApplyWeakness(duration);
+            }
+        }
     }
 
     public void Setting() { // DungeonManager∞° »£√‚
@@ -117,8 +203,10 @@ public class LevelManager : MonoBehaviour { // == LevelManager
         }
     }
 
-    public bool IsTargetValid() {
-        switch (statuses[MousePosition()]) {
+    public bool IsTargetValid(bool checkByIndex = false, int index = -1) {
+        int target = checkByIndex ? index : MousePosition();
+
+        switch (statuses[target]) {
             case Status.empty:
                 return false;
             case Status.aliveEnemy:

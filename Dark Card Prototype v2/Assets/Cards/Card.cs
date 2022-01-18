@@ -7,8 +7,12 @@ public class Card : MonoBehaviour {
     [SerializeField] int CardID;
     [SerializeField] string nomenclature;
 
+    public int GetCardID() {
+        return CardID;
+    }
+
     [SerializeField] Rarity rarity;
-    [SerializeField] int energy;
+    [SerializeField] protected int energy;
 
     public enum Rarity {
         starter,
@@ -21,16 +25,28 @@ public class Card : MonoBehaviour {
         return rarity;
     }
 
-    [SerializeField] AttackType attackType;
+    [SerializeField] protected AttackType attackType;
 
     public enum AttackType {
-        nan,
+        notApplicable,
         target,
         random,
         all
     }
 
-    [SerializeField] bool playable = true;
+    [SerializeField] protected CardType cardType;
+
+    public enum CardType {
+        notApplicable,
+        attack,
+        skill
+    }
+
+    public CardType GetCardType() {
+        return cardType;
+    }
+
+    [SerializeField] protected bool playable = true;
 
     protected void Play() {
         if (IsPlayble()) {
@@ -44,7 +60,7 @@ public class Card : MonoBehaviour {
 
     protected virtual void PlayCard() { }
 
-    protected bool IsPlayble() {
+    protected virtual bool IsPlayble() {
         if (CardManager.Inst.cardPlayStatus != CardManager.CardPlayStatus.canMouseDrag) {
             Debug.Log("Not my turn.");
             return false;
@@ -68,7 +84,8 @@ public class Card : MonoBehaviour {
         Player.Inst.energy -= energy;
     }
 
-    public void Order() {
+
+    public void Order(int order) {
         // TODO
     }
 

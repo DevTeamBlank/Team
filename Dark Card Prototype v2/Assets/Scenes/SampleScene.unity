@@ -123,6 +123,129 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &66786233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 66786235}
+  - component: {fileID: 66786234}
+  m_Layer: 0
+  m_Name: Deck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &66786234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66786233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f91bf61e4e7f66468d0396be1af92fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards: []
+--- !u!4 &66786235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66786233}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &516509889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 516509890}
+  - component: {fileID: 516509891}
+  m_Layer: 0
+  m_Name: CardDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &516509890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516509889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &516509891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516509889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134d7032da13dd34c8d61eb2d8555bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardDatabase:
+  - {fileID: 9186422563121597830, guid: d21ed3d6a7cece64e8f0c29bb475fcb9, type: 3}
+  - {fileID: 8008693248235343075, guid: c2f6e2f816e4d9c469e5951e9ac722e4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 7153012411646778523, guid: c9c4270a9965b5c41880e4903aca3a7b, type: 3}
+  - {fileID: 1050905235709077987, guid: 7601fc3aa5c22404f8f638d57f0c6faa, type: 3}
+  - {fileID: 1792933162218728537, guid: dbc2ff1542fe9b447a1ad8cb145af5ae, type: 3}
+  - {fileID: 8606688443744122733, guid: 5ebc8199274d30d498cd36dfe00e36c9, type: 3}
+  - {fileID: 9070209405241143623, guid: 2a3964e1bed151142a0765a5c1eb7d9d, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  rewardIntervalX: 4
+  rewardOffsetY: 1
+  rewards: []
+  rewardIDs: 
+  isRewarding: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

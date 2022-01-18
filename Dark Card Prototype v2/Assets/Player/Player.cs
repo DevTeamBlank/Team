@@ -29,6 +29,10 @@ public class Player : MonoBehaviour {
     [SerializeField] int health;
     [SerializeField] int armor;
 
+    public int GetArmor() {
+        return armor;
+    }
+
     [SerializeField] int vulnerable;
     [SerializeField] int weakness;
     [SerializeField] bool barricade;

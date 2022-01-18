@@ -13,6 +13,10 @@ public class CardManager : MonoBehaviour {
     List<GameObject> drawPile = new List<GameObject>();
     List<GameObject> discardPile = new List<GameObject>();
 
+    public List<GameObject> GetHand() {
+        return hand;
+    }
+
     public CardPlayStatus cardPlayStatus;
 
     public enum CardPlayStatus {
@@ -58,7 +62,7 @@ public class CardManager : MonoBehaviour {
     }
 
     void CopyDeck() {
-        drawPile = Deck.Inst.Copy();
+        drawPile = Deck.Inst.CopyDeck();
     }
 
     void ShuffleDrawPile() {
@@ -86,6 +90,11 @@ public class CardManager : MonoBehaviour {
             discardPile.RemoveAt(0);
         }
         ShuffleDrawPile();
+    }
+
+    public void AddDiscardPile(GameObject card) {
+        drawPile.Add(card);
+
     }
 
     public void DrawCards(int num) {

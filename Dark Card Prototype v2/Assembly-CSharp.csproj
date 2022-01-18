@@ -53,7 +53,7 @@
     <UnityVersion>2020.3.24f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Cards\Card00.cs" />
+    <Compile Include="Assets\Cards\Cards\Card00\Card00.cs" />
     <Compile Include="Assets\Entities\Enemy.cs" />
     <Compile Include="Assets\Managers\DungeonManager.cs" />
     <Compile Include="Assets\Deck.cs" />
@@ -61,12 +61,18 @@
     <Compile Include="Assets\Managers\LevelManager.cs" />
     <Compile Include="Assets\Managers\CardManager.cs" />
     <Compile Include="Assets\Entities\Entity.cs" />
-    <Compile Include="Assets\Cards\Card01.cs" />
+    <Compile Include="Assets\Cards\Cards\Card01\Card01.cs" />
+    <Compile Include="Assets\Cards\CardDatabase.cs" />
     <Compile Include="Assets\Player\Player.cs" />
-    <Compile Include="Assets\Cards\Card02.cs" />
+    <Compile Include="Assets\Cards\Cards\Card02\Card02.cs" />
     <Compile Include="Assets\Managers\TurnManager.cs" />
     <Compile Include="Assets\Cards\Card.cs" />
-    <Compile Include="Assets\Cards\CardDatabase.cs" />
+    <Compile Include="Assets\Reward.cs" />
+    <Compile Include="Assets\Cards\Cards\Card03\Card03.cs" />
+    <Compile Include="Assets\Cards\Cards\Card04\Card04.cs" />
+    <Compile Include="Assets\Cards\Cards\Card05\Card05.cs" />
+    <Compile Include="Assets\Cards\Cards\Card06\Card06.cs" />
+    <Compile Include="Assets\Cards\Cards\Card07\Card07.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
