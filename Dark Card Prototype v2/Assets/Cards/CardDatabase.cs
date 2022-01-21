@@ -26,12 +26,10 @@ public class CardDatabase : MonoBehaviour {
 
     void Start() {
         CardDBSetting();
-        Reward(); // Temporary Card
     }
 
     void CardDBSetting() {
         isRewarding = false;
-
 
         for (int i = 0; i < cardDatabase.Count; i++) {
             GameObject card = cardDatabase[i];

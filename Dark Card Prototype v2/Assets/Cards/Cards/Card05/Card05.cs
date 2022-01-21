@@ -19,7 +19,7 @@ public class Card05 : Card {
             }
         }
 
-        if (CardManager.Inst.cardPlayStatus != CardManager.CardPlayStatus.canMouseDrag) {
+        if (CardManager.Inst.cardPlayStatus != CardManager.CardPlayStatus.canPlay) {
             Debug.Log("Not my turn.");
             return false;
         }

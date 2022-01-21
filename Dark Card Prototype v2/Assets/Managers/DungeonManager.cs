@@ -6,7 +6,7 @@ public class DungeonManager : MonoBehaviour { // DungeonManager´Â ÇÑ Scene¿¡¼­ ½
     public static DungeonManager Inst { get; private set; }
 
     public GameObject[] levelManagers;
-    public bool[] levelCleared;
+    [SerializeField] bool[] levelCleared;
 
     [SerializeField] int currentLevel = 0;
 
@@ -15,15 +15,17 @@ public class DungeonManager : MonoBehaviour { // DungeonManager´Â ÇÑ Scene¿¡¼­ ½
     }
 
     void Start() {
-        DungeonSetting();  
+        DungeonSetting();
     }
 
     void DungeonSetting() {
+        levelCleared = new bool[levelManagers.Length];
         for (int i = 0; i < levelManagers.Length; i++) {
             levelManagers[i].SetActive(false);
             levelCleared[i] = false;
         }
         levelManagers[currentLevel].SetActive(true);
+        levelManagers[currentLevel].GetComponent<LevelManager>().Setting();
     }
 
     public void GoNextLevel(int nextLevel) { // Interact with buttons

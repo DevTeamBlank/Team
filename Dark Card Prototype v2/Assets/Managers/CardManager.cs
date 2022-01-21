@@ -9,9 +9,10 @@ public class CardManager : MonoBehaviour {
     bool isDragging;
     GameObject selectedCard;
 
-    List<GameObject> hand = new List<GameObject>(10);
-    List<GameObject> drawPile = new List<GameObject>();
-    List<GameObject> discardPile = new List<GameObject>();
+    [SerializeField] List<GameObject> hand = new List<GameObject>(10);
+    [SerializeField] List<GameObject> drawPile = new List<GameObject>();
+    [SerializeField] List<GameObject> discardPile = new List<GameObject>();
+    [SerializeField] List<GameObject> exhaustPile = new List<GameObject>();
 
     public List<GameObject> GetHand() {
         return hand;
@@ -20,9 +21,8 @@ public class CardManager : MonoBehaviour {
     public CardPlayStatus cardPlayStatus;
 
     public enum CardPlayStatus {
-        nothing, // Turn Changed
-        canMouseOver, // Enemy's turn
-        canMouseDrag // My turn
+        cannotPlay,
+        canPlay
     }
 
     void Awake() {
@@ -36,49 +36,70 @@ public class CardManager : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.A)) {
             Draw();
-        } else if(Input.GetKeyDown(KeyCode.S)) {
-            ShuffleDrawPile();
-        } else if (Input.GetKeyDown(KeyCode.D)) {
+        } else if (Input.GetKeyDown(KeyCode.S)) {
             DiscardAll();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            Play(0);
+        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            Play(1);
+        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            Play(2);
+        } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            Play(3);
+        } else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+            Play(4);
+        } else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+            Play(5);
+        } else if (Input.GetKeyDown(KeyCode.Alpha7)) {
+            Play(6);
+        } else if (Input.GetKeyDown(KeyCode.Alpha8)) {
+            Play(7);
+        } else if (Input.GetKeyDown(KeyCode.Alpha9)) {
+            Play(8);
+        } else if (Input.GetKeyDown(KeyCode.Alpha0)) {
+            Play(9);
         }
     }
 
     public void SetCardPlayStatus() {
-        if (TurnManager.Inst.isLoading) {
-            cardPlayStatus = CardPlayStatus.nothing;
-        } else if (!TurnManager.Inst.isMyTurn) {
-            cardPlayStatus = CardPlayStatus.canMouseOver;
+        if (!TurnManager.Inst.isMyTurn) {
+            cardPlayStatus = CardPlayStatus.cannotPlay;
         } else {
-            cardPlayStatus = CardPlayStatus.canMouseDrag;
+            cardPlayStatus = CardPlayStatus.canPlay;
         }
     }
 
     public void CardSetting() {
         // TODO
         // Show UI
-        cardPlayStatus = CardPlayStatus.nothing;
+        cardPlayStatus = CardPlayStatus.cannotPlay;
         CopyDeck();
-        ShuffleDrawPile();
+        // ShuffleDrawPile();
+        HandUpdate();
     }
 
     void CopyDeck() {
-        drawPile = Deck.Inst.CopyDeck();
+        foreach (GameObject card in Deck.Inst.CopyDeck()) {
+            AddDrawPile(card);
+        }
     }
 
-    void ShuffleDrawPile() {
+    void ShuffleDrawPile() { // TODO. °³²¿ÀÎ ÄÚµå
         int size = drawPile.Count;
         bool[] selected = new bool[size];
         List<int> indexes = new List<int>(size);
         for (int i = 0; i < size; i++) {
             selected[i] = false;
-            indexes[i] = i;
+            indexes.Add(i);
         }
 
         List<GameObject> list = new List<GameObject>(size);
         for (int i = 0; i < size; i++) {
             int index = Random.Range(0, indexes.Count);
-            list[i] = drawPile[index];
-            indexes.RemoveAt(i);
+            list.Add(drawPile[index]);
+            indexes.Remove(index);
         }
         drawPile = list;
     }
@@ -86,15 +107,34 @@ public class CardManager : MonoBehaviour {
     void ShuffleDiscardPileToDrawPile() {
         int size = discardPile.Count;
         for (int i = 0; i < size; i++) {
-            drawPile[i] = discardPile[0];
-            discardPile.RemoveAt(0);
+            AddDrawPile(discardPile[i]);
         }
-        ShuffleDrawPile();
+        discardPile.Clear();
+        // ShuffleDrawPile();
     }
 
     public void AddDiscardPile(GameObject card) {
-        drawPile.Add(card);
+        discardPile.Add(card);
+        card.transform.parent = GameObject.Find("DiscardPile").transform;
+        card.transform.position = card.transform.parent.position;
+    }
 
+    public void AddDrawPile(GameObject card) {
+        drawPile.Add(card);
+        card.transform.parent = GameObject.Find("DrawPile").transform;
+        card.transform.position = card.transform.parent.position;
+    }
+
+    public void AddHand(GameObject card) {
+        hand.Add(card);
+        card.transform.parent = GameObject.Find("Hand").transform;
+        card.transform.position = card.transform.parent.position;
+    }
+
+    public void AddExhaustPile(GameObject card) {
+        exhaustPile.Add(card);
+        card.transform.parent = GameObject.Find("ExhaustPile").transform;
+        card.transform.position = card.transform.parent.position;
     }
 
     public void DrawCards(int num) {
@@ -118,20 +158,53 @@ public class CardManager : MonoBehaviour {
         }
 
         GameObject card = drawPile[0];
-        hand.Add(card);
+        AddHand(card);
         drawPile.RemoveAt(0);
+        HandUpdate();
     }
 
-    public void Played(GameObject card) {        
+    public void Play(int index) {
+        if (index < 0 || hand.Count <= index) {
+            Debug.Log("Unvalid index.");
+            return;
+        }
+        hand[index].GetComponent<Card>().Play();
+    }
+
+    public void Played(GameObject card) {
         hand.Remove(card);
-        discardPile.Add(card);
+        HandUpdate();
+        if (card.GetComponent<Card>().GetIsExhaust()) {
+            AddExhaustPile(card);
+        } else {
+            AddDiscardPile(card);
+        }
     }
 
     public void DiscardAll() {
         int size = hand.Count;
         for (int i = 0; i < size; i++) {
-            discardPile.Add(hand[i]);
-            hand.RemoveAt(0);
+            AddDiscardPile(hand[i]);
+        }
+        hand.Clear();
+        HandUpdate();
+    }
+
+    [SerializeField] float intervalX;
+    [SerializeField] float offsetY;
+
+    public void HandUpdate() {
+        if (hand.Count == 0) {
+            return;
+        }
+        Vector2 temp = Camera.main.transform.position;
+        float x = temp.x;
+        float y = temp.y;
+        for (int i = 0; i < hand.Count; i++) {
+            float middle = (hand.Count - 1) / 2f;
+            float offsetX = intervalX * (i - middle);
+            hand[i].transform.position = new Vector2(x + offsetX, y + offsetY);
+            hand[i].GetComponent<Card>().Order(i);
         }
     }
 

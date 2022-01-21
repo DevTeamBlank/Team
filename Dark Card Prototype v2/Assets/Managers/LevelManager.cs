@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour { // == LevelManager
+public class LevelManager : MonoBehaviour {
 
     public enum Status {
         empty,

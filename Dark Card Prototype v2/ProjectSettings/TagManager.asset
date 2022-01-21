@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Card
+  - Enemy
+  - Object
+  - Manager
   layers:
   - Default
   - TransparentFX
@@ -40,4 +44,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Card
+    uniqueID: 3518789673
+    locked: 0
+  - name: Entity
+    uniqueID: 2867234501
+    locked: 0
+  - name: Background
+    uniqueID: 2394775525
     locked: 0

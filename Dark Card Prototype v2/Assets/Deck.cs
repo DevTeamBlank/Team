@@ -8,12 +8,15 @@ public class Deck : MonoBehaviour {
 
     [SerializeField] List<GameObject> cards;
 
+    [SerializeField] List<GameObject> startingDeck;
+
     void Awake() {
         Inst = this;
+        DeckSetting();
     }
 
     void Start() {
-        StartingDeck();
+        
     }
 
     void Update() {
@@ -21,21 +24,25 @@ public class Deck : MonoBehaviour {
     }
 
     void StartingDeck() {
-        AddCard(0);
-        for (int i = 0; i<4; i++) {
-            AddCard(1);
+        for (int i = 0; i < startingDeck.Count; i++) {
+            AddCard(startingDeck[i]);
         }
-        for (int i = 0; i<5; i++) {
-            AddCard(2);
-        }
+    }
+
+    public void DeckSetting() {
+        StartingDeck();
     }
 
     public void AddCard(GameObject card) {
-        cards.Add(card);
+        GameObject temp = GameObject.Instantiate(card, transform);
+        temp.name = card.GetComponent<Card>().nomenclature;
+        cards.Add(temp);
     }
 
     public void AddCard(int ID) {
-        cards.Add(GameObject.Instantiate(CardDatabase.Inst.GetCard(ID)));
+        GameObject temp = GameObject.Instantiate(CardDatabase.Inst.GetCard(ID), transform);
+        temp.name = CardDatabase.Inst.GetCard(ID).GetComponent<Card>().nomenclature;
+        cards.Add(temp);
     }
 
     public void RemoveCard(GameObject card) {
@@ -59,7 +66,7 @@ public class Deck : MonoBehaviour {
     public List<GameObject> CopyDeck() {
         List<GameObject> ret = new List<GameObject>(cards.Count);
         for (int i = 0; i < cards.Count; i++) {
-            ret[i] = GameObject.Instantiate(cards[i]);
+            ret.Add(GameObject.Instantiate(cards[i]));
         }
         return ret;
     }

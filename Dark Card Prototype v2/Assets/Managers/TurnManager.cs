@@ -6,7 +6,6 @@ public class TurnManager : MonoBehaviour {
     public static TurnManager Inst { get; private set; }
 
     [SerializeField] int turn;
-    public bool isLoading;
     public bool isMyTurn;
 
     void Awake() {
@@ -14,7 +13,6 @@ public class TurnManager : MonoBehaviour {
     }
 
     void Start() {
-        isLoading = true;
 
     }
 
@@ -22,7 +20,6 @@ public class TurnManager : MonoBehaviour {
         // TODO
         // Show UI
         turn = 0;
-        isLoading = true;
         isMyTurn = false;
         PlayerTurnStart();
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Card : MonoBehaviour {
 
     [SerializeField] int CardID;
-    [SerializeField] string nomenclature;
+    public string nomenclature;
 
     public int GetCardID() {
         return CardID;
@@ -46,9 +46,15 @@ public class Card : MonoBehaviour {
         return cardType;
     }
 
+    [SerializeField] protected bool isExhaust = false;
+
+    public bool GetIsExhaust() {
+        return isExhaust;
+    }
+
     [SerializeField] protected bool playable = true;
 
-    protected void Play() {
+    public void Play() {
         if (IsPlayble()) {
             UseEnergy();
             PlayCard(); // virtual
@@ -58,10 +64,12 @@ public class Card : MonoBehaviour {
         }
     }
 
-    protected virtual void PlayCard() { }
+    protected virtual void PlayCard() {
+        Debug.Log("Card Description not implemented.");
+    }
 
     protected virtual bool IsPlayble() {
-        if (CardManager.Inst.cardPlayStatus != CardManager.CardPlayStatus.canMouseDrag) {
+        if (CardManager.Inst.cardPlayStatus != CardManager.CardPlayStatus.canPlay) {
             Debug.Log("Not my turn.");
             return false;
         }
@@ -86,7 +94,9 @@ public class Card : MonoBehaviour {
 
 
     public void Order(int order) {
-        // TODO
+        Renderer renderer = GetComponent<SpriteRenderer>();
+        renderer.sortingLayerName = "Card";
+        renderer.sortingOrder = order * 10;
     }
 
 }
