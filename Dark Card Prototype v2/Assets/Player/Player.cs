@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour {
 
@@ -23,6 +24,9 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.R)) {
             TakeDamage(5);
         }
+        if (Input.GetKeyDown(KeyCode.T)) {
+            GainEnergy(1);
+        }
     }
 
     public int maxHealth = 60;
@@ -40,15 +44,15 @@ public class Player : MonoBehaviour {
     [SerializeField] int strength;
     [SerializeField] int dexterity;
 
-    public int baseEnergy = 3;
+    [SerializeField] int baseEnergy = 3;
+    public int turnEnergy = 3;
     public int energy;
 
     void Start() {
-        Reset();
-        BattleStart();
+
     }
 
-    public void Reset() {
+    public void PlayerSetting() {
         health = maxHealth;
 
         vulnerable = 0;
@@ -57,9 +61,16 @@ public class Player : MonoBehaviour {
 
         strength = 0;
         dexterity = 0;
-    }
 
-    public virtual void BattleStart() { }
+        turnEnergy = baseEnergy;
+
+        FindUI();       
+        EnergyUpdate();
+        HealthUpdate();
+        ArmorUpdate();
+        StrengthUpdate();
+        DexterityUpdate();
+    }
 
     public bool IsVulnerable() {
         return 0 < vulnerable;
@@ -84,6 +95,7 @@ public class Player : MonoBehaviour {
 
     public void GainStrength(int value) {
         strength += value;
+        StrengthUpdate();
     }
 
     public int ApplyDamage(int value) {
@@ -100,15 +112,18 @@ public class Player : MonoBehaviour {
 
     public void GainDexterity(int value) {
         dexterity += value;
+        DexterityUpdate();
     }
 
     public void GainArmor(int value) {
         armor += value;
+        ArmorUpdate();
     }
 
     public void LossArmor(int value) {
         armor -= value;
         if (armor < 0) armor = 0;
+        ArmorUpdate();
     }
 
     public void TakeDamage(int value) {
@@ -121,7 +136,7 @@ public class Player : MonoBehaviour {
         } else {
             LossHealth(temp - armor);
             LossArmor(armor);
-        }       
+        }
     }
 
     public void HealHealth(int value) {
@@ -131,6 +146,7 @@ public class Player : MonoBehaviour {
         } else {
             temp = maxHealth;
         }
+        HealthUpdate();
     }
     public void LossHealth(int value) {
         if (value <= 0) return;
@@ -138,6 +154,7 @@ public class Player : MonoBehaviour {
         int temp = health - value;
         if (0 < temp) {
             health = temp;
+            HealthUpdate();
         } else {
             Dead();
         }
@@ -145,30 +162,67 @@ public class Player : MonoBehaviour {
 
     public void GainEnergy(int value) {
         energy += value;
+        EnergyUpdate();
     }
 
-    public int ConsumeAllEnergy() {
+    public int UseAllEnergy() {
         int ret = energy;
         energy = 0;
+        EnergyUpdate();
         return ret;
     }
 
-    public bool ConsumeEnergy(int value) {
+    public void UseEnergy(int value) {
         if (value < energy) {
             energy -= value;
-            return true;
+            EnergyUpdate();
         } else {
-            return false;
+            Debug.Log("Unvalid value.");
         }
     }
 
     public void TurnStartGainEnergy() {
-        energy = baseEnergy;
+        energy = turnEnergy;
+        EnergyUpdate();
     }
 
     public void TurnEndLossArmor() {
         if (!IsBarricade()) LossArmor(armor);
     }
+
+    void FindUI() {
+        energyUI = transform.Find("EnergyUI").GetComponent<TextMeshPro>();
+        healthUI = transform.Find("HealthUI").GetComponent<TextMeshPro>();
+        armorUI = transform.Find("ArmorUI").GetComponent<TextMeshPro>();
+        strengthUI = transform.Find("StrengthUI").GetComponent<TextMeshPro>();
+        dexterityUI = transform.Find("DexterityUI").GetComponent<TextMeshPro>();
+    }
+
+    TextMeshPro energyUI;
+    void EnergyUpdate() {        
+        energyUI.text = "E: " + energy + " / " + turnEnergy;
+    }
+
+    TextMeshPro healthUI;
+    void HealthUpdate() {        
+        healthUI.text = "HP: " + health + " / " + maxHealth;
+    }
+
+    TextMeshPro armorUI;
+    void ArmorUpdate() {
+        armorUI.text = "Am: " + armor;
+    }
+
+    TextMeshPro strengthUI;
+    void StrengthUpdate() {
+        strengthUI.text = "Str: " + strength;
+    }
+
+    TextMeshPro dexterityUI;
+    void DexterityUpdate() {
+        dexterityUI.text = "Dex: " + dexterity;
+    }
+
 
     void Dead() {
         health = 0;

@@ -66,7 +66,11 @@ public class Deck : MonoBehaviour {
     public List<GameObject> CopyDeck() {
         List<GameObject> ret = new List<GameObject>(cards.Count);
         for (int i = 0; i < cards.Count; i++) {
-            ret.Add(GameObject.Instantiate(cards[i]));
+            GameObject temp = GameObject.Instantiate(cards[i]);
+            temp.transform.parent = transform;
+            temp.transform.position = transform.position;
+            ret.Add(temp);
+            
         }
         return ret;
     }

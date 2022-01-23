@@ -75,33 +75,24 @@ public class CardManager : MonoBehaviour {
         // TODO
         // Show UI
         cardPlayStatus = CardPlayStatus.cannotPlay;
-        CopyDeck();
-        // ShuffleDrawPile();
+        CopyDeckToDrawPile();
+        ShuffleDrawPile();
         HandUpdate();
     }
 
-    void CopyDeck() {
+    void CopyDeckToDrawPile() {
         foreach (GameObject card in Deck.Inst.CopyDeck()) {
             AddDrawPile(card);
         }
     }
 
     void ShuffleDrawPile() { // TODO. °³²¿ÀÎ ÄÚµå
-        int size = drawPile.Count;
-        bool[] selected = new bool[size];
-        List<int> indexes = new List<int>(size);
-        for (int i = 0; i < size; i++) {
-            selected[i] = false;
-            indexes.Add(i);
+        for (int i = drawPile.Count - 1; i > 0; i--) {
+            int random = Random.Range(0, i); ;
+            GameObject temp = drawPile[i];
+            drawPile[i] = drawPile[random];
+            drawPile[random] = temp;
         }
-
-        List<GameObject> list = new List<GameObject>(size);
-        for (int i = 0; i < size; i++) {
-            int index = Random.Range(0, indexes.Count);
-            list.Add(drawPile[index]);
-            indexes.Remove(index);
-        }
-        drawPile = list;
     }
 
     void ShuffleDiscardPileToDrawPile() {
@@ -110,7 +101,7 @@ public class CardManager : MonoBehaviour {
             AddDrawPile(discardPile[i]);
         }
         discardPile.Clear();
-        // ShuffleDrawPile();
+        ShuffleDrawPile();
     }
 
     public void AddDiscardPile(GameObject card) {
@@ -203,7 +194,8 @@ public class CardManager : MonoBehaviour {
         for (int i = 0; i < hand.Count; i++) {
             float middle = (hand.Count - 1) / 2f;
             float offsetX = intervalX * (i - middle);
-            hand[i].transform.position = new Vector2(x + offsetX, y + offsetY);
+            hand[i].transform.position = hand[i].transform.parent.position;
+            hand[i].transform.Translate(new Vector3(x + offsetX, 0, 0));
             hand[i].GetComponent<Card>().Order(i);
         }
     }

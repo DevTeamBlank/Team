@@ -89,9 +89,8 @@ public class Card : MonoBehaviour {
     }
 
     protected void UseEnergy() {
-        Player.Inst.energy -= energy;
+        Player.Inst.UseEnergy(energy);
     }
-
 
     public void Order(int order) {
         Renderer renderer = GetComponent<SpriteRenderer>();

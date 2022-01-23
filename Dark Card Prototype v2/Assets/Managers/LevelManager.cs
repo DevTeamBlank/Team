@@ -127,15 +127,34 @@ public class LevelManager : MonoBehaviour {
 
     public void Setting() { // DungeonManager∞° »£√‚
         LevelSetting();
+        Player.Inst.PlayerSetting();
         CardManager.Inst.CardSetting();
-        TurnManager.Inst.TurnSetting();
+        TurnManager.Inst.TurnSetting();        
     }
 
     public void LevelSetting() {
         GetXYPosition();
         GetStatus();
+        EntitySetting();
         // TODO
         // Show UI
+    }
+
+    void EntitySetting() {
+        for (int i = 0; i < statuses.Length; i++) {
+            switch (statuses[i]) {
+                case Status.empty:
+                    break;
+                case Status.aliveEnemy:
+                    entities[i].GetComponent<Entity>().Setting();
+                    break;
+                case Status.existingObject:
+                    break;
+                default:
+                    Debug.Log("Unvalid status.");
+                    break;
+            }
+        }
     }
 
     int MousePosition() {
@@ -246,5 +265,19 @@ public class LevelManager : MonoBehaviour {
         CardManager.Inst.LevelCleared();
         CardDatabase.Inst.Reward();
         DungeonManager.Inst.LevelCleared();
+    }
+
+    public void EnemyTurnStart() {
+        for (int i = 0; i < entities.Length; i++) {
+            if (statuses[i] == Status.aliveEnemy) {
+                entities[i].GetComponent<Enemy>().TurnStart();
+                StartCoroutine(Wait(1));
+            }
+        }
+        TurnManager.Inst.PlayerTurnStart();
+    }
+
+    IEnumerator Wait(float second) {
+        yield return new WaitForSeconds(second);
     }
 }

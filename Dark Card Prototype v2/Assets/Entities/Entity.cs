@@ -15,20 +15,17 @@ public class Entity : MonoBehaviour { // Enemies, Objects
     [SerializeField] bool barricade;
 
     [SerializeField] int strength;
-    [SerializeField] int dexterity;
 
     public int index;
 
     void Start() {
-        Reset();
-        BattleStart();
+
     }
 
     public virtual void BattleStart() { }
 
-    public virtual void Pattern() { } // 행동 양식
 
-    public void Reset() {
+    public void Setting() {
         health = maxHealth;
 
         vulnerable = 0;
@@ -36,7 +33,8 @@ public class Entity : MonoBehaviour { // Enemies, Objects
         barricade = false;
 
         strength = 0;
-        dexterity = 0;
+
+        GetComponent<Enemy>().BattleStart();
     }
 
     public bool IsVulnerable() {
@@ -48,6 +46,14 @@ public class Entity : MonoBehaviour { // Enemies, Objects
 
     public bool IsBarricade() {
         return barricade;
+    }
+
+    public int ApplyDamage(int value) {
+        int ret = value + strength;
+        if (IsWeakness()) {
+            ret = (int)(ret * 0.75f);
+        }
+        return ret;
     }
 
     public void ApplyVulnerable(int duration) {
@@ -63,12 +69,9 @@ public class Entity : MonoBehaviour { // Enemies, Objects
     public void GainStrength(int value) {
         strength += value;
     }
-    public void GainDexterity(int value) {
-        dexterity += value;
-    }
 
     public void GainArmor(int value) {
-        armor += (value + dexterity);
+        armor += value;
     }
 
     public void LossArmor(int value) {

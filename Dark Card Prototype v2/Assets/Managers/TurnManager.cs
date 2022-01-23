@@ -8,23 +8,30 @@ public class TurnManager : MonoBehaviour {
     [SerializeField] int turn;
     public bool isMyTurn;
 
+    GameObject levelManager;
+
     void Awake() {
         Inst = this;
     }
 
     void Start() {
-
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            if (isMyTurn) {
+                PlayerTurnEnd();
+            }
+        }
     }
 
     public void TurnSetting() {
         // TODO
         // Show UI
+        levelManager = GameObject.Find("LevelManager");
         turn = 0;
         isMyTurn = false;
         PlayerTurnStart();
     }
 
-    void PlayerTurnStart() {
+    public void PlayerTurnStart() {
         isMyTurn = true;
         turn++;
         Player.Inst.TurnStartGainEnergy();
@@ -37,6 +44,7 @@ public class TurnManager : MonoBehaviour {
         Player.Inst.TurnEndLossArmor();
         CardManager.Inst.DiscardAll();
         isMyTurn = false;
+        levelManager.GetComponent<LevelManager>().EnemyTurnStart();
     }
 
     public void LevelCleared() {

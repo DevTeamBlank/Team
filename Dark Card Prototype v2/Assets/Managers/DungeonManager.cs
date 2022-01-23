@@ -28,6 +28,12 @@ public class DungeonManager : MonoBehaviour { // DungeonManager´Â ÇÑ Scene¿¡¼­ ½
         levelManagers[currentLevel].GetComponent<LevelManager>().Setting();
     }
 
+    void NextLevel() {
+        // TODO
+        // Button activate
+        // GoNextLevel(1);
+    }
+
     public void GoNextLevel(int nextLevel) { // Interact with buttons
         levelManagers[currentLevel].SetActive(false);
         levelManagers[nextLevel].SetActive(true);
@@ -38,6 +44,7 @@ public class DungeonManager : MonoBehaviour { // DungeonManager´Â ÇÑ Scene¿¡¼­ ½
     public void LevelCleared() {
         levelCleared[currentLevel] = true;
         CheckDungeonClear();
+        NextLevel();
     }
 
     public void CheckDungeonClear() {

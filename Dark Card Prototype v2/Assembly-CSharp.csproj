@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,13 +47,18 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.12</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.14</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2020.3.24f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Cards\Cards\Card00\Card00.cs" />
+    <Compile Include="Assets\Cards\Cards\Card05\Card05.cs" />
+    <Compile Include="Assets\Cards\Cards\Card03\Card03.cs" />
     <Compile Include="Assets\Entities\Enemy.cs" />
     <Compile Include="Assets\Managers\DungeonManager.cs" />
     <Compile Include="Assets\Deck.cs" />
@@ -62,17 +67,40 @@
     <Compile Include="Assets\Managers\CardManager.cs" />
     <Compile Include="Assets\Entities\Entity.cs" />
     <Compile Include="Assets\Cards\Cards\Card01\Card01.cs" />
+    <Compile Include="Assets\Reward.cs" />
+    <Compile Include="Assets\Cards\Cards\Card06\Card06.cs" />
     <Compile Include="Assets\Cards\CardDatabase.cs" />
     <Compile Include="Assets\Player\Player.cs" />
     <Compile Include="Assets\Cards\Cards\Card02\Card02.cs" />
-    <Compile Include="Assets\Managers\TurnManager.cs" />
-    <Compile Include="Assets\Cards\Card.cs" />
-    <Compile Include="Assets\Reward.cs" />
-    <Compile Include="Assets\Cards\Cards\Card03\Card03.cs" />
-    <Compile Include="Assets\Cards\Cards\Card04\Card04.cs" />
-    <Compile Include="Assets\Cards\Cards\Card05\Card05.cs" />
-    <Compile Include="Assets\Cards\Cards\Card06\Card06.cs" />
     <Compile Include="Assets\Cards\Cards\Card07\Card07.cs" />
+    <Compile Include="Assets\Managers\TurnManager.cs" />
+    <Compile Include="Assets\Cards\Cards\Card04\Card04.cs" />
+    <Compile Include="Assets\Cards\Card.cs" />
+    <Compile Include="Assets\Entities\Enemy\Cultist.cs" />
+    <Compile Include="Assets\Entities\Enemy\AcidSlimeM.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
