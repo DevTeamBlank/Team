@@ -59,6 +59,7 @@
     <Compile Include="Assets\Cards\Cards\Card00\Card00.cs" />
     <Compile Include="Assets\Cards\Cards\Card05\Card05.cs" />
     <Compile Include="Assets\Cards\Cards\Card03\Card03.cs" />
+    <Compile Include="Assets\Entities\Enemy\Cultist.cs" />
     <Compile Include="Assets\Entities\Enemy.cs" />
     <Compile Include="Assets\Managers\DungeonManager.cs" />
     <Compile Include="Assets\Deck.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Assets\Managers\LevelManager.cs" />
     <Compile Include="Assets\Managers\CardManager.cs" />
     <Compile Include="Assets\Entities\Entity.cs" />
+    <Compile Include="Assets\Entities\Enemy\AcidSlimeM.cs" />
     <Compile Include="Assets\Cards\Cards\Card01\Card01.cs" />
     <Compile Include="Assets\Reward.cs" />
     <Compile Include="Assets\Cards\Cards\Card06\Card06.cs" />
@@ -76,8 +78,8 @@
     <Compile Include="Assets\Managers\TurnManager.cs" />
     <Compile Include="Assets\Cards\Cards\Card04\Card04.cs" />
     <Compile Include="Assets\Cards\Card.cs" />
-    <Compile Include="Assets\Entities\Enemy\Cultist.cs" />
-    <Compile Include="Assets\Entities\Enemy\AcidSlimeM.cs" />
+    <Compile Include="Assets\Entities\Enemy\AcidSlimeS.cs" />
+    <Compile Include="Assets\Cards\Status\Slimed.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

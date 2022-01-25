@@ -23,7 +23,7 @@ public class AcidSlimeM : Enemy {
     public void Pattern0() {
         int damage = ApplyDamage(7);
         Player.Inst.TakeDamage(damage);
-        CardManager.Inst.AddDiscardPile(slimed);
+        CardManager.Inst.AddDiscardPile(GameObject.Instantiate(slimed));
     }
     public void Pattern1() {
         Player.Inst.ApplyWeakness(1);

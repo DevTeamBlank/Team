@@ -14,7 +14,7 @@ public class TurnManager : MonoBehaviour {
         Inst = this;
     }
 
-    void Start() {
+    void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (isMyTurn) {
                 PlayerTurnEnd();

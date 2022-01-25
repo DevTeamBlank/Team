@@ -47,6 +47,9 @@ public class CardDatabase : MonoBehaviour {
                 case Card.Rarity.rare:
                     rareCards.Add(card);
                     break;
+                default:
+                    Debug.Log("Status or curse.");
+                    break;
             }
         }
     }

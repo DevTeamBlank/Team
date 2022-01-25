@@ -27,6 +27,10 @@ public class LevelManager : MonoBehaviour {
         remainingEnemies = 0;
     }
 
+    void Update() {
+        // Debug.Log("Current mouse is on Sqaure " + MousePosition());
+    }
+
     public void GiveDamage(int damage, Card.AttackType attackType) {
         switch (attackType) {
             case Card.AttackType.target:
@@ -146,7 +150,7 @@ public class LevelManager : MonoBehaviour {
                 case Status.empty:
                     break;
                 case Status.aliveEnemy:
-                    entities[i].GetComponent<Entity>().Setting();
+                    entities[i].GetComponent<Enemy>().Setting();
                     break;
                 case Status.existingObject:
                     break;
@@ -158,7 +162,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     int MousePosition() {
-        Vector2 temp = Camera.main.WorldToScreenPoint(Input.mousePosition);
+        Vector2 temp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float x = temp.x;
         float y = temp.y;
 
@@ -271,7 +275,12 @@ public class LevelManager : MonoBehaviour {
         for (int i = 0; i < entities.Length; i++) {
             if (statuses[i] == Status.aliveEnemy) {
                 entities[i].GetComponent<Enemy>().TurnStart();
-                StartCoroutine(Wait(1));
+                StartCoroutine(Wait(600));
+            }
+        }
+        for (int i = 0; i < entities.Length; i++) {
+            if (statuses[i] == Status.aliveEnemy) {
+                entities[i].GetComponent<Enemy>().TurnEnd();
             }
         }
         TurnManager.Inst.PlayerTurnStart();

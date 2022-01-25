@@ -18,7 +18,9 @@ public class Card : MonoBehaviour {
         starter,
         common,
         uncommon,
-        rare
+        rare,
+        status,
+        curse
     }
 
     public Rarity GetRarity() {

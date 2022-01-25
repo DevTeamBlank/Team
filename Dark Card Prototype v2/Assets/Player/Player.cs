@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.R)) {
             TakeDamage(5);
         }
-        if (Input.GetKeyDown(KeyCode.T)) {
+        if (Input.GetKeyDown(KeyCode.D)) {
             GainEnergy(1);
         }
     }
@@ -156,6 +156,8 @@ public class Player : MonoBehaviour {
             health = temp;
             HealthUpdate();
         } else {
+            health = 0;
+            HealthUpdate();
             Dead();
         }
     }
@@ -173,7 +175,7 @@ public class Player : MonoBehaviour {
     }
 
     public void UseEnergy(int value) {
-        if (value < energy) {
+        if (value <= energy) {
             energy -= value;
             EnergyUpdate();
         } else {
@@ -225,7 +227,6 @@ public class Player : MonoBehaviour {
 
 
     void Dead() {
-        health = 0;
         Debug.Log("Dead");
         // TODO
         // Restart the game

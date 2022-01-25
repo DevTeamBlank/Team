@@ -5,8 +5,10 @@ using UnityEngine;
 public class Entity : MonoBehaviour { // Enemies, Objects
 
     public string nomenclature;
-
     public int maxHealth;
+    public int index;
+
+    [Header("These are serialized fields")]
     [SerializeField] int health;
     [SerializeField] int armor;
 
@@ -16,14 +18,9 @@ public class Entity : MonoBehaviour { // Enemies, Objects
 
     [SerializeField] int strength;
 
-    public int index;
-
     void Start() {
 
     }
-
-    public virtual void BattleStart() { }
-
 
     public void Setting() {
         health = maxHealth;
@@ -33,9 +30,11 @@ public class Entity : MonoBehaviour { // Enemies, Objects
         barricade = false;
 
         strength = 0;
-
-        GetComponent<Enemy>().BattleStart();
+        
+        BattleStart();
     }
+
+    public virtual void BattleStart() { }
 
     public bool IsVulnerable() {
         return 0 < vulnerable;
@@ -96,6 +95,7 @@ public class Entity : MonoBehaviour { // Enemies, Objects
         if (0 < temp) {
             health = temp;
         } else {
+            health = 0;
             Dead();
         }
     }
