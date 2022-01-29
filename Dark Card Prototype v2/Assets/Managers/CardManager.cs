@@ -17,6 +17,15 @@ public class CardManager : MonoBehaviour {
     public List<GameObject> GetHand() {
         return hand;
     }
+    public List<GameObject> GetDrawPile() {
+        return drawPile;
+    }
+    public List<GameObject> GetDiscardPile() {
+        return discardPile;
+    }
+    public List<GameObject> GetExhaustPile() {
+        return exhaustPile;
+    }
 
     public CardPlayStatus cardPlayStatus;
 
@@ -86,7 +95,7 @@ public class CardManager : MonoBehaviour {
         }
     }
 
-    void ShuffleDrawPile() { // TODO. °³²¿ÀÎ ÄÚµå
+    void ShuffleDrawPile() {
         for (int i = drawPile.Count - 1; i > 0; i--) {
             int random = Random.Range(0, i); ;
             GameObject temp = drawPile[i];
@@ -95,7 +104,7 @@ public class CardManager : MonoBehaviour {
         }
     }
 
-    void ShuffleDiscardPileToDrawPile() {
+    public void ShuffleDiscardPileToDrawPile() {
         int size = discardPile.Count;
         for (int i = 0; i < size; i++) {
             AddDrawPile(discardPile[i]);
@@ -151,6 +160,7 @@ public class CardManager : MonoBehaviour {
         GameObject card = drawPile[0];
         AddHand(card);
         drawPile.RemoveAt(0);
+        card.GetComponent<Card>().Drawn();
         HandUpdate();
     }
 
@@ -172,7 +182,22 @@ public class CardManager : MonoBehaviour {
         }
     }
 
-    public void DiscardAll() {
+    public void TurnEnd() {
+        int size = hand.Count;
+        for (int i = 0; i < size; i++) {
+            hand[i].GetComponent<Card>().TurnEnd();
+            if (hand[i].GetComponent<Card>().GetIsEthereal()) {
+                AddExhaustPile(hand[i]);
+            } else {
+                AddDiscardPile(hand[i]);
+            }
+        }
+
+        hand.Clear();
+        HandUpdate();
+    }
+
+    void DiscardAll() {
         int size = hand.Count;
         for (int i = 0; i < size; i++) {
             AddDiscardPile(hand[i]);

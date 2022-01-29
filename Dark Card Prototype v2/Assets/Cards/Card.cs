@@ -54,7 +54,13 @@ public class Card : MonoBehaviour {
         return isExhaust;
     }
 
-    [SerializeField] protected bool playable = true;
+    [SerializeField] protected bool isEthereal = false;
+
+    public bool GetIsEthereal() {
+        return isEthereal;
+    }
+
+    [SerializeField] protected bool isPlayable = true;
 
     public void Play() {
         if (IsPlayble()) {
@@ -62,7 +68,7 @@ public class Card : MonoBehaviour {
             PlayCard(); // virtual
             CardManager.Inst.Played(gameObject);
         } else {
-            // 카드 제자리로
+            return;
         }
     }
 
@@ -75,7 +81,7 @@ public class Card : MonoBehaviour {
             Debug.Log("Not my turn.");
             return false;
         }
-        if (!playable) {
+        if (!isPlayable) {
             Debug.Log("Unplayble card.");
             return false;
         }
@@ -92,6 +98,13 @@ public class Card : MonoBehaviour {
 
     protected void UseEnergy() {
         Player.Inst.UseEnergy(energy);
+    }
+
+    public virtual void TurnEnd() {
+
+    }
+    public virtual void Drawn() {
+
     }
 
     public void Order(int order) {

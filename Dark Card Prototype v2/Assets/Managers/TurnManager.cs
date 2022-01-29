@@ -42,7 +42,7 @@ public class TurnManager : MonoBehaviour {
     void PlayerTurnEnd() {
         CardManager.Inst.SetCardPlayStatus();
         Player.Inst.TurnEndLossArmor();
-        CardManager.Inst.DiscardAll();
+        CardManager.Inst.TurnEnd();
         isMyTurn = false;
         levelManager.GetComponent<LevelManager>().EnemyTurnStart();
     }
