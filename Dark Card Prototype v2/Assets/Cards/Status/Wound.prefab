@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd1a60632eeb3b4598f309f85c32d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardID: 51
+  CardID: 50
   nomenclature: Wound
   rarity: 4
   energy: -1

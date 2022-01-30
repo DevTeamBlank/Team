@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7c24b8ccb75cb4bac059d4057c8b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardID: 47
+  CardID: 46
   nomenclature: Burn
   rarity: 4
   energy: -1

@@ -92,6 +92,7 @@ public class CardDatabase : MonoBehaviour {
             rewards[i] = new GameObject("Reward " + i);
             rewards[i].AddComponent<SpriteRenderer>();
             rewards[i].GetComponent<SpriteRenderer>().sprite = sprites[i];
+            rewards[i].GetComponent<SpriteRenderer>().sortingLayerName = "Card";
             rewards[i].transform.position = positions[i];
         }
         isRewarding = true;

@@ -64,9 +64,9 @@ public class Card : MonoBehaviour {
 
     public void Play() {
         if (IsPlayble()) {
+            CardManager.Inst.Played(gameObject);
             UseEnergy();
             PlayCard(); // virtual
-            CardManager.Inst.Played(gameObject);
         } else {
             return;
         }

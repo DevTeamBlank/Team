@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b6b6f80cef2064899fbb35e66ad84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardID: 50
+  CardID: 49
   nomenclature: Void
   rarity: 4
   energy: -1

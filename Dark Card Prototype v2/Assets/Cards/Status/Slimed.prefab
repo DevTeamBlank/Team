@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a5e87ea90ad2f42a07d8d331dbfeb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardID: 49
+  CardID: 48
   nomenclature: Slimed
   rarity: 4
   energy: 1

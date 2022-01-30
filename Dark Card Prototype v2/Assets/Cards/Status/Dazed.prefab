@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1748cbb2f8b0da439dfa2fcb1f26837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardID: 48
+  CardID: 47
   nomenclature: Dazed
   rarity: 4
   energy: -1

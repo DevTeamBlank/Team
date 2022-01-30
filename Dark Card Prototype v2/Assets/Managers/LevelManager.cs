@@ -52,6 +52,8 @@ public class LevelManager : MonoBehaviour {
     void GiveDamageTarget(int damage) {
         if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingObject) {
             MouseTarget(MousePosition())?.GetComponent<Entity>().TakeDamage(damage);
+        } else { // target already dead. (multiple attack)
+            return;
         }
     }
 
@@ -64,11 +66,19 @@ public class LevelManager : MonoBehaviour {
     }
 
     void GiveDamageRandom(int damage) {
+        List<GameObject> list = new List<GameObject>();
         for (int i = 0; i < 8; i++) {
             if (IsTargetValid(true, i)) {
-                entities[i].GetComponent<Entity>().TakeDamage(damage);
+                list.Add(entities[i]);
             }
         }
+
+        if (list.Count == 0) { // No valid target. Already cleared.
+            return;
+        }
+
+        int random = Random.Range(0, list.Count);
+        list[random].GetComponent<Entity>().TakeDamage(damage);
     }
 
     public void ApplyVulnerable(int duration, Card.AttackType attackType) {
@@ -87,12 +97,12 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    public void ApplyVulnerableTarget(int duration) {
+    void ApplyVulnerableTarget(int duration) {
         if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingObject) {
             MouseTarget(MousePosition())?.GetComponent<Entity>().ApplyVulnerable(duration);
         }
     }
-    public void ApplyVulnerableAll(int duration) {
+    void ApplyVulnerableAll(int duration) {
         for (int i = 0; i < 8; i++) {
             if (IsTargetValid(true, i)) {
                 entities[i].GetComponent<Entity>().ApplyVulnerable(duration);
@@ -116,15 +126,45 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    public void ApplyWeaknessTarget(int duration) {
+    void ApplyWeaknessTarget(int duration) {
         if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingObject) {
             MouseTarget(MousePosition())?.GetComponent<Entity>().ApplyWeakness(duration);
         }
     }
-    public void ApplyWeaknessAll(int duration) {
+    void ApplyWeaknessAll(int duration) {
         for (int i = 0; i < 8; i++) {
             if (IsTargetValid(true, i)) {
                 entities[i].GetComponent<Entity>().ApplyWeakness(duration);
+            }
+        }
+    }
+
+    public void GainStrength(int value, Card.AttackType attackType) {
+        switch (attackType) {
+            case Card.AttackType.target:
+                GainStrengthTarget(value);
+                break;
+            case Card.AttackType.all:
+                GainStrengthAll(value);
+                break;
+            case Card.AttackType.random:
+            case Card.AttackType.notApplicable:
+            default:
+                Debug.Log("Unvalid attack type.");
+                break;
+
+        }
+    }
+
+    void GainStrengthTarget(int value) {
+        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingObject) {
+            MouseTarget(MousePosition())?.GetComponent<Entity>().GainStrength(value);
+        }
+    }
+    void GainStrengthAll(int value) {
+        for (int i = 0; i < 8; i++) {
+            if (IsTargetValid(true, i)) {
+                entities[i].GetComponent<Entity>().GainStrength(value);
             }
         }
     }

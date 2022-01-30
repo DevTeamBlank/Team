@@ -36,6 +36,9 @@ public class Player : MonoBehaviour {
     public int GetArmor() {
         return armor;
     }
+    public int GetStrength() {
+        return strength;
+    }
 
     [SerializeField] int vulnerable;
     [SerializeField] int weakness;

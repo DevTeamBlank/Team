@@ -95,7 +95,7 @@ public class CardManager : MonoBehaviour {
         }
     }
 
-    void ShuffleDrawPile() {
+    public void ShuffleDrawPile() {
         for (int i = drawPile.Count - 1; i > 0; i--) {
             int random = Random.Range(0, i); ;
             GameObject temp = drawPile[i];
@@ -126,9 +126,14 @@ public class CardManager : MonoBehaviour {
     }
 
     public void AddHand(GameObject card) {
-        hand.Add(card);
-        card.transform.parent = GameObject.Find("Hand").transform;
-        card.transform.position = card.transform.parent.position;
+        if (hand.Count < 10) {
+            hand.Add(card);
+            card.transform.parent = GameObject.Find("Hand").transform;
+            card.transform.position = card.transform.parent.position;
+            HandUpdate();
+        } else { // Hand is full.
+            AddDiscardPile(card);
+        }
     }
 
     public void AddExhaustPile(GameObject card) {
@@ -161,7 +166,6 @@ public class CardManager : MonoBehaviour {
         AddHand(card);
         drawPile.RemoveAt(0);
         card.GetComponent<Card>().Drawn();
-        HandUpdate();
     }
 
     public void Play(int index) {
