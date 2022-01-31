@@ -314,13 +314,13 @@ public class LevelManager : MonoBehaviour {
     public void EnemyTurnStart() {
         for (int i = 0; i < entities.Length; i++) {
             if (statuses[i] == Status.aliveEnemy) {
-                entities[i].GetComponent<Enemy>().TurnStart();
+                entities[i].GetComponent<Entity>().TurnStart();
                 StartCoroutine(Wait(600));
             }
         }
         for (int i = 0; i < entities.Length; i++) {
             if (statuses[i] == Status.aliveEnemy) {
-                entities[i].GetComponent<Enemy>().TurnEnd();
+                entities[i].GetComponent<Entity>().TurnEnd();
             }
         }
         TurnManager.Inst.PlayerTurnStart();

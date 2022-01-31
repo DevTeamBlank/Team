@@ -11,11 +11,6 @@ public class Cultist : Enemy {
         DecidePattern(true);
     }
 
-    public override void TurnStart() {
-        Patterns(currPattern);
-    }
-
-
     public override void Patterns(int index) {
         switch (index) {
             case 0:
@@ -30,10 +25,13 @@ public class Cultist : Enemy {
 
     protected void DecidePattern(bool isFirstTurn) {
         currPattern = isFirstTurn ? 0 : 1;
-        transform.Find("Intent").GetComponent<SpriteRenderer>().sprite = intents[currPattern];
+        UpdateIntent();
+        UpdateDamage();
     }
 
     public override void TurnEnd() {
+        DecreaseWeakness();
+        TurnEndLossArmor();
         if (isRitual) {
             GainStrength(ritual);
         }
@@ -42,10 +40,10 @@ public class Cultist : Enemy {
 
     public void Pattern0() {
         isRitual = true;
-        Debug.Log("Ritual " + ritual + " gained.");
     }
+
     public void Pattern1() {
-        int damage = ApplyDamage(6);
+        int damage = ApplyDamage(damages[1]);
         Player.Inst.TakeDamage(damage);
     }
 }

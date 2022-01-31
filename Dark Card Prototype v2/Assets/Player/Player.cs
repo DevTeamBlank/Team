@@ -73,6 +73,23 @@ public class Player : MonoBehaviour {
         ArmorUpdate();
         StrengthUpdate();
         DexterityUpdate();
+        VulnerableUpdate();
+        WeaknessUpdate();
+        BarricadeUpdate();
+    }
+
+    protected void DecreaseVulnerable() {
+        if (IsVulnerable()) {
+            vulnerable--;
+            VulnerableUpdate();
+        }
+    }
+
+    protected void DecreaseWeakness() {
+        if (IsWeakness()) {
+            weakness--;
+            WeaknessUpdate();
+        }
     }
 
     public bool IsVulnerable() {
@@ -88,12 +105,15 @@ public class Player : MonoBehaviour {
 
     public void ApplyVulnerable(int duration) {
         vulnerable += duration;
+        VulnerableUpdate();
     }
     public void ApplyWeakness(int duration) {
         weakness += duration;
+        WeaknessUpdate();
     }
-    public void ApplyBarricade() {
-        barricade = true;
+    public void ApplyBarricade(bool barricade) {
+        this.barricade = barricade;
+        BarricadeUpdate(barricade);
     }
 
     public void GainStrength(int value) {
@@ -151,6 +171,7 @@ public class Player : MonoBehaviour {
         }
         HealthUpdate();
     }
+
     public void LossHealth(int value) {
         if (value <= 0) return;
 
@@ -186,12 +207,22 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void TurnStartGainEnergy() {
+    public void TurnStart() {
+        TurnStartGainEnergy();
+        DecreaseVulnerable();
+    }
+
+    void TurnStartGainEnergy() {
         energy = turnEnergy;
         EnergyUpdate();
     }
 
-    public void TurnEndLossArmor() {
+    public void TurnEnd() {
+        TurnEndLossArmor();
+        DecreaseWeakness();
+    }
+
+    void TurnEndLossArmor() {
         if (!IsBarricade()) LossArmor(armor);
     }
 
@@ -201,6 +232,8 @@ public class Player : MonoBehaviour {
         armorUI = transform.Find("ArmorUI").GetComponent<TextMeshPro>();
         strengthUI = transform.Find("StrengthUI").GetComponent<TextMeshPro>();
         dexterityUI = transform.Find("DexterityUI").GetComponent<TextMeshPro>();
+        vulnerableUI = transform.Find("VulnerableUI").GetComponent<TextMeshPro>();
+        weaknessUI = transform.Find("WeaknessUI").GetComponent<TextMeshPro>();
     }
 
     TextMeshPro energyUI;
@@ -210,26 +243,40 @@ public class Player : MonoBehaviour {
 
     TextMeshPro healthUI;
     void HealthUpdate() {        
-        healthUI.text = "HP: " + health + " / " + maxHealth;
+        healthUI.text = health + " / " + maxHealth;
     }
 
     TextMeshPro armorUI;
     void ArmorUpdate() {
-        armorUI.text = "Am: " + armor;
+        armorUI.text = armor.ToString();
     }
 
     TextMeshPro strengthUI;
     void StrengthUpdate() {
-        strengthUI.text = "Str: " + strength;
+        strengthUI.text = strength.ToString();
     }
 
     TextMeshPro dexterityUI;
     void DexterityUpdate() {
-        dexterityUI.text = "Dex: " + dexterity;
+        dexterityUI.text = dexterity.ToString();
+    }
+
+    TextMeshPro vulnerableUI;
+    void VulnerableUpdate() {
+        vulnerableUI.text = vulnerable.ToString();
+    }
+
+    TextMeshPro weaknessUI;
+    void WeaknessUpdate() {
+        weaknessUI.text = weakness.ToString();
+    }
+    void BarricadeUpdate(bool barricade = false) {
+        transform.Find("BarricadeUI").GetComponent<SpriteRenderer>().enabled = barricade;
     }
 
 
     void Dead() {
+        LossArmor(armor);
         Debug.Log("Dead");
         // TODO
         // Restart the game

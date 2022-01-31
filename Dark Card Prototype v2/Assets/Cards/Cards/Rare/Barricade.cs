@@ -5,6 +5,6 @@ using UnityEngine;
 public class Barricade : Card {
 
     protected override void PlayCard() {
-        Player.Inst.ApplyBarricade();
+        Player.Inst.ApplyBarricade(true);
     }
 }

@@ -34,14 +34,14 @@ public class TurnManager : MonoBehaviour {
     public void PlayerTurnStart() {
         isMyTurn = true;
         turn++;
-        Player.Inst.TurnStartGainEnergy();
+        Player.Inst.TurnStart();
         CardManager.Inst.DrawCards(5);
         CardManager.Inst.SetCardPlayStatus();
     }
     
     void PlayerTurnEnd() {
         CardManager.Inst.SetCardPlayStatus();
-        Player.Inst.TurnEndLossArmor();
+        Player.Inst.TurnEnd();
         CardManager.Inst.TurnEnd();
         isMyTurn = false;
         levelManager.GetComponent<LevelManager>().EnemyTurnStart();
