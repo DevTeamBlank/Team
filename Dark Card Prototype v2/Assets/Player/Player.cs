@@ -208,6 +208,7 @@ public class Player : MonoBehaviour {
     }
 
     public void TurnStart() {
+        TurnStartLossArmor();
         TurnStartGainEnergy();
         DecreaseVulnerable();
     }
@@ -217,12 +218,11 @@ public class Player : MonoBehaviour {
         EnergyUpdate();
     }
 
-    public void TurnEnd() {
-        TurnEndLossArmor();
+    public void TurnEnd() {        
         DecreaseWeakness();
     }
 
-    void TurnEndLossArmor() {
+    void TurnStartLossArmor() {
         if (!IsBarricade()) LossArmor(armor);
     }
 

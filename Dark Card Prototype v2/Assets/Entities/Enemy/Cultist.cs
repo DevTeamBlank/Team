@@ -31,7 +31,6 @@ public class Cultist : Enemy {
 
     public override void TurnEnd() {
         DecreaseWeakness();
-        TurnEndLossArmor();
         if (isRitual) {
             GainStrength(ritual);
         }

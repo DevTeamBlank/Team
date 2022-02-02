@@ -46,11 +46,11 @@ public class Entity : MonoBehaviour { // Enemies, Objects
     public virtual void BattleStart() { }
 
     public virtual void TurnStart() {
+        TurnStartLossArmor();
         DecreaseVulnerable();
     }
     public virtual void TurnEnd() {        
-        DecreaseWeakness();
-        TurnEndLossArmor();
+        DecreaseWeakness();        
     }
 
     protected void DecreaseVulnerable() {
@@ -67,7 +67,7 @@ public class Entity : MonoBehaviour { // Enemies, Objects
         }
     }
 
-    public void TurnEndLossArmor() {
+    public void TurnStartLossArmor() {
         if (!IsBarricade()) LossArmor(armor);
     }
 

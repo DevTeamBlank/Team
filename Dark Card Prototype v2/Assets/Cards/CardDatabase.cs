@@ -79,9 +79,13 @@ public class CardDatabase : MonoBehaviour {
 
     [SerializeField] bool isRewarding;
 
-    public void Reward() {
+    public void Reward(bool rare = false) {
         GetXYPosition();
-        rewardIDs = GetRewardIDs();
+        if (rare) {
+            rewardIDs = GetRareRewardIDs();
+        } else {
+            rewardIDs = GetRewardIDs();
+        }
         Sprite[] sprites = new Sprite[3];
         rewards = new GameObject[3];
         for (int i = 0; i < 3; i++) {
@@ -124,11 +128,12 @@ public class CardDatabase : MonoBehaviour {
         isRewarding = false;
     }
 
+    public int[] GetRareRewardIDs() {
+        int[] rewardIDs = RandomPickID(rareCards, 3);
+        return rewardIDs;
+    }
 
     public int[] GetRewardIDs() {
-        int[] ret = { 1, 2, 3 }; // Temporary Code
-        return ret;
-
         int random = Random.Range(0, 4);
         int[] rewardIDs = new int[3];
 
@@ -165,12 +170,6 @@ public class CardDatabase : MonoBehaviour {
         }
 
         return ret;
-    }
-
-    public void RareReward() {
-        for (int i = 0; i < rareCards.Count; i++) {
-
-        }
     }
 
 }
