@@ -36,8 +36,6 @@ public class CardDatabase : MonoBehaviour {
             Card.Rarity rarity = card.GetComponent<Card>().GetRarity();
 
             switch (rarity) {
-                case Card.Rarity.starter:
-                    break;
                 case Card.Rarity.common:
                     commonCards.Add(card);
                     break;
@@ -48,7 +46,6 @@ public class CardDatabase : MonoBehaviour {
                     rareCards.Add(card);
                     break;
                 default:
-                    Debug.Log("Status or curse.");
                     break;
             }
         }
@@ -63,7 +60,7 @@ public class CardDatabase : MonoBehaviour {
         Vector2 center = Camera.main.transform.position;
 
         x1 = center.x;
-        x0 = x1 - rewardIntervalX;        
+        x0 = x1 - rewardIntervalX;
         x2 = x1 + rewardIntervalX;
 
         y = center.y + rewardOffsetY;
@@ -113,7 +110,7 @@ public class CardDatabase : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Keypad0)) {
                 Reward();
             }
-        }        
+        }
     }
 
     void AddCard(bool add, int ID = 0) {
@@ -133,7 +130,7 @@ public class CardDatabase : MonoBehaviour {
         return ret;
 
         int random = Random.Range(0, 4);
-        int[] rewardIDs;
+        int[] rewardIDs = new int[3];
 
         switch (random) {
             case 0:
@@ -148,37 +145,23 @@ public class CardDatabase : MonoBehaviour {
             case 3:
                 rewardIDs = RandomPickID(uncommonCards, 3);
                 break;
-            default:
-                Debug.Log("Unvalid random value.");
-                rewardIDs = new int[3];
-                break;
         }
 
         return rewardIDs;
     }
 
     public int[] RandomPickID(List<GameObject> list, int number) {
+
+        for (int i = list.Count - 1; i > 0; i--) {
+            int random = Random.Range(0, i); ;
+            GameObject temp = list[i];
+            list[i] = list[random];
+            list[random] = temp;
+        }
+
         int[] ret = new int[number];
-
         for (int i = 0; i < number; i++) {
-            bool duplicated = true;
-            int cardID = -1;
-
-            while (duplicated) {
-                int random = Random.Range(0, list.Count);
-                cardID = list[random].GetComponent<Card>().GetCardID();
-
-                for (int j = 0; j < i; j++) {
-                    if (cardID == ret[j]) {
-                        duplicated = true;
-                        break;
-                    }
-                    duplicated = false;
-                }
-
-            }
-
-            ret[i] = cardID;
+            ret[i] = list[i].GetComponent<Card>().GetCardID();
         }
 
         return ret;

@@ -11,6 +11,10 @@ public class Player : MonoBehaviour {
         Inst = this;
     }
 
+    void Start() {
+
+    }
+
     void Update() {
         if (Input.GetKeyDown(KeyCode.Q)) {
             GainStrength(1);
@@ -50,10 +54,6 @@ public class Player : MonoBehaviour {
     [SerializeField] int baseEnergy = 3;
     public int turnEnergy = 3;
     public int energy;
-
-    void Start() {
-
-    }
 
     public void PlayerSetting() {
         health = maxHealth;

@@ -1,58 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class DungeonManager : MonoBehaviour { // DungeonManager´Â ÇÑ Scene¿¡¼­ ½Ì±ÛÅæ.
     public static DungeonManager Inst { get; private set; }
 
     public GameObject[] levelManagers;
-    [SerializeField] bool[] levelCleared;
 
     [SerializeField] int currentLevel = 0;
+
+    [SerializeField] string nextScene;
 
     void Awake() {
         Inst = this;
     }
 
     void Start() {
-        DungeonSetting();
+        DungeonSetting(0);
     }
 
-    void DungeonSetting() {
-        levelCleared = new bool[levelManagers.Length];
+    void DungeonSetting(int level) {
         for (int i = 0; i < levelManagers.Length; i++) {
             levelManagers[i].SetActive(false);
-            levelCleared[i] = false;
         }
-        levelManagers[currentLevel].SetActive(true);
-        levelManagers[currentLevel].GetComponent<LevelManager>().Setting();
+        levelManagers[level].SetActive(true);
+        levelManagers[level].GetComponent<LevelManager>().Setting();
     }
 
     void NextLevel() {
-        // TODO
-        // Button activate
-        // GoNextLevel(1);
-    }
-
-    public void GoNextLevel(int nextLevel) { // Interact with buttons
-        levelManagers[currentLevel].SetActive(false);
-        levelManagers[nextLevel].SetActive(true);
-        currentLevel = nextLevel;
-        levelManagers[currentLevel].GetComponent<LevelManager>().Setting();
+        switch (currentLevel) {
+            case 0:
+                DungeonSetting(1);
+                break;
+            case 1:
+                DungeonSetting(2);
+                break;
+            case 2:
+                DungeonCleared();
+                break;
+        }
     }
 
     public void LevelCleared() {
-        levelCleared[currentLevel] = true;
-        CheckDungeonClear();
         NextLevel();
     }
 
-    public void CheckDungeonClear() {
-        for (int i = 0; i < levelCleared.Length; i++) {
-            if (!levelCleared[i]) return;
-        }
-        // TODO
-        // Reward
-        // Scene Change
+    public void DungeonCleared() {
+        SceneManager.LoadScene(nextScene);
     }
+
 }

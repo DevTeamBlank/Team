@@ -95,6 +95,7 @@
     <Compile Include="Assets\Cards\Cards\Uncommon\SeverSoul.cs" />
     <Compile Include="Assets\Entities\Enemy\AcidSlimeS.cs" />
     <Compile Include="Assets\Cards\Cards\Common\Thunderclap.cs" />
+    <Compile Include="Assets\Cards\Cards\Rare\Reaper.cs" />
     <Compile Include="Assets\Cards\Cards\Common\Cleave.cs" />
     <Compile Include="Assets\Cards\Cards\Rare\LimitBreak.cs" />
     <Compile Include="Assets\Cards\CardDatabase.cs" />
@@ -114,14 +115,14 @@
     <Compile Include="Assets\Cards\Cards\Uncommon\Disarm.cs" />
     <Compile Include="Assets\Cards\Cards\Rare\BodySlam.cs" />
     <Compile Include="Assets\Cards\Cards\Uncommon\Intimidate.cs" />
+    <Compile Include="Assets\Cards\Cards\Rare\Offering.cs" />
     <Compile Include="Assets\Cards\Status\Wound.cs" />
     <Compile Include="Assets\Cards\Card.cs" />
     <Compile Include="Assets\Cards\Status\Slimed.cs" />
     <Compile Include="Assets\Cards\Cards\Common\SwordBoomerang.cs" />
     <Compile Include="Assets\Cards\Cards\Common\IronWave.cs" />
     <Compile Include="Assets\Cards\Cards\Uncommon\Bloodletting.cs" />
-    <Compile Include="Assets\Cards\Cards\Rare\Offering.cs" />
-    <Compile Include="Assets\Cards\Cards\Rare\Reaper.cs" />
+    <Compile Include="Assets\Managers\Remain.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
