@@ -8,8 +8,8 @@ public class PowerThrough : Card {
     [SerializeField] int armor;
 
     protected override void PlayCard() {
-        CardManager.Inst.AddHand(wound);
-        CardManager.Inst.AddHand(wound);
+        CardManager.Inst.AddHand(GameObject.Instantiate(wound));
+        CardManager.Inst.AddHand(GameObject.Instantiate(wound));
 
         int applyArmor = Player.Inst.ApplyArmor(armor);
         Player.Inst.GainArmor(applyArmor);

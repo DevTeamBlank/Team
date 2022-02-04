@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+
 public class DungeonManager : MonoBehaviour { // DungeonManager´Â ÇÑ Scene¿¡¼­ ½Ì±ÛÅæ.
     public static DungeonManager Inst { get; private set; }
 
@@ -17,9 +19,14 @@ public class DungeonManager : MonoBehaviour { // DungeonManager´Â ÇÑ Scene¿¡¼­ ½
 
     void Start() {
         DungeonSetting(0);
+        Player.Inst.MaxHeal();
     }
 
+    static int dungeon = 0;
+
     void DungeonSetting(int level) {
+        GameObject.Find("LevelUI").GetComponent<TextMeshPro>().text = (dungeon + 1) + " - " + (level + 1);
+
         currentLevel = level;
         for (int i = 0; i < levelManagers.Length; i++) {
             levelManagers[i].SetActive(false);
@@ -31,7 +38,7 @@ public class DungeonManager : MonoBehaviour { // DungeonManager´Â ÇÑ Scene¿¡¼­ ½
         Camera.main.transform.position = new Vector3(pos.x, pos.y, z);
     }
 
-    void NextLevel() {
+    public void NextLevel() {
         switch (currentLevel) {
             case 0:
                 DungeonSetting(1);
@@ -46,11 +53,13 @@ public class DungeonManager : MonoBehaviour { // DungeonManager´Â ÇÑ Scene¿¡¼­ ½
     }
 
     public void LevelCleared() {
-        NextLevel();
+        levelManagers[currentLevel].GetComponent<LevelManager>().LevelCleared();
     }
 
     public void DungeonCleared() {
-        SceneManager.LoadScene(nextScene);
+        Player.Inst.MaxHeal();
+        dungeon++;
+        SceneManager.LoadScene(nextScene);       
     }
 
 }

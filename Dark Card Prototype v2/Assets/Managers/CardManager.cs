@@ -28,7 +28,8 @@ public class CardManager : MonoBehaviour {
 
     public enum CardPlayStatus {
         cannotPlay,
-        canPlay
+        canPlay,
+        notInBattle
     }
 
     void Awake() {
@@ -40,10 +41,8 @@ public class CardManager : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.A)) {
+        if (cardPlayStatus != CardPlayStatus.notInBattle && Input.GetKeyDown(KeyCode.A)) {
             Draw();
-        } else if (Input.GetKeyDown(KeyCode.S)) {
-            DiscardAll();
         }
 
         if (cardPlayStatus == CardPlayStatus.canPlay) {
@@ -249,7 +248,6 @@ public class CardManager : MonoBehaviour {
     }
 
     public void LevelCleared() {
-        // TODO
-        // Hide UI
+        cardPlayStatus = CardPlayStatus.notInBattle;
     }
 }

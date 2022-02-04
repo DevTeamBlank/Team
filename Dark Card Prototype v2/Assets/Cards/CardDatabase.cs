@@ -30,6 +30,7 @@ public class CardDatabase : MonoBehaviour {
 
     void CardDBSetting() {
         isRewarding = false;
+        levelCleared = false;
 
         for (int i = 0; i < cardDatabase.Count; i++) {
             GameObject card = cardDatabase[i];
@@ -109,23 +110,36 @@ public class CardDatabase : MonoBehaviour {
                 AddCard(true, rewardIDs[2]);
             } else if (Input.GetKeyDown(KeyCode.Keypad0)) {
                 AddCard(false);
+            } else if (Input.GetKeyDown(KeyCode.KeypadPeriod)) {
+                AddCard(false);
             }
         } else {
-            if (Input.GetKeyDown(KeyCode.Keypad0)) {
+            if (Input.GetKeyDown(KeyCode.KeypadPeriod)) {
                 Reward();
             }
         }
     }
 
+    public void LevelCleared() {
+        Debug.Log("WhoFuckcalled");
+        levelCleared = true;
+    }
+
+    [SerializeField] bool levelCleared;
+
     void AddCard(bool add, int ID = 0) {
         if (add) {
             Deck.Inst.AddCard(ID);
-            Debug.Log("Card ID " + ID + " added in the deck.");
         }
         for (int i = 0; i < 3; i++) {
             GameObject.Destroy(rewards[i]);
         }
         isRewarding = false;
+        if (levelCleared) {
+            levelCleared = false;
+            StartCoroutine(Wait(2f));
+            DungeonManager.Inst.NextLevel();            
+        }
     }
 
     public int[] GetRareRewardIDs() {
@@ -170,6 +184,10 @@ public class CardDatabase : MonoBehaviour {
         }
 
         return ret;
+    }
+
+    IEnumerator Wait (float second) {
+        yield return new WaitForSeconds(second);
     }
 
 }

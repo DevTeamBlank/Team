@@ -296,13 +296,13 @@ public class LevelManager : MonoBehaviour {
         if (remainingEnemies <= 0) LevelCleared();
     }
 
-    void LevelCleared() {
+    public void LevelCleared() {
         Debug.Log("Level cleared.");
         // TODO
         // Hide UI
         CardManager.Inst.LevelCleared();
+        CardDatabase.Inst.LevelCleared();
         CardDatabase.Inst.Reward();
-        DungeonManager.Inst.LevelCleared();
     }
 
     public void EnemyTurnStart() {

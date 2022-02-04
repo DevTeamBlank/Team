@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
    
     void Awake() {
         Inst = this;
+        FindUI();
     }
 
     void Start() {
@@ -55,9 +56,11 @@ public class Player : MonoBehaviour {
     public int turnEnergy = 3;
     public int energy;
 
-    public void PlayerSetting() {
-        health = maxHealth;
+    public void MaxHeal() {
+        HealHealth(maxHealth);
+    }
 
+    public void PlayerSetting() {
         vulnerable = 0;
         weakness = 0;
         barricade = false;
@@ -67,7 +70,7 @@ public class Player : MonoBehaviour {
 
         turnEnergy = baseEnergy;
 
-        FindUI();       
+        
         EnergyUpdate();
         HealthUpdate();
         ArmorUpdate();
@@ -164,7 +167,7 @@ public class Player : MonoBehaviour {
 
     public void HealHealth(int value) {
         int temp = health + value;
-        if (temp < maxHealth) {
+        if (temp <= maxHealth) {
             health = temp;
         } else {
             temp = maxHealth;
