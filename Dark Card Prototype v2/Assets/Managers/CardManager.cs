@@ -6,9 +6,6 @@ public class CardManager : MonoBehaviour {
 
     public static CardManager Inst { get; private set; }
 
-    bool isDragging;
-    GameObject selectedCard;
-
     [SerializeField] List<GameObject> hand = new List<GameObject>(10);
     [SerializeField] List<GameObject> drawPile = new List<GameObject>();
     [SerializeField] List<GameObject> discardPile = new List<GameObject>();
@@ -49,27 +46,29 @@ public class CardManager : MonoBehaviour {
             DiscardAll();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            Play(0);
-        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            Play(1);
-        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            Play(2);
-        } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
-            Play(3);
-        } else if (Input.GetKeyDown(KeyCode.Alpha5)) {
-            Play(4);
-        } else if (Input.GetKeyDown(KeyCode.Alpha6)) {
-            Play(5);
-        } else if (Input.GetKeyDown(KeyCode.Alpha7)) {
-            Play(6);
-        } else if (Input.GetKeyDown(KeyCode.Alpha8)) {
-            Play(7);
-        } else if (Input.GetKeyDown(KeyCode.Alpha9)) {
-            Play(8);
-        } else if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            Play(9);
-        }
+        if (cardPlayStatus == CardPlayStatus.canPlay) {
+            if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                Play(0);
+            } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+                Play(1);
+            } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+                Play(2);
+            } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+                Play(3);
+            } else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+                Play(4);
+            } else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+                Play(5);
+            } else if (Input.GetKeyDown(KeyCode.Alpha7)) {
+                Play(6);
+            } else if (Input.GetKeyDown(KeyCode.Alpha8)) {
+                Play(7);
+            } else if (Input.GetKeyDown(KeyCode.Alpha9)) {
+                Play(8);
+            } else if (Input.GetKeyDown(KeyCode.Alpha0)) {
+                Play(9);
+            }
+        }        
     }
 
     public void SetCardPlayStatus() {
@@ -81,11 +80,34 @@ public class CardManager : MonoBehaviour {
     }
 
     public void CardSetting() {
-        // TODO
-        // Show UI
+        ResetAll();
         cardPlayStatus = CardPlayStatus.cannotPlay;
         CopyDeckToDrawPile();
         ShuffleDrawPile();
+        HandUpdate();
+    }
+
+    void ResetAll() {
+        Transform handTransform = GameObject.Find("Hand").transform;
+        for (int i = 0; i < handTransform.childCount; i++) {
+            Destroy(handTransform.GetChild(i).gameObject);
+        }
+        hand.Clear();
+        Transform drawPileTransform = GameObject.Find("DrawPile").transform;
+        for (int i = 0; i < drawPileTransform.childCount; i++) {
+            Destroy(drawPileTransform.GetChild(i).gameObject);
+        }
+        drawPile.Clear();
+        Transform discardPileTransform = GameObject.Find("DiscardPile").transform;
+        for (int i = 0; i < discardPileTransform.childCount; i++) {
+            Destroy(discardPileTransform.GetChild(i).gameObject);
+        }
+        discardPile.Clear();
+        Transform exhaustPileTransform = GameObject.Find("ExhaustPile").transform;
+        for (int i = 0; i < exhaustPileTransform.childCount; i++) {
+            Destroy(exhaustPileTransform.GetChild(i).gameObject);
+        }
+        exhaustPile.Clear();
         HandUpdate();
     }
 
@@ -217,14 +239,11 @@ public class CardManager : MonoBehaviour {
         if (hand.Count == 0) {
             return;
         }
-        Vector2 temp = Camera.main.transform.position;
-        float x = temp.x;
-        float y = temp.y;
         for (int i = 0; i < hand.Count; i++) {
             float middle = (hand.Count - 1) / 2f;
             float offsetX = intervalX * (i - middle);
             hand[i].transform.position = hand[i].transform.parent.position;
-            hand[i].transform.Translate(new Vector3(x + offsetX, 0, 0));
+            hand[i].transform.Translate(new Vector3(offsetX, 0, 0));
             hand[i].GetComponent<Card>().Order(i);
         }
     }

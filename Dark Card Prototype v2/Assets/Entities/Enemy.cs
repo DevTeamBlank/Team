@@ -26,7 +26,7 @@ public class Enemy : Entity {
 
     public virtual void Patterns(int index) { }
 
-    protected void DecidePattern() {
+    protected virtual void DecidePattern() {
         currPattern = Random.Range(0, patterns);
         UpdateIntent(intents[currPattern]);
         UpdateDamage(damages[currPattern]);
@@ -56,6 +56,7 @@ public class Enemy : Entity {
 
 
     protected override void Dead() {
+        base.Dead();
         GetComponentInParent<LevelManager>().EnemyDead(index);
     }
 }

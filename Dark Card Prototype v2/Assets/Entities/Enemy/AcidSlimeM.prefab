@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b53432a648c314a9a18f191f053950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomenclature: AcidSlimeM
+  nomenclature: Acid Slime M
   maxHealth: 30
   index: 0
   health: 0

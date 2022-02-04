@@ -20,11 +20,15 @@ public class DungeonManager : MonoBehaviour { // DungeonManager´Â ÇÑ Scene¿¡¼­ ½
     }
 
     void DungeonSetting(int level) {
+        currentLevel = level;
         for (int i = 0; i < levelManagers.Length; i++) {
             levelManagers[i].SetActive(false);
         }
         levelManagers[level].SetActive(true);
         levelManagers[level].GetComponent<LevelManager>().Setting();
+        float z = Camera.main.transform.position.z;
+        Vector2 pos = levelManagers[level].transform.position;
+        Camera.main.transform.position = new Vector3(pos.x, pos.y, z);
     }
 
     void NextLevel() {

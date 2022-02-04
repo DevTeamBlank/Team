@@ -72,6 +72,7 @@ MonoBehaviour:
   damages: ffffffff06000000
   currPattern: 0
   ritual: 3
+  isRitual: 0
 --- !u!212 &6561617688988270067
 SpriteRenderer:
   m_ObjectHideFlags: 0

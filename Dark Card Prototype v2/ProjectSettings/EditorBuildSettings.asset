@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dungeon2.unity
     guid: 278c71b0c1932b64d9bade0c0b490c9b
+  - enabled: 1
+    path: Assets/Scenes/Village.unity
+    guid: 68aac4c56b240f74da20d609542499f3
   m_configObjects: {}

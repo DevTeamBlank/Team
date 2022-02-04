@@ -5,10 +5,16 @@ using UnityEngine;
 public class Cultist : Enemy {
 
     [SerializeField] int ritual = 3;
-    bool isRitual;
+    [SerializeField] bool isRitual = false;
 
     public override void BattleStart() {
-        DecidePattern(true);
+        DecidePattern();
+    }
+
+    protected override void DecidePattern() {
+        currPattern = isRitual ? 1 : 0;
+        UpdateIntent();
+        UpdateDamage();
     }
 
     public override void Patterns(int index) {
@@ -20,21 +26,14 @@ public class Cultist : Enemy {
                 Pattern1();
                 break;
         }
-    }
-
-
-    protected void DecidePattern(bool isFirstTurn) {
-        currPattern = isFirstTurn ? 0 : 1;
-        UpdateIntent();
-        UpdateDamage();
-    }
+    }    
 
     public override void TurnEnd() {
         DecreaseWeakness();
         if (isRitual) {
             GainStrength(ritual);
         }
-        DecidePattern(false);
+        DecidePattern();
     }
 
     public void Pattern0() {

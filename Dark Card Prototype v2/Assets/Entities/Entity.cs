@@ -19,6 +19,8 @@ public class Entity : MonoBehaviour { // Enemies, Objects
 
     [SerializeField] int strength;
 
+    [SerializeField] bool isAlive = true;
+
     void Start() {
 
     }
@@ -123,7 +125,7 @@ public class Entity : MonoBehaviour { // Enemies, Objects
         ArmorUpdate();
     }
 
-    public void TakeDamage(int value) {
+    public virtual void TakeDamage(int value) {
         int temp = value;
         if (IsVulnerable()) {
             temp = (int)(temp * 1.5f);
@@ -158,8 +160,12 @@ public class Entity : MonoBehaviour { // Enemies, Objects
     }
 
     TextMeshPro healthUI;
-    void HealthUpdate() {
-        healthUI.text = health.ToString();
+    protected void HealthUpdate() {        
+        if (isAlive) {
+            healthUI.text = health.ToString();
+        } else {
+            healthUI.text = "Dead";
+        }
     }
 
     TextMeshPro armorUI;
@@ -183,7 +189,6 @@ public class Entity : MonoBehaviour { // Enemies, Objects
     }
 
     protected virtual void Dead() {
-        health = 0;
-        HealthUpdate();
+        isAlive = false;
     }
 }

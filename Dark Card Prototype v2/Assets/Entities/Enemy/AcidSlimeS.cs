@@ -16,7 +16,7 @@ public class AcidSlimeS : Enemy {
     }
 
     public void Pattern0() {
-        int damage = ApplyDamage(3);
+        int damage = ApplyDamage(damages[0]);
         Player.Inst.TakeDamage(damage);
     }
     public void Pattern1() {

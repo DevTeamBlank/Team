@@ -23,13 +23,6 @@ public class LevelManager : MonoBehaviour {
     float x0, x1, x2, x3, x4;
     float y0, y1, y2;
 
-    void Start() {
-        remainingEnemies = 0;
-    }
-
-    void Update() {
-        // Debug.Log("Current mouse is on Sqaure " + MousePosition());
-    }
 
     public void GiveDamage(int damage, Card.AttackType attackType) {
         switch (attackType) {
@@ -240,7 +233,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     void GetXYPosition() {
-        Vector2 center = Camera.main.transform.position;
+        Vector2 center = transform.position;
 
         x2 = center.x;
         x1 = x2 - intervalX;
@@ -254,6 +247,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     void GetStatus() {
+        remainingEnemies = 0;
         for (int i = 0; i < entities.Length; i++) {
             if (entities[i] == null) {
                 statuses[i] = Status.empty;
