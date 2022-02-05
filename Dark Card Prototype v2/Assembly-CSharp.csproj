@@ -71,7 +71,6 @@
      <Compile Include="Assets\Cards\Cards\Uncommon\SecondWind.cs" />
      <Compile Include="Assets\Cards\Cards\Rare\Barricade.cs" />
      <Compile Include="Assets\Deck.cs" />
-     <Compile Include="Assets\Entities\Object.cs" />
      <Compile Include="Assets\Managers\LevelManager.cs" />
      <Compile Include="Assets\Cards\Cards\Uncommon\Pummel.cs" />
      <Compile Include="Assets\Managers\CardManager.cs" />
@@ -122,6 +121,9 @@
      <Compile Include="Assets\Cards\Cards\Common\SwordBoomerang.cs" />
      <Compile Include="Assets\Cards\Cards\Common\IronWave.cs" />
      <Compile Include="Assets\Cards\Cards\Uncommon\Bloodletting.cs" />
+     <Compile Include="Assets\Entities\Artifact.cs" />
+     <Compile Include="Assets\Entities\Enemy\Exploder.cs" />
+     <Compile Include="Assets\Entities\Enemy\ShieldGremlin.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

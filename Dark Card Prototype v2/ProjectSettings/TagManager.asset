@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Card
   - Enemy
-  - Object
   - Manager
+  - Artifact
   layers:
   - Default
   - TransparentFX

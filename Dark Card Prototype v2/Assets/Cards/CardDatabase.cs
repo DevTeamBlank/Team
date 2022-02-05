@@ -121,7 +121,6 @@ public class CardDatabase : MonoBehaviour {
     }
 
     public void LevelCleared() {
-        Debug.Log("WhoFuckcalled");
         levelCleared = true;
     }
 

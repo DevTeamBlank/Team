@@ -1490,6 +1490,7 @@ MonoBehaviour:
   rewards: []
   rewardIDs: 
   isRewarding: 0
+  levelCleared: 0
 --- !u!1 &516989550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,7 +1687,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,8 +8,8 @@ public class LevelManager : MonoBehaviour {
         empty,
         aliveEnemy,
         deadEnemy,
-        existingObject,
-        destroyedObject
+        existingArtifact,
+        destroyedArtifact
     }
 
     public GameObject[] entities = new GameObject[8];
@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     void GiveDamageTarget(int damage) {
-        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingObject) {
+        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingArtifact) {
             MouseTarget(MousePosition())?.GetComponent<Entity>().TakeDamage(damage);
         } else { // target already dead. (multiple attack)
             return;
@@ -91,7 +91,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     void ApplyVulnerableTarget(int duration) {
-        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingObject) {
+        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingArtifact) {
             MouseTarget(MousePosition())?.GetComponent<Entity>().ApplyVulnerable(duration);
         }
     }
@@ -120,7 +120,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     void ApplyWeaknessTarget(int duration) {
-        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingObject) {
+        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingArtifact) {
             MouseTarget(MousePosition())?.GetComponent<Entity>().ApplyWeakness(duration);
         }
     }
@@ -150,7 +150,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     void GainStrengthTarget(int value) {
-        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingObject) {
+        if (statuses[MousePosition()] == Status.aliveEnemy || statuses[MousePosition()] == Status.existingArtifact) {
             MouseTarget(MousePosition())?.GetComponent<Entity>().GainStrength(value);
         }
     }
@@ -185,7 +185,7 @@ public class LevelManager : MonoBehaviour {
                 case Status.aliveEnemy:
                     entities[i].GetComponent<Enemy>().Setting();
                     break;
-                case Status.existingObject:
+                case Status.existingArtifact:
                     break;
                 default:
                     Debug.Log("Unvalid status.");
@@ -255,7 +255,7 @@ public class LevelManager : MonoBehaviour {
                 statuses[i] = Status.aliveEnemy;
                 remainingEnemies++;
             } else if (entities[i].tag == "Object") {
-                statuses[i] = Status.existingObject;
+                statuses[i] = Status.existingArtifact;
             }
         }
     }
@@ -270,9 +270,9 @@ public class LevelManager : MonoBehaviour {
                 return true;
             case Status.deadEnemy:
                 return false;
-            case Status.existingObject:
+            case Status.existingArtifact:
                 return true;
-            case Status.destroyedObject:
+            case Status.destroyedArtifact:
                 return false;
             default:
                 Debug.Log("Unvalid status.");
@@ -287,9 +287,9 @@ public class LevelManager : MonoBehaviour {
         CheckLevelClear();
     }
 
-    public void ObjectDestroyed(int index) {
-        if (statuses[index] != Status.existingObject) Debug.Log("Error");
-        statuses[index] = Status.destroyedObject;
+    public void ArtifactDestroyed(int index) {
+        if (statuses[index] != Status.existingArtifact) Debug.Log("Error");
+        statuses[index] = Status.destroyedArtifact;
     }
 
     void CheckLevelClear() {
@@ -322,5 +322,13 @@ public class LevelManager : MonoBehaviour {
 
     IEnumerator Wait(float second) {
         yield return new WaitForSeconds(second);
+    }
+
+    public Status[] GetStatuses() {
+        return statuses;
+    }
+
+    public int GetRemainingEnemies() {
+        return remainingEnemies;
     }
 }
