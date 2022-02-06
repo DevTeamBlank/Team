@@ -170,7 +170,7 @@ public class Player : MonoBehaviour {
         if (temp <= maxHealth) {
             health = temp;
         } else {
-            temp = maxHealth;
+            health = maxHealth;
         }
         HealthUpdate();
     }

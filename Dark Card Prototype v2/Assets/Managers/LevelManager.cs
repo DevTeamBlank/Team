@@ -166,13 +166,14 @@ public class LevelManager : MonoBehaviour {
         LevelSetting();
         Player.Inst.PlayerSetting();
         CardManager.Inst.CardSetting();
-        TurnManager.Inst.TurnSetting();        
+        TurnManager.Inst.TurnSetting();
     }
 
     public void LevelSetting() {
         GetXYPosition();
         GetStatus();
         EntitySetting();
+        EntityBattleStart();
         // TODO
         // Show UI
     }
@@ -186,6 +187,7 @@ public class LevelManager : MonoBehaviour {
                     entities[i].GetComponent<Enemy>().Setting();
                     break;
                 case Status.existingArtifact:
+                    entities[i].GetComponent<Artifact>().Setting();
                     break;
                 default:
                     Debug.Log("Unvalid status.");
@@ -193,6 +195,15 @@ public class LevelManager : MonoBehaviour {
             }
         }
     }
+
+    void EntityBattleStart() {
+        for (int i = 0; i < statuses.Length; i++) {
+            if (statuses[i] == Status.aliveEnemy || statuses[i] == Status.existingArtifact) {
+                entities[i].GetComponent<Entity>().BattleStart();
+            }
+        }
+    }
+
 
     int MousePosition() {
         Vector2 temp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -307,22 +318,23 @@ public class LevelManager : MonoBehaviour {
 
     public void EnemyTurnStart() {
         for (int i = 0; i < entities.Length; i++) {
-            if (statuses[i] == Status.aliveEnemy) {
+            if (statuses[i] == Status.aliveEnemy || statuses[i] == Status.existingArtifact) {
                 entities[i].GetComponent<Entity>().TurnStart();
-                StartCoroutine(Wait(600));
             }
         }
+
+        EnemyTurnEnd();
+    }
+
+    void EnemyTurnEnd() {
         for (int i = 0; i < entities.Length; i++) {
-            if (statuses[i] == Status.aliveEnemy) {
+            if (statuses[i] == Status.aliveEnemy || statuses[i] == Status.existingArtifact) {
                 entities[i].GetComponent<Entity>().TurnEnd();
             }
         }
         TurnManager.Inst.PlayerTurnStart();
     }
 
-    IEnumerator Wait(float second) {
-        yield return new WaitForSeconds(second);
-    }
 
     public Status[] GetStatuses() {
         return statuses;

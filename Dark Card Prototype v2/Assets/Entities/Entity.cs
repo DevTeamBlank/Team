@@ -11,6 +11,11 @@ public class Entity : MonoBehaviour { // Enemies, Objects
 
     [Header("These are serialized fields")]
     [SerializeField] int health;
+
+    public int GetHealth() {
+        return health;
+    }
+
     [SerializeField] int armor;
 
     [SerializeField] int vulnerable;
@@ -20,10 +25,6 @@ public class Entity : MonoBehaviour { // Enemies, Objects
     [SerializeField] int strength;
 
     [SerializeField] bool isAlive = true;
-
-    void Start() {
-
-    }
 
     public void Setting() {
         health = maxHealth;
@@ -41,8 +42,6 @@ public class Entity : MonoBehaviour { // Enemies, Objects
         VulnerableUpdate();
         WeaknessUpdate();
         BarricadeUpdate();
-
-        BattleStart();
     }
 
     public virtual void BattleStart() { }
@@ -136,6 +135,16 @@ public class Entity : MonoBehaviour { // Enemies, Objects
             LossHealth(temp - armor);
             LossArmor(armor);
         }
+    }
+
+    public void HealHealth(int value) {
+        int temp = health + value;
+        if (temp <= maxHealth) {
+            health = temp;
+        } else {
+            health = maxHealth;
+        }
+        HealthUpdate();
     }
 
     public void LossHealth(int value) {

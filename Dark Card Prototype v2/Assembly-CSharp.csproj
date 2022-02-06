@@ -55,6 +55,8 @@
      <Compile Include="Assets\Entities\Enemy\Spiker.cs" />
      <Compile Include="Assets\Entities\Enemy\Cultist.cs" />
      <Compile Include="Assets\Entities\Enemy.cs" />
+     <Compile Include="Assets\Entities\Enemy\Exploder.cs" />
+     <Compile Include="Assets\Entities\Artifact\ArtifactStrength.cs" />
      <Compile Include="Assets\Cards\Cards\Common\PommelStrike.cs" />
      <Compile Include="Assets\Cards\Cards\Uncommon\Inflame.cs" />
      <Compile Include="Assets\Cards\Cards\Uncommon\Rupture.cs" />
@@ -76,7 +78,9 @@
      <Compile Include="Assets\Managers\CardManager.cs" />
      <Compile Include="Assets\Entities\Entity.cs" />
      <Compile Include="Assets\Entities\Enemy\AcidSlimeM.cs" />
+     <Compile Include="Assets\Entities\Enemy\ShieldGremlin.cs" />
      <Compile Include="Assets\Cards\Cards\Starter\Defend_R.cs" />
+     <Compile Include="Assets\Entities\Artifact.cs" />
      <Compile Include="Assets\Cards\Cards\Uncommon\RecklessCharge.cs" />
      <Compile Include="Assets\Entities\Enemy\SneakyGremlin.cs" />
      <Compile Include="Assets\Cards\Cards\Uncommon\GhostlyArmor.cs" />
@@ -121,9 +125,10 @@
      <Compile Include="Assets\Cards\Cards\Common\SwordBoomerang.cs" />
      <Compile Include="Assets\Cards\Cards\Common\IronWave.cs" />
      <Compile Include="Assets\Cards\Cards\Uncommon\Bloodletting.cs" />
-     <Compile Include="Assets\Entities\Artifact.cs" />
-     <Compile Include="Assets\Entities\Enemy\Exploder.cs" />
-     <Compile Include="Assets\Entities\Enemy\ShieldGremlin.cs" />
+     <Compile Include="Assets\Entities\Artifact\ArtifactBarricade.cs" />
+     <Compile Include="Assets\Entities\Artifact\ArtifactArmor.cs" />
+     <Compile Include="Assets\Entities\Artifact\ArtifactThorn.cs" />
+     <Compile Include="Assets\Entities\Artifact\ArtifactHeal.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
