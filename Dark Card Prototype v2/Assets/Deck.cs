@@ -39,10 +39,26 @@ public class Deck : MonoBehaviour {
         cards.Add(temp);
     }
 
-    public void AddCard(int ID) {
+    public bool AddCard(int ID) {
         GameObject temp = GameObject.Instantiate(CardDatabase.Inst.GetCard(ID), transform);
         temp.name = CardDatabase.Inst.GetCard(ID).GetComponent<Card>().nomenclature;
         cards.Add(temp);
+
+        if (temp.GetComponent<Card>().GetRarity() == Card.Rarity.rare) {
+            return false;
+        } else {
+            int count = 0;
+            for (int i = 0; i < cards.Count; i++) {
+                if (cards[i].GetComponent<Card>().GetCardID() == ID) {
+                    count++;
+                }
+            }
+            if (count < 3) {
+                return false;
+            }
+            RemoveCardID(ID);
+            return true;
+        }
     }
 
     public void RemoveCard(GameObject card) {
@@ -54,13 +70,15 @@ public class Deck : MonoBehaviour {
     }
 
     public void RemoveCardID(int ID) {
+        List<int> list = new List<int>();
         for (int i = 0; i < cards.Count; i++) {
             if (cards[i].GetComponent<Card>().GetCardID() == ID) {
-                RemoveCardIndex(i);
-                return;
+                list.Add(i);
             }
         }
-        Debug.Log("There is no card with this ID.");
+        for (int i = list.Count - 1; i >= 0; i--) {
+            RemoveCardIndex(list[i]);
+        }
     }
 
     public List<GameObject> CopyDeck() {
@@ -70,7 +88,7 @@ public class Deck : MonoBehaviour {
             temp.transform.parent = transform;
             temp.transform.position = transform.position;
             ret.Add(temp);
-            
+
         }
         return ret;
     }

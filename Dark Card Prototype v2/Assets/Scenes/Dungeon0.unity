@@ -406,16 +406,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cards: []
   startingDeck:
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
   - {fileID: 9186422563121597830, guid: d21ed3d6a7cece64e8f0c29bb475fcb9, type: 3}
+  - {fileID: 5402573051519790765, guid: 95441956b3a11ef4a843a77a12acf1c4, type: 3}
+  - {fileID: 7562032114084613876, guid: f1b9279a0f8bc3d47aeaa3ee3c7930f8, type: 3}
+  - {fileID: 19813809019784797, guid: 06a23118970af194eae1f9372c1e2fdd, type: 3}
   - {fileID: 8008693248235343075, guid: c2f6e2f816e4d9c469e5951e9ac722e4, type: 3}
-  - {fileID: 8008693248235343075, guid: c2f6e2f816e4d9c469e5951e9ac722e4, type: 3}
-  - {fileID: 8008693248235343075, guid: c2f6e2f816e4d9c469e5951e9ac722e4, type: 3}
-  - {fileID: 8008693248235343075, guid: c2f6e2f816e4d9c469e5951e9ac722e4, type: 3}
-  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
-  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
-  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
-  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
-  - {fileID: 8094760417305274159, guid: ab4cb7f3cfc582745928f3a1133765a4, type: 3}
+  - {fileID: 616923702642003237, guid: 9495545bd2f32f8418aa6b7818a0d990, type: 3}
+  - {fileID: 4926406150991271404, guid: 6fc6e4701017ddc45a32525d71ddff3c, type: 3}
+  - {fileID: 6331678308695525365, guid: 8706d09b49102284791ebab701188c9e, type: 3}
 --- !u!4 &66786235
 Transform:
   m_ObjectHideFlags: 0

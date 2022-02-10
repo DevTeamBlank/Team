@@ -11,7 +11,7 @@ public class Immolate : Card {
         int applyDamage = Player.Inst.ApplyDamage(damage);
         GameObject.Find("LevelManager").GetComponent<LevelManager>().GiveDamage(applyDamage, attackType);
 
-        CardManager.Inst.AddDiscardPile(burn);
+        CardManager.Inst.AddDiscardPile(GameObject.Instantiate(burn));
     }
 
 }

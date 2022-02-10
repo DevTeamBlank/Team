@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardID: 1
   nomenclature: Defend_R
-  rarity: 0
+  rarity: 1
   energy: 1
   attackType: 0
   cardType: 2
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -776177623
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2c48b7a961c17f9489812758fff86951, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

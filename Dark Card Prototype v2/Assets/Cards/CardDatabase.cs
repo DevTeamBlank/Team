@@ -127,18 +127,22 @@ public class CardDatabase : MonoBehaviour {
     [SerializeField] bool levelCleared;
 
     void AddCard(bool add, int ID = 0) {
-        if (add) {
-            Deck.Inst.AddCard(ID);
-        }
+        bool rareReward = false;
+        if (add) rareReward = Deck.Inst.AddCard(ID);
+     
         for (int i = 0; i < 3; i++) {
             GameObject.Destroy(rewards[i]);
         }
         isRewarding = false;
-        if (levelCleared) {
+
+
+        if (!rareReward && levelCleared) {
             levelCleared = false;
-            StartCoroutine(Wait(2f));
-            DungeonManager.Inst.NextLevel();            
+            DungeonManager.Inst.NextLevel();
         }
+
+        if (rareReward) Reward(true);
+   
     }
 
     public int[] GetRareRewardIDs() {
@@ -183,10 +187,6 @@ public class CardDatabase : MonoBehaviour {
         }
 
         return ret;
-    }
-
-    IEnumerator Wait (float second) {
-        yield return new WaitForSeconds(second);
     }
 
 }
