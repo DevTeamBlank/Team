@@ -53,23 +53,24 @@
     <UnityVersion>2020.3.24f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Action\ActionDraw.cs" />
     <Compile Include="Assets\Script\Observer.cs" />
     <Compile Include="Assets\Script\Subject.cs" />
+    <Compile Include="Assets\Script\Manager\CardManager.cs" />
+    <Compile Include="Assets\Script\Card\DiscardPile.cs" />
+    <Compile Include="Assets\Script\Action\ActionDamage.cs" />
     <Compile Include="Assets\Script\Manager\TurnManager.cs" />
+    <Compile Include="Assets\Script\PRS.cs" />
+    <Compile Include="Assets\Script\Card\DrawPile.cs" />
+    <Compile Include="Assets\Script\Card\CardPile.cs" />
     <Compile Include="Assets\Script\Manager\BattleQueue.cs" />
+    <Compile Include="Assets\Script\Card\Card.cs" />
+    <Compile Include="Assets\Script\Card\ExhaustPile.cs" />
     <Compile Include="Assets\Script\Action\Action.cs" />
     <Compile Include="Assets\Script\Manager\BattleManager.cs" />
-    <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\Action\ActionDamage.cs" />
-    <Compile Include="Assets\Script\Action\ActionDraw.cs" />
-    <Compile Include="Assets\Script\Manager\CardManager.cs" />
-    <Compile Include="Assets\Script\PRS.cs" />
-    <Compile Include="Assets\Script\Card\CardPile.cs" />
-    <Compile Include="Assets\Script\Card\Card.cs" />
-    <Compile Include="Assets\Script\Card\DrawPile.cs" />
-    <Compile Include="Assets\Script\Card\DiscardPile.cs" />
     <Compile Include="Assets\Script\Card\HandPile.cs" />
-    <Compile Include="Assets\Script\Card\ExhaustPile.cs" />
+    <Compile Include="Assets\Script\Manager\GameManager.cs" />
+    <Compile Include="Assets\Script\Card\TempStrike.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

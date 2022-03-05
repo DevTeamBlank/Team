@@ -4,63 +4,32 @@ using UnityEngine;
 
 public class Card : MonoBehaviour {
 
-    [SerializeField] int CardID;
-    public string nomenclature;
+    public readonly int CardID;
+    public readonly string nomenclature;
+    public readonly Rarity rarity;
+    public readonly TargetType targetType;
+    public readonly CardType cardType;
 
-    public int GetCardID() {
-        return CardID;
-    }
-
-    [SerializeField] Rarity rarity;
-    [SerializeField] protected int energy;
+    public int energy;
 
     public enum Rarity {
-        starter,
-        common,
-        uncommon,
-        rare,
-        status,
-        curse
+        // TODO
     }
-
-    public Rarity GetRarity() {
-        return rarity;
-    }
-
-    [SerializeField] protected AttackType attackType;
-
-    public enum AttackType {
+    public enum TargetType {
         notApplicable,
         target,
         random,
         all
-    }
-
-    [SerializeField] protected CardType cardType;
-
+    }    
     public enum CardType {
-        notApplicable,
         attack,
-        skill
+        skill,
+        // TODO
     }
 
-    public CardType GetCardType() {
-        return cardType;
-    }
-
-    [SerializeField] protected bool isExhaust = false;
-
-    public bool GetIsExhaust() {
-        return isExhaust;
-    }
-
-    [SerializeField] protected bool isEthereal = false;
-
-    public bool GetIsEthereal() {
-        return isEthereal;
-    }
-
-    [SerializeField] protected bool isPlayable = true;
+    public bool isExhaust = false;
+    public bool isEthereal = false;
+    public bool isPlayable = true;
 
     public void Play() {
         if (IsPlayble()) {
@@ -97,7 +66,7 @@ public class Card : MonoBehaviour {
     }
 
     protected void UseEnergy() {
-        Player.Inst.UseEnergy(energy);
+
     }
 
     public virtual void TurnEnd() {
