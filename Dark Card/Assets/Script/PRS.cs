@@ -19,4 +19,10 @@ public class PRS {
         rotation = t.rotation;
         scale = t.localScale;
     }
+
+    public void Apply(Transform t) {
+        t.position = position;
+        t.rotation = rotation;
+        t.localScale = scale;
+    }
 }

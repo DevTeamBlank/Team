@@ -12,6 +12,8 @@ public class Card : MonoBehaviour {
 
     public int energy;
 
+    public PRS originalPRS;
+
     public enum Rarity {
         // TODO
     }
@@ -35,6 +37,22 @@ public class Card : MonoBehaviour {
         Renderer renderer = GetComponent<SpriteRenderer>();
         renderer.sortingLayerName = "Card";
         renderer.sortingOrder = order * 10;
+    }
+
+    public void Tag() {
+        gameObject.tag = "Card";
+    }
+
+    public static int ID(GameObject card) {
+        return card.GetComponent<Card>() == null ? -1 : card.GetComponent<Card>().CardID;
+    }
+
+    public void SavePRS() {
+        originalPRS = new PRS(transform);
+    }
+
+    public void LoadPRS() {
+        originalPRS.Apply(transform);
     }
 
 }

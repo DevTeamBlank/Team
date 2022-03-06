@@ -10,6 +10,10 @@ public class CardPile : MonoBehaviour {
         list_.Add(g);
     }
 
+    public void Clear() {
+        list_.Clear();
+    }
+
     public bool isEmpty() {
         return list_.Count == 0;
     }
@@ -19,6 +23,10 @@ public class CardPile : MonoBehaviour {
         GameObject g = list_[0];
         list_.Remove(g);
         return g;
+    }
+
+    public void Remove(GameObject card) {
+        list_.Remove(card);
     }
 
     public void Shuffle() {
