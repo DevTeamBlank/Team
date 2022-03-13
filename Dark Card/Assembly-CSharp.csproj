@@ -63,15 +63,17 @@
     <Compile Include="Assets\Script\PRS.cs" />
     <Compile Include="Assets\Script\Card\DrawPile.cs" />
     <Compile Include="Assets\Script\Card\CardPile.cs" />
+    <Compile Include="Assets\Script\Deck.cs" />
     <Compile Include="Assets\Script\Card\TempStrike.cs" />
-    <Compile Include="Assets\Script\Manager\BattleQueue.cs" />
     <Compile Include="Assets\Script\Card\Card.cs" />
     <Compile Include="Assets\Script\Card\ExhaustPile.cs" />
     <Compile Include="Assets\Script\Action\Action.cs" />
     <Compile Include="Assets\Script\Manager\BattleManager.cs" />
     <Compile Include="Assets\Script\Card\HandPile.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\Deck.cs" />
+    <Compile Include="Assets\Script\Manager\LevelManager.cs" />
+    <Compile Include="Assets\Script\Manager\DungeonManager.cs" />
+    <Compile Include="Assets\Script\Enemy\Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

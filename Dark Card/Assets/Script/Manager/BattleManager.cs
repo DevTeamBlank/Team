@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour {
 
+    public static BattleManager Inst { get; private set; }
+
+    void Awake() {
+        Inst = this;
+    }
+
     void Update() {
         Dequeue();
     }
