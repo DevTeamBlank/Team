@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class HandPile : CardPile {
 
-    public bool isFull() {
+    TurnManager turnManager;
+
+    [SerializeField] GameObject mouseOverCard_ = null; // Mouse Over
+    [SerializeField] GameObject holdCard_ = null;
+
+    [SerializeField] bool isHolding = false;
+
+    void Start() {
+        turnManager = TurnManager.Inst;
+    }
+
+    public bool IsFull() {
         return list_.Count == 10;
     }
 
@@ -19,4 +30,9 @@ public class HandPile : CardPile {
         }
     }
 
+    void UseCard() {
+        if (isHolding) {
+
+        }
+    }
 }

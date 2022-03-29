@@ -10,8 +10,21 @@ public class BattleManager : MonoBehaviour {
         Inst = this;
     }
 
+    [SerializeField] bool ready = false;
+
     void Update() {
-        Dequeue();
+        if (ready) {
+            Dequeue();
+        }
+    }
+
+    public void EndAction(bool endBattle) {
+        if (endBattle) {
+            ready = false;
+            Clear();
+        } else {
+            ready = true;
+        }        
     }
 
     List<Action> queue;

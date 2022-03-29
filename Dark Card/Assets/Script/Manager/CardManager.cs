@@ -11,6 +11,8 @@ public class CardManager : MonoBehaviour {
     [SerializeField] GameObject handPile_;
     [SerializeField] GameObject exhaustPile_;
 
+    [SerializeField] GameObject usingCard_;
+
     DrawPile drawPile;
     DiscardPile discardPile;
     HandPile handPile;
@@ -34,8 +36,12 @@ public class CardManager : MonoBehaviour {
         Inst = this;
     }
 
-    void Add(GameObject card, Index index) {
-        switch (index) {
+    public void UseCard(GameObject card) {
+        usingCard_ = card;
+    }
+
+    void Add(GameObject card, Index target) {
+        switch (target) {
             case Index.DrawPile:
                 card.transform.parent = drawPile_.transform;
                 drawPile.Add(card);
@@ -55,8 +61,8 @@ public class CardManager : MonoBehaviour {
         }
     }
 
-    void Remove(GameObject card, Index index) {
-        switch (index) {
+    void Remove(GameObject card, Index target) {
+        switch (target) {
             case Index.DrawPile:
                 drawPile.Remove(card);
                 break;
@@ -72,8 +78,8 @@ public class CardManager : MonoBehaviour {
         }
     }
 
-    GameObject Pop(Index index) {
-        switch (index) {
+    GameObject Pop(Index target) {
+        switch (target) {
             case Index.DrawPile:
                 return drawPile.Pop();
                 break;
