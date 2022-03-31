@@ -5,35 +5,51 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public static int Seed { get; private set; }
+    public static GameManager Inst { get; private set ;}
+
+    void Awake() {
+        Inst = this;
+    }
 
     void Start() {
 
     }
 
-    // Update is called once per frame
     void Update() {
 
     }
-
-    void StartGame() {
-        
-    }
+   
 
     void CreateSeed() {
         Seed = (int) (Time.time * 100f);
-        Random.InitState(Seed);
     }
 
     void LoadSeed(Save save) {
-        Random.InitState(save.seed);
+        Seed = save.seed;
     }
 
-    void SaveGame() {
+    public void SaveGame() {
         // Save save = new Save(
+    }
+
+    void StartGame() {
+        CreateSeed();
+        Player.Inst.StartGame();
+        RoundManager.Inst.StartGame();
+        ArtifactManager.Inst.StartGame();
+        DiceManager.Inst.StartGame();
     }
 
     void LoadGame(Save save) {
         LoadSeed(save);
         Player.Inst.Load(save);
+        RoundManager.Inst.Load(save);
+        ArtifactManager.Inst.Load(save);
+        DiceManager.Inst.Load(save);
+    }
+
+    public void GameOver() {
+        Debug.Log("Game Over");
+        // TODO
     }
 }

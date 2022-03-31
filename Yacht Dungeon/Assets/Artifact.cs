@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Artifact : MonoBehaviour {
 
-    [SerializeField] bool isEnabled_;
+    [SerializeField] bool isEnabled;
 
-    public int ID;
-    public string nomenclature;
-    public string description;
+    public int ID_;
+    public string nomenclature_;
+    public string description_;
 
     public virtual void Enable() {
         

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Dice : MonoBehaviour {
 
-    [SerializeField] bool isFixed_;
-    [SerializeField] int num_;
-    [SerializeField] int leftReroll_;
+    [SerializeField] bool isFixed;
+    [SerializeField] int num;
+    [SerializeField] int leftReroll;
 
-    public int ID;
-    public string nomenclature;
-    public DiceRarity rarity;
-    public string description;
+    public int ID_;
+    public string nomenclature_;
+    public DiceRarity rarity_;
+    public string description_;
 
-    [SerializeField] int[] faces = new int[6];
-    [SerializeField] Sprite[] sprites = new Sprite[6];
-    [SerializeField] int reroll;
+    [SerializeField] int[] faces_ = new int[6];
+    [SerializeField] Sprite[] sprites_ = new Sprite[6];
+    [SerializeField] int reroll_;
 
     public enum DiceRarity {
         Basic,
@@ -30,30 +30,31 @@ public class Dice : MonoBehaviour {
     }
 
     public void SetDice() {
-        isFixed_ = false;
-        num_ = faces[0];
-        leftReroll_ = reroll;
+        isFixed = false;
+        num = faces_[0];
+        leftReroll = reroll_;
 
         fixSquare = transform.Find("FixSquare").GetComponent<SpriteRenderer>();
         fixSquare.enabled = false;
     }
 
     public void RollDice() {
-        if (!isFixed_) {
+        if (!isFixed) {
             RerollDice();
         }
     }
 
     void RerollDice() {
+        Random.InitState(GameManager.Seed + leftReroll * 13 + RoundManager.Inst.currentRound * 17);
         int random = Random.Range(0, 6);
-        num_ = faces[random];
-        GetComponent<SpriteRenderer>().sprite = sprites[random];
-        leftReroll_--;
+        num = faces_[random];
+        GetComponent<SpriteRenderer>().sprite = sprites_[random];
+        leftReroll--;
     }
 
     void CheckReroll() {
-        if (leftReroll_ <= 0) {
-            isFixed_ = true;
+        if (leftReroll <= 0) {
+            isFixed = true;
             FixDice();
         }
     }
@@ -61,7 +62,7 @@ public class Dice : MonoBehaviour {
     SpriteRenderer fixSquare;
 
     public void ToggleFixDice() {
-        if (isFixed_) {
+        if (isFixed) {
             UnfixDice();
         } else {
             FixDice();
@@ -69,20 +70,20 @@ public class Dice : MonoBehaviour {
     }
 
     void FixDice() {
-        isFixed_ = true;
+        isFixed = true;
         fixSquare.enabled = true;
     }
 
     void UnfixDice() {
-        isFixed_ = false;
+        isFixed = false;
         fixSquare.enabled = false;
     }
 
     public void FixDiceAs(int number, Sprite sprite) {
-        num_ = number;
+        num = number;
         GetComponent<SpriteRenderer>().sprite = sprite;
     }
     public int GetNumber() {
-        return num_;
+        return num;
     }
 }
