@@ -34,8 +34,7 @@ public class Dice : MonoBehaviour {
         num = faces_[0];
         leftReroll = reroll_;
 
-        fixSquare = transform.Find("FixSquare").GetComponent<SpriteRenderer>();
-        fixSquare.enabled = false;
+        UnfixDice();
     }
 
     public void RollDice() {
@@ -50,6 +49,7 @@ public class Dice : MonoBehaviour {
         num = faces_[random];
         GetComponent<SpriteRenderer>().sprite = sprites_[random];
         leftReroll--;
+        CheckReroll();
     }
 
     void CheckReroll() {
@@ -71,12 +71,12 @@ public class Dice : MonoBehaviour {
 
     void FixDice() {
         isFixed = true;
-        fixSquare.enabled = true;
+        transform.Find("FixSquare").GetComponent<SpriteRenderer>().enabled = true;
     }
 
     void UnfixDice() {
         isFixed = false;
-        fixSquare.enabled = false;
+        transform.Find("FixSquare").GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void FixDiceAs(int number, Sprite sprite) {
