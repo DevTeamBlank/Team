@@ -57,13 +57,15 @@
     <Compile Include="Assets\Manager\ArtifactManager.cs" />
     <Compile Include="Assets\Manager\Player.cs" />
     <Compile Include="Assets\Manager\RoundManager.cs" />
+    <Compile Include="Assets\MadeTable.cs" />
     <Compile Include="Assets\Enemy\Enemy.cs" />
     <Compile Include="Assets\Manager\DiceManager.cs" />
     <Compile Include="Assets\Manager\GameManager.cs" />
     <Compile Include="Assets\Cursor.cs" />
     <Compile Include="Assets\Save.cs" />
     <Compile Include="Assets\Artifact.cs" />
-    <Compile Include="Assets\MadeTable.cs" />
+    <Compile Include="Assets\Observer.cs" />
+    <Compile Include="Assets\Subject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

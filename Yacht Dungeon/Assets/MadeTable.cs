@@ -6,6 +6,12 @@ using TMPro;
 
 public class MadeTable : MonoBehaviour {
 
+    public static MadeTable Inst { get; private set; }
+
+    void Awake() {
+        Inst = this;
+    }
+
     [SerializeField] Vector2 pos_;
     Vector2 originPos;
 
@@ -76,6 +82,7 @@ public class MadeTable : MonoBehaviour {
         for (int i = 0; i < 5; i++) {
             if (num[i] == 1) score += 1;
         }
+        int damage = 
         return score;
     }
 
