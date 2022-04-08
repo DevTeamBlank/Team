@@ -8,13 +8,13 @@ public class Save {
     public int hp;
     public int clearedRound;
     public int choice;
-    public int artifact;
+    public List<int> artifact;
 
     public int[] set0 = new int[5];
     public int[] set1 = new int[5];
     public int[] set2 = new int[5];
 
-    public Save (int seed, int hp, int clearedRound, int choice, int artifact, int[] set0, int[] set1, int[] set2) {
+    public Save (int seed, int hp, int clearedRound, int choice, List<int> artifact, int[] set0, int[] set1, int[] set2) {
         this.seed = seed;
         this.hp = hp;
         this.clearedRound = clearedRound;

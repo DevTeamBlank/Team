@@ -12,53 +12,74 @@ public class MadeTable : MonoBehaviour {
         Inst = this;
     }
 
-    [SerializeField] Vector2 pos_;
-    Vector2 originPos;
+    TextMeshPro acesT;
+    TextMeshPro ducesT;
+    TextMeshPro threesT;
+    TextMeshPro foursT;
+    TextMeshPro fivesT;
+    TextMeshPro sixesT;
+    TextMeshPro choiceT;
+    TextMeshPro fourOfAKindT;
+    TextMeshPro fullHouseT;
+    TextMeshPro smallStraightT;
+    TextMeshPro largeStraightT;
+    TextMeshPro yachtT;
 
-    TextMeshPro aces;
-    TextMeshPro duces;
-    TextMeshPro threes;
-    TextMeshPro fours;
-    TextMeshPro fives;
-    TextMeshPro sixes;
-    TextMeshPro choice;
-    TextMeshPro fourOfAKind;
-    TextMeshPro fullHouse;
-    TextMeshPro smallStraight;
-    TextMeshPro largeStraight;
-    TextMeshPro yacht;
+    [HideInInspector] public Subject acesS;
+    [HideInInspector] public Subject ducesS;
+    [HideInInspector] public Subject threesS;
+    [HideInInspector] public Subject foursS;
+    [HideInInspector] public Subject fivesS;
+    [HideInInspector] public Subject sixesS;
+    [HideInInspector] public Subject choiceS;
+    [HideInInspector] public Subject fourOfAKindS;
+    [HideInInspector] public Subject fullHouseS;
+    [HideInInspector] public Subject smallStraightS;
+    [HideInInspector] public Subject largeStraightS;
+    [HideInInspector] public Subject yachtS;
 
     [SerializeField] int currentSet;
-    [SerializeField] Made set0Made;
-    [SerializeField] Made set1Made;
-    [SerializeField] Made set2Made;
+    [SerializeField] List<Made> banMade;
 
     private void Start() {
-        originPos = transform.position;
         FindText();
+        MakeSubject();
         ResetTable();
     }
 
     void FindText() {
-        aces = transform.Find("Aces").GetComponent<TextMeshPro>();
-        duces = transform.Find("Duces").GetComponent<TextMeshPro>();
-        threes = transform.Find("Threes").GetComponent<TextMeshPro>();
-        fours = transform.Find("Fours").GetComponent<TextMeshPro>();
-        fives = transform.Find("Fives").GetComponent<TextMeshPro>();
-        sixes = transform.Find("Sixes").GetComponent<TextMeshPro>();
-        choice = transform.Find("Choice").GetComponent<TextMeshPro>();
-        fourOfAKind = transform.Find("FourOfAKind").GetComponent<TextMeshPro>();
-        fullHouse = transform.Find("FullHouse").GetComponent<TextMeshPro>();
-        smallStraight = transform.Find("SmallStraight").GetComponent<TextMeshPro>();
-        largeStraight = transform.Find("LargeStraight").GetComponent<TextMeshPro>();
-        yacht = transform.Find("Yacht").GetComponent<TextMeshPro>();
+        acesT = transform.Find("Aces").GetComponent<TextMeshPro>();
+        ducesT = transform.Find("Duces").GetComponent<TextMeshPro>();
+        threesT = transform.Find("Threes").GetComponent<TextMeshPro>();
+        foursT = transform.Find("Fours").GetComponent<TextMeshPro>();
+        fivesT = transform.Find("Fives").GetComponent<TextMeshPro>();
+        sixesT = transform.Find("Sixes").GetComponent<TextMeshPro>();
+        choiceT = transform.Find("Choice").GetComponent<TextMeshPro>();
+        fourOfAKindT = transform.Find("FourOfAKind").GetComponent<TextMeshPro>();
+        fullHouseT = transform.Find("FullHouse").GetComponent<TextMeshPro>();
+        smallStraightT = transform.Find("SmallStraight").GetComponent<TextMeshPro>();
+        largeStraightT = transform.Find("LargeStraight").GetComponent<TextMeshPro>();
+        yachtT = transform.Find("Yacht").GetComponent<TextMeshPro>();
+    }
+
+    void MakeSubject() {
+        acesS = new Subject();
+        ducesS = new Subject();
+        threesS = new Subject();
+        foursS = new Subject();
+        fivesS = new Subject();
+        sixesS = new Subject();
+        choiceS = new Subject();
+        fourOfAKindS = new Subject();
+        fullHouseS = new Subject();
+        smallStraightS = new Subject();
+        largeStraightS = new Subject();
+        yachtS = new Subject();
     }
 
     void ResetTable() {
         currentSet = 0;
-        set0Made = Made.None;
-        set1Made = Made.None;
-        set2Made = Made.None;
+        banMade = new List<Made>();
     }
 
     public enum Made {
@@ -73,8 +94,7 @@ public class MadeTable : MonoBehaviour {
         FullHouse,
         SmallStraight,
         LargeStragith,
-        Yacht,
-        None,
+        Yacht
     }
 
     int AcesScore(int[] num) {
@@ -82,7 +102,6 @@ public class MadeTable : MonoBehaviour {
         for (int i = 0; i < 5; i++) {
             if (num[i] == 1) score += 1;
         }
-        int damage = 
         return score;
     }
 
@@ -197,11 +216,4 @@ public class MadeTable : MonoBehaviour {
         }
     }
 
-    public void Hide() {
-        transform.position = originPos;
-    }
-
-    public void Show() {
-        transform.position = pos_;
-    }
 }

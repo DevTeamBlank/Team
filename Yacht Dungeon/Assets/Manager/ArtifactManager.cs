@@ -6,42 +6,35 @@ public class ArtifactManager : MonoBehaviour {
 
     public static ArtifactManager Inst { get; private set; }
 
-    [SerializeField] int artifact;
+    [SerializeField] List<int> artifactIndex = new List<int>(15);
     [SerializeField] List<GameObject> artifacts = new List<GameObject>(15);
 
-    public GameObject[] artifactDB_ = new GameObject[30]; // DataBase
+    public GameObject[] artifactDB_ = new GameObject[40]; // DataBase
 
     void Awake() {
         Inst = this;
     }
 
     public void StartGame() {
-        artifact = 0;
+        artifactIndex = new List<int>();
         MakeList();
     }
 
     public void Load(Save save) {
-        artifact = save.artifact;
+        artifactIndex = save.artifact;
         MakeList();
     }
 
     void MakeList() {
-        int seed = GameManager.Seed;
-        bool[] bools = new bool[artifactDB_.Length];
-        for (int i = 0; i < 15; i++) {
-            int random;
-            do {
-                Random.InitState(seed + 23);
-                random = Random.Range(0, artifactDB_.Length);
-            } while (!bools[random]);
-            bools[random] = true;
-            artifacts.Add(artifactDB_[random]);
+        for (int i = 0; i < artifactIndex.Count; i++) {
+            TakeArtifact(artifactIndex[i]);
         }
     }
 
-    public void TakeArtifact() {
-        artifacts[artifact].GetComponent<Artifact>().Enable();
-        artifact++;
+    public void TakeArtifact(int index) {
+        GameObject go = artifactDB_[index];
+        artifacts.Add(go);
+        go.GetComponent<Artifact>().Enable();
     }
 
 }
