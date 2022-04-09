@@ -18,10 +18,10 @@ public class Subject {
         observers = new List<Observer>();
     }
 
-    public int Bonus() {
+    public int Bonus(int[] num) {
         int bonus = 0;
         foreach (Observer o in observers) {
-            o.OnNotify();
+            o.OnNotify(num);
             bonus += o.Bonus();
         }
         return bonus;

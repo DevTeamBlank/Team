@@ -17,8 +17,8 @@ public class Observer : MonoBehaviour {
         s.AddObserver(this);
     }
 
-    public void OnNotify() {
-        bonus = artifact.CalculateBonus();
+    public void OnNotify(int[] num) {
+        bonus = artifact.CalculateBonus(num);
     }
 
     public int Bonus() {        

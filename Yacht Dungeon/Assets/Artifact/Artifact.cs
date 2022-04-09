@@ -45,14 +45,15 @@ public class Artifact : MonoBehaviour {
     }
 
     public virtual void EnableSet() {
-
+        Observer o = new Observer(this);
+        o.AddSubject(MadeTable.Inst.setS);
     }
 
     public virtual void EnableUpdate() {
 
     }
 
-    public virtual int CalculateBonus() {
+    public virtual int CalculateBonus(int[] num) {
         return 0;
     }
 

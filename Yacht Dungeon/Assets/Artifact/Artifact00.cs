@@ -10,8 +10,8 @@ public class Artifact00 : Artifact {
         o.AddSubject(MadeTable.Inst.largeStraightS);
     }
 
-    public override int CalculateBonus() {
-        return 5;
+    public override int CalculateBonus(int[] num) {
+        return 3;
     }
 
 }

@@ -67,6 +67,15 @@
     <Compile Include="Assets\Save.cs" />
     <Compile Include="Assets\Artifact\Artifact.cs" />
     <Compile Include="Assets\Artifact\Artifact00.cs" />
+    <Compile Include="Assets\Artifact\Artifact01.cs" />
+    <Compile Include="Assets\Artifact\Artifact02.cs" />
+    <Compile Include="Assets\Artifact\Artifact04.cs" />
+    <Compile Include="Assets\Artifact\Artifact03.cs" />
+    <Compile Include="Assets\Dice\Dice00.cs" />
+    <Compile Include="Assets\Dice\Dice08.cs" />
+    <Compile Include="Assets\Dice\Dice09.cs" />
+    <Compile Include="Assets\Dice\Dice10.cs" />
+    <Compile Include="Assets\Dice\Dice11.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
