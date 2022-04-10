@@ -12,8 +12,8 @@ public class DiceManager : MonoBehaviour {
 
     public int[,] diceIndex = new int[3, 5];
 
-    public GameObject[] diceDB_ = new GameObject[40]; // DataBase
-    bool[] diceGet = new bool[40];
+    public GameObject[] diceDB_ = new GameObject[30]; // DataBase
+    bool[] diceGet = new bool[30];
 
 
     void Awake() {

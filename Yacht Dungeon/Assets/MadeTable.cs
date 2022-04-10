@@ -260,27 +260,39 @@ public class MadeTable : MonoBehaviour {
         return score;
     }
 
-    int SmallStraightScore(int[] num) {
-        int[] c = new int[5];
-        for (int i = 0; i < 5; i++) {
-            c[i] = num[i];
+    bool Contain(int[] num, int n) {
+        for (int i = 0; i < num.Length; i++) {
+            if (num[i] == n) return true;
         }
-        Array.Sort(c);
-        if (c[1] + 1 == c[2] && c[2] + 1 == c[3] && (c[0] + 1 == c[1] || c[3] + 1 == c[4])) {
+        return false;
+    }
+
+    int SmallStraightScore(int[] num) {
+        if (Contain(num, 0) && Contain(num, 1) && Contain(num, 2) && Contain(num, 3)) {
+            return 15;
+        } else if (Contain(num, 1) && Contain(num, 2) && Contain(num, 3) && Contain(num, 4)) {
+            return 15;
+        } else if (Contain(num, 2) && Contain(num, 3) && Contain(num, 4) && Contain(num, 5)) {
+            return 15;
+        } else if (Contain(num, 3) && Contain(num, 4) && Contain(num, 5) && Contain(num, 6)) {
+            return 15;
+        } else if (Contain(num, 4) && Contain(num, 5) && Contain(num, 6) && Contain(num, 7)) {
             return 15;
         } else {
             return 0;
         }
     }
+
     int LargeStraightScore(int[] num) {
-        int[] c = new int[5];
-        for (int i = 0; i < 5; i++) {
-            c[i] = num[i];
-        }
-        Array.Sort(c);
-        if (c[0] + 1 == c[1] && c[1] + 1 == c[2] && c[2] + 1 == c[3] && c[3] + 1 == c[4]) {
+        if (Contain(num, 0) && Contain(num, 1) && Contain(num, 2) && Contain(num, 3) && Contain(num, 4)) {
             return 30;
-        } else {
+        } else if (Contain(num, 1) && Contain(num, 2) && Contain(num, 3) && Contain(num, 4) && Contain(num, 5)) {
+            return 30;
+        } else if (Contain(num, 2) && Contain(num, 3) && Contain(num, 4) && Contain(num, 5) && Contain(num, 6)) {
+            return 30;
+        } else if (Contain(num, 3) && Contain(num, 4) && Contain(num, 5) && Contain(num, 6) && Contain(num, 7)) {
+            return 30;
+        } else { 
             return 0;
         }
     }

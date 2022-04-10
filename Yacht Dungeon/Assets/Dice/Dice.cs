@@ -11,13 +11,14 @@ public class Dice : MonoBehaviour {
     public int index_;
     public string nomenclature_;
     public DiceRarity rarity_;
-    public bool canTrigger_ = false;
     public string description_;
 
     [SerializeField] protected int[] numbers_ = new int[6];
     [SerializeField] protected Sprite[] sprites_ = new Sprite[6];
     [SerializeField] protected int reroll_;
 
+    [SerializeField] bool canFix = false;
+    [SerializeField] protected bool canTrigger = false;
 
     public enum DiceRarity {
         Basic,
@@ -36,6 +37,9 @@ public class Dice : MonoBehaviour {
         face = 0;
         count = 0;
 
+        canFix = false;
+        canTrigger = false;
+
         CheckReroll();
     }
 
@@ -44,6 +48,7 @@ public class Dice : MonoBehaviour {
             face = Roll();
             GetComponent<SpriteRenderer>().sprite = sprites_[face];
             count++;
+            canFix = true;
             CheckReroll();
         }
     }
@@ -54,9 +59,9 @@ public class Dice : MonoBehaviour {
     }
 
     public void TriggerDice() {
-        if (canTrigger_) {           
+        if (canTrigger) {           
             Trigger();
-            canTrigger_ = false;
+            canTrigger = false;
         }
     }
 
@@ -66,16 +71,18 @@ public class Dice : MonoBehaviour {
 
     void CheckReroll() {
         if (reroll_ < count) {
-            isFixed = true;
             FixDice();
+            canFix = false;
         }
     }
 
     public void ToggleFixDice() {
-        if (isFixed) {
-            UnfixDice();
-        } else {
-            FixDice();
+        if (canFix) {
+            if (isFixed) {
+                UnfixDice();
+            } else {
+                FixDice();
+            }
         }
     }
 
@@ -95,6 +102,10 @@ public class Dice : MonoBehaviour {
 
     public void IncreaseReroll() {
         reroll_++;
+    }
+
+    public virtual void GetDice(int set, int place) {
+        // DO NOTHING HERE
     }
 
     public int GetNumber() {

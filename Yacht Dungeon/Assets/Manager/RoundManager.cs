@@ -33,6 +33,7 @@ public class RoundManager : MonoBehaviour {
     void Update() {
         RollDice();
         ToggleDice();
+        TriggerDice();
     }
 
     void RollDice() {
@@ -58,6 +59,21 @@ public class RoundManager : MonoBehaviour {
                 go = hit.transform.gameObject;
                 if (go.tag == "Dice") {
                     go.GetComponent<Dice>().ToggleFixDice();
+                }
+            } else {
+                Debug.Log(hit);
+            }
+        }
+    }
+
+    void TriggerDice() {
+        if (Input.GetMouseButtonDown(1)) {
+            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+
+            if (hit) {
+                go = hit.transform.gameObject;
+                if (go.tag == "Dice") {
+                    go.GetComponent<Dice>().TriggerDice();
                 }
             } else {
                 Debug.Log(hit);

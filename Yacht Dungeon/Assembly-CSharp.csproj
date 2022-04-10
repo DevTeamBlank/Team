@@ -53,29 +53,42 @@
     <UnityVersion>2020.3.24f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Dice\Dice11.cs" />
+    <Compile Include="Assets\Artifact\Artifact01.cs" />
+    <Compile Include="Assets\Dice\Dice10.cs" />
     <Compile Include="Assets\Dice\Dice.cs" />
+    <Compile Include="Assets\Artifact\Artifact03.cs" />
     <Compile Include="Assets\Manager\ArtifactManager.cs" />
     <Compile Include="Assets\Manager\Player.cs" />
     <Compile Include="Assets\Manager\RoundManager.cs" />
+    <Compile Include="Assets\Dice\Dice08.cs" />
+    <Compile Include="Assets\Dice\Dice09.cs" />
     <Compile Include="Assets\MadeTable.cs" />
+    <Compile Include="Assets\Artifact\Artifact04.cs" />
     <Compile Include="Assets\Enemy\Enemy.cs" />
     <Compile Include="Assets\Observer.cs" />
     <Compile Include="Assets\Manager\DiceManager.cs" />
     <Compile Include="Assets\Manager\GameManager.cs" />
+    <Compile Include="Assets\Artifact\Artifact02.cs" />
     <Compile Include="Assets\Subject.cs" />
     <Compile Include="Assets\Cursor.cs" />
     <Compile Include="Assets\Save.cs" />
     <Compile Include="Assets\Artifact\Artifact.cs" />
     <Compile Include="Assets\Artifact\Artifact00.cs" />
-    <Compile Include="Assets\Artifact\Artifact01.cs" />
-    <Compile Include="Assets\Artifact\Artifact02.cs" />
-    <Compile Include="Assets\Artifact\Artifact04.cs" />
-    <Compile Include="Assets\Artifact\Artifact03.cs" />
-    <Compile Include="Assets\Dice\Dice00.cs" />
-    <Compile Include="Assets\Dice\Dice08.cs" />
-    <Compile Include="Assets\Dice\Dice09.cs" />
-    <Compile Include="Assets\Dice\Dice10.cs" />
-    <Compile Include="Assets\Dice\Dice11.cs" />
+    <Compile Include="Assets\Dice\Dice12.cs" />
+    <Compile Include="Assets\Dice\Dice13.cs" />
+    <Compile Include="Assets\Dice\Dice14.cs" />
+    <Compile Include="Assets\Dice\Dice15.cs" />
+    <Compile Include="Assets\Dice\Dice16.cs" />
+    <Compile Include="Assets\Dice\Dice17.cs" />
+    <Compile Include="Assets\Dice\Dice18.cs" />
+    <Compile Include="Assets\Dice\Dice19.cs" />
+    <Compile Include="Assets\Dice\Dice20.cs" />
+    <Compile Include="Assets\Dice\Dice27.cs" />
+    <Compile Include="Assets\Dice\Dice28.cs" />
+    <Compile Include="Assets\Artifact\Artifact05.cs" />
+    <Compile Include="Assets\Artifact\Artifact06.cs" />
+    <Compile Include="Assets\Artifact\Artifact07.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
