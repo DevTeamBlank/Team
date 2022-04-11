@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Artifact13 : Artifact {
+public class Artifact14 : Artifact {
 
     public override int CalculateBonus(int[] num) {
         for (int i = 0; i < num.Length; i++) {

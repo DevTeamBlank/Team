@@ -8,6 +8,7 @@ public class RoundManager : MonoBehaviour {
 
     public int currentRound;
     public int currentSet;
+    public int currentRoll;
     public int[] currentNumbers = new int[5];
 
     void Awake() {
@@ -16,6 +17,8 @@ public class RoundManager : MonoBehaviour {
 
     public void StartGame() {
         currentRound = 0;
+        currentSet = 0;
+        currentRoll = 0;
     }
 
     [SerializeField] GameObject enemy0;
@@ -25,6 +28,8 @@ public class RoundManager : MonoBehaviour {
 
     public void Load(Save save) {
         currentRound = save.clearedRound;
+        currentSet = 0;
+        currentRoll = 0;
     }
 
     RaycastHit2D hit;
@@ -83,6 +88,7 @@ public class RoundManager : MonoBehaviour {
 
     void RollSet() {
         DiceManager.Inst.RollSet();
+        currentRoll++;
         currentNumbers = DiceManager.Inst.GetNumbers();
         // MadeTable
     }

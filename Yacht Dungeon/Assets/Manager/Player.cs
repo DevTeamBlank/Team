@@ -6,8 +6,8 @@ public class Player : MonoBehaviour {
 
     public static Player Inst { get; private set; }
 
-    [SerializeField] int startHp_;
-    [SerializeField] int startChoice_;
+    [SerializeField] int startHp_ = 5;
+    [SerializeField] int startChoice_ = 1;
 
     public int hp;
     public int choice;
@@ -36,5 +36,21 @@ public class Player : MonoBehaviour {
         if (hp <= 0) {
             GameManager.Inst.GameOver();
         }
+    }
+
+    public void Heal() {
+        if (hp < startHp_) hp++;
+    }
+
+    public int GetHp() {
+        return hp;
+    }
+
+    public int GetChoice() {
+        return choice;
+    }
+
+    public void SetChoice(int val) {
+        choice = val;
     }
 }
