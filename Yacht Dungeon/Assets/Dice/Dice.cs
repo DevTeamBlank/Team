@@ -108,6 +108,10 @@ public class Dice : MonoBehaviour {
         // DO NOTHING HERE
     }
 
+    public int GetReroll() {
+        return reroll_ - count + 1;
+    }
+
     public int GetNumber() {
         return numbers_[face];
     }

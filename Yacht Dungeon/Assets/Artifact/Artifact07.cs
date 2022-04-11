@@ -18,13 +18,6 @@ public class Artifact07 : Artifact {
         return bonus;
     }
 
-    bool Contain(int[] num, int n) {
-        for (int i = 0; i < num.Length; i++) {
-            if (num[i] == n) return true;
-        }
-        return false;
-    }
-
     int SmallStraightBonus(int[] num) { // Small Straight but not Large Straight
         if (Contain(num, 0) && Contain(num, 1) && Contain(num, 2) && Contain(num, 3)) {
             return 3;

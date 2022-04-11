@@ -23,25 +23,25 @@ public class DiceManager : MonoBehaviour {
 
 
     public void StartGame() {
+        for (int i = 0; i < diceGet.Length; i++) {
+            diceGet[i] = false;
+        }
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 5; j++) {
                 ChangeDice(i, j);
             }
-        }
-        for (int i = 0; i < diceGet.Length; i++) {
-            diceGet[i] = false;
-        }
+        }      
     }
 
     public void Load(Save save) {
+        for (int i = 0; i < diceGet.Length; i++) {
+            diceGet[i] = false;
+        }
         for (int i = 0; i < 5; i++) {
             ChangeDice(0, i, save.set0[i]);
             ChangeDice(1, i, save.set1[i]);
             ChangeDice(2, i, save.set2[i]);
-        }
-        for (int i = 0; i < diceGet.Length; i++) {
-            diceGet[i] = false;
-        }
+        }        
     }
 
     public void ChangeDice(int set, int place, int index = 0) {
@@ -59,6 +59,7 @@ public class DiceManager : MonoBehaviour {
                 Debug.Log("Error");
                 break;
         }
+        diceGet[index] = true;
         diceIndex[set, place] = index;
     }
 
