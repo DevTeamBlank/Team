@@ -56,6 +56,11 @@ public class Artifact : MonoBehaviour {
         // Implemented by derived classes
     }
 
+    public virtual void Notify() {
+        // DO NOTHING HERE
+        // Implemented by derived classes
+    }
+
     // Below protected methods are used in derived classes' override methods
 
     protected bool Contain(int[] num, int n) {

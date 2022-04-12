@@ -305,15 +305,77 @@ public class MadeTable : MonoBehaviour {
         }
     }
 
-    public void Show() {
+    public void UpdateMadeTable() {
         UpdateText();
         InactiveMade();
-        Appear();
     }
 
     void Appear() {
         // TODO
         // change position
+    }
+
+    RaycastHit2D hit;
+    GameObject go;
+
+    public bool canSelectMade = false;
+
+    private void Update() {
+        SelectMade();
+    }
+
+    void SelectMade() {
+        if (Input.GetMouseButtonDown(0)) {
+            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+
+            if (CanSelectMade()) {
+                go = hit.transform.gameObject;
+                if (go.name == "Aces") {
+                    Select(Made.Aces);
+                } else if (go.name == "Deuces") {
+                    Select(Made.Deuces);
+                } else if (go.name == "Threes") {
+                    Select(Made.Threes);
+                } else if (go.name == "Fours") {
+                    Select(Made.Fours);
+                } else if (go.name == "Fives") {
+                    Select(Made.Fives);
+                } else if (go.name == "Sixes") {
+                    Select(Made.Sixes);
+                } else if (go.name == "Choice") {
+                    Select(Made.Choice);
+                } else if (go.name == "4 Of A Kind") {
+                    Select(Made.FourOfAKind);
+                } else if (go.name == "Full House") {
+                    Select(Made.FullHouse);
+                } else if (go.name == "Small Straight") {
+                    Select(Made.SmallStraight);
+                } else if (go.name == "Large Straight") {
+                    Select(Made.LargeStragith);
+                } else if (go.name == "Yacht") {
+                    Select(Made.Yacht);
+                }
+            } else {
+                Debug.Log(hit);
+            }
+        }
+    }
+
+    void Select(Made made) {
+        for (int i = 0; i < banMade.Count; i++) {
+            if (banMade[i] == made) return;
+        }
+        BanMade(made);
+
+
+    }
+
+    bool CanSelectMade() {
+        return hit && canSelectMade;
+    }
+
+    public void RoundStart() {
+        canSelectMade = false;
     }
 
 }

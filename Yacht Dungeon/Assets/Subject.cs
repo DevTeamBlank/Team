@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Subject {
 
-    List<Observer> observers;
+    protected List<Observer> observers;
 
     public Subject() {
         ResetList();
@@ -26,6 +26,7 @@ public class Subject {
         }
         return bonus;
     }
+
 }
 
 

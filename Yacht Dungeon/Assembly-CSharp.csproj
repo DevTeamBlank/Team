@@ -79,6 +79,7 @@
     <Compile Include="Assets\MadeTable.cs" />
     <Compile Include="Assets\Dice\Dice17.cs" />
     <Compile Include="Assets\Artifact\Artifact16.cs" />
+    <Compile Include="Assets\Artifact\Artifact21.cs" />
     <Compile Include="Assets\Artifact\Artifact09.cs" />
     <Compile Include="Assets\Enemy\Enemy.cs" />
     <Compile Include="Assets\Dice\Dice27.cs" />
@@ -102,7 +103,8 @@
     <Compile Include="Assets\Dice\Dice19.cs" />
     <Compile Include="Assets\Artifact\Artifact.cs" />
     <Compile Include="Assets\Artifact\Artifact00.cs" />
-    <Compile Include="Assets\Artifact\Artifact21.cs" />
+    <Compile Include="Assets\RoundStartSubject.cs" />
+    <Compile Include="Assets\Artifact\Artifact27.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

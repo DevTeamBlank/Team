@@ -90,6 +90,15 @@ public class RoundManager : MonoBehaviour {
         DiceManager.Inst.RollSet();
         currentRoll++;
         currentNumbers = DiceManager.Inst.GetNumbers();
+        MadeTable.Inst.canSelectMade = true;
         // MadeTable
     }
+
+    [HideInInspector] public RoundStartSubject roundStartS;
+
+    void RoundStart() {
+        roundStartS.CallArtifact();
+        MadeTable.Inst.RoundStart();
+    }
+
 }
