@@ -96,8 +96,9 @@ public class Dice : MonoBehaviour {
         transform.Find("FixSquare").GetComponent<SpriteRenderer>().enabled = false;
     }
 
-    public void ChangeNumbers(int[] newNumbers) {
+    public void ChangeNumbers(int[] newNumbers, Sprite[] newSprites) {
         numbers_ = newNumbers;
+        sprites_ = newSprites;
     }
 
     public void IncreaseReroll() {

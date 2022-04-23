@@ -56,6 +56,7 @@
     <Compile Include="Assets\Dice\Dice11.cs" />
     <Compile Include="Assets\Dice\Dice16.cs" />
     <Compile Include="Assets\Dice\Dice13.cs" />
+    <Compile Include="Assets\RoundStartSubject.cs" />
     <Compile Include="Assets\Artifact\Artifact01.cs" />
     <Compile Include="Assets\Artifact\Artifact08.cs" />
     <Compile Include="Assets\Dice\Dice10.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Dice\Dice17.cs" />
     <Compile Include="Assets\Artifact\Artifact16.cs" />
     <Compile Include="Assets\Artifact\Artifact21.cs" />
+    <Compile Include="Assets\Artifact\Artifact27.cs" />
     <Compile Include="Assets\Artifact\Artifact09.cs" />
     <Compile Include="Assets\Enemy\Enemy.cs" />
     <Compile Include="Assets\Dice\Dice27.cs" />
@@ -103,8 +105,18 @@
     <Compile Include="Assets\Dice\Dice19.cs" />
     <Compile Include="Assets\Artifact\Artifact.cs" />
     <Compile Include="Assets\Artifact\Artifact00.cs" />
-    <Compile Include="Assets\RoundStartSubject.cs" />
-    <Compile Include="Assets\Artifact\Artifact27.cs" />
+    <Compile Include="Assets\Artifact\Artifact28.cs" />
+    <Compile Include="Assets\Artifact\Artifact29.cs" />
+    <Compile Include="Assets\Artifact\Artifact30.cs" />
+    <Compile Include="Assets\Artifact\Artifact31.cs" />
+    <Compile Include="Assets\Artifact\Artifact32.cs" />
+    <Compile Include="Assets\Artifact\Artifact33.cs" />
+    <Compile Include="Assets\Artifact\Artifact34.cs" />
+    <Compile Include="Assets\Artifact\Artifact35.cs" />
+    <Compile Include="Assets\Artifact\Artifact36.cs" />
+    <Compile Include="Assets\Artifact\Artifact37.cs" />
+    <Compile Include="Assets\Artifact\Artifact38.cs" />
+    <Compile Include="Assets\Artifact\Artifact39.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
