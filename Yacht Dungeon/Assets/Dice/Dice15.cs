@@ -27,7 +27,7 @@ public class Dice15 : Dice {
         GetComponent<SpriteRenderer>().sprite = sprites_[face];
     }
 
-    public void SetDice() {
+    public new void SetDice() {
         prevFace = 0;
         base.SetDice();
     }

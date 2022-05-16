@@ -82,12 +82,12 @@ public class Artifact : MonoBehaviour {
 
     protected GameObject[] GetDice() {
         switch (RoundManager.Inst.currentSet) {
-            case 0:
-                return DiceManager.Inst.set0;
             case 1:
                 return DiceManager.Inst.set1;
             case 2:
                 return DiceManager.Inst.set2;
+            case 3:
+                return DiceManager.Inst.set3;
             default:
                 return null;
         }

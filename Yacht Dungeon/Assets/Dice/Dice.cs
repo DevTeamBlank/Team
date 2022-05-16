@@ -20,6 +20,9 @@ public class Dice : MonoBehaviour {
     [SerializeField] bool canFix = false;
     [SerializeField] protected bool canTrigger = false;
 
+    [SerializeField] protected Sprite smallSprite_;
+    [SerializeField] protected Sprite darkSprite_;
+
     public enum DiceRarity {
         Basic,
         Common,
@@ -115,5 +118,13 @@ public class Dice : MonoBehaviour {
 
     public int GetNumber() {
         return numbers_[face];
+    }
+
+    public void ChangeSprite(bool changeToLarge) {
+        if (changeToLarge) {
+            GetComponent<SpriteRenderer>().sprite = sprites_[face];
+        } else {
+            GetComponent<SpriteRenderer>().sprite = smallSprite_;
+        }
     }
 }

@@ -17,7 +17,7 @@ public class RoundManager : MonoBehaviour {
 
     public void StartGame() {
         currentRound = 0;
-        currentSet = 0;
+        currentSet = 1;
         currentRoll = 0;
     }
 
@@ -28,7 +28,7 @@ public class RoundManager : MonoBehaviour {
 
     public void Load(Save save) {
         currentRound = save.clearedRound;
-        currentSet = 0;
+        currentSet = 1;
         currentRoll = 0;
     }
 

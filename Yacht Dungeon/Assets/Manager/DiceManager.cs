@@ -6,9 +6,9 @@ public class DiceManager : MonoBehaviour {
 
     public static DiceManager Inst { get; private set; }
     
-    public GameObject[] set0 = new GameObject[5];
     public GameObject[] set1 = new GameObject[5];
     public GameObject[] set2 = new GameObject[5];
+    public GameObject[] set3 = new GameObject[5];
 
     public int[,] diceIndex = new int[3, 5];
 
@@ -26,7 +26,7 @@ public class DiceManager : MonoBehaviour {
         for (int i = 0; i < diceGet.Length; i++) {
             diceGet[i] = false;
         }
-        for (int i = 0; i < 3; i++) {
+        for (int i = 1; i <= 3; i++) {
             for (int j = 0; j < 5; j++) {
                 ChangeDice(i, j);
             }
@@ -38,22 +38,22 @@ public class DiceManager : MonoBehaviour {
             diceGet[i] = false;
         }
         for (int i = 0; i < 5; i++) {
-            ChangeDice(0, i, save.set0[i]);
-            ChangeDice(1, i, save.set1[i]);
-            ChangeDice(2, i, save.set2[i]);
+            ChangeDice(1, i, save.set0[i]);
+            ChangeDice(2, i, save.set1[i]);
+            ChangeDice(3, i, save.set2[i]);
         }        
     }
 
     public void ChangeDice(int set, int place, int index = 0) {
         switch (set) {
             case 0:
-                set0[place] = GameObject.Instantiate(diceDB_[index]);
-                break;
-            case 1:
                 set1[place] = GameObject.Instantiate(diceDB_[index]);
                 break;
-            case 2:
+            case 1:
                 set2[place] = GameObject.Instantiate(diceDB_[index]);
+                break;
+            case 2:
+                set3[place] = GameObject.Instantiate(diceDB_[index]);
                 break;
             default:
                 Debug.Log("Error");
@@ -67,15 +67,15 @@ public class DiceManager : MonoBehaviour {
         int set = RoundManager.Inst.currentSet;
         if (set == 0) {
             for (int i = 0; i < 5; i++) {
-                set0[i].GetComponent<Dice>().RollDice();
+                set1[i].GetComponent<Dice>().RollDice();
             }
         } else if (set == 1) {
             for (int i = 0; i < 5; i++) {
-                set1[i].GetComponent<Dice>().RollDice();
+                set2[i].GetComponent<Dice>().RollDice();
             }
         } else if (set == 2) {
             for (int i = 0; i < 5; i++) {
-                set2[i].GetComponent<Dice>().RollDice();
+                set3[i].GetComponent<Dice>().RollDice();
             }
         }
     }
@@ -83,17 +83,17 @@ public class DiceManager : MonoBehaviour {
     public int[] GetNumbers() {
         int set = RoundManager.Inst.currentSet;
         int[] ret = new int[5];
-        if (set == 0) {
-            for (int i = 0; i < 5; i++) {
-                ret[i] = set0[i].GetComponent<Dice>().GetNumber();
-            }
-        } else if (set == 1) {
+        if (set == 1) {
             for (int i = 0; i < 5; i++) {
                 ret[i] = set1[i].GetComponent<Dice>().GetNumber();
             }
-        } else if (set ==2 ) {
+        } else if (set == 2) {
             for (int i = 0; i < 5; i++) {
                 ret[i] = set2[i].GetComponent<Dice>().GetNumber();
+            }
+        } else if (set == 3) {
+            for (int i = 0; i < 5; i++) {
+                ret[i] = set3[i].GetComponent<Dice>().GetNumber();
             }
         }
         return ret;

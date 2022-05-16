@@ -100,6 +100,7 @@
     <Compile Include="Assets\Manager\GameManager.cs" />
     <Compile Include="Assets\Artifact\Artifact14.cs" />
     <Compile Include="Assets\Artifact\Artifact23.cs" />
+    <Compile Include="Assets\ImageScript\HPBar.cs" />
     <Compile Include="Assets\Artifact\Artifact10.cs" />
     <Compile Include="Assets\Artifact\Artifact34.cs" />
     <Compile Include="Assets\Artifact\Artifact02.cs" />
@@ -117,7 +118,7 @@
     <Compile Include="Assets\Artifact\Artifact33.cs" />
     <Compile Include="Assets\Artifact\Artifact.cs" />
     <Compile Include="Assets\Artifact\Artifact00.cs" />
-    <Compile Include="Assets\ImageScript\HPBar.cs" />
+    <Compile Include="Assets\Set\Set.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

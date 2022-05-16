@@ -29,7 +29,7 @@ public class Dice27 : Dice {
         isIncreasing = false;
     }
 
-    public void SetDice() {
+    public new void SetDice() {
         base.SetDice();
         isIncreasing = true;
     }

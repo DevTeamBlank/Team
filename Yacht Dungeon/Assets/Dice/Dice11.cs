@@ -29,7 +29,7 @@ public class Dice11 : Dice {
         return true;
     }
 
-    public void SetDice() {
+    public new void SetDice() {
         offset = 0;
         faces = new List<int>(6);
         base.SetDice();

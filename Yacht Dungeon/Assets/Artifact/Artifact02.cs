@@ -8,17 +8,17 @@ public class Artifact02 : Artifact {
         int[,] indexes = DiceManager.Inst.diceIndex;
         for (int i = 0; i < 5; i++) {
             if (indexes[0, i] == 0) {
-                DiceManager.Inst.set0[i].GetComponent<Dice>().IncreaseReroll();
-            }
-        }
-        for (int i = 0; i < 5; i++) {
-            if (indexes[1, i] == 0) {
                 DiceManager.Inst.set1[i].GetComponent<Dice>().IncreaseReroll();
             }
         }
         for (int i = 0; i < 5; i++) {
-            if (indexes[2, i] == 0) {
+            if (indexes[1, i] == 0) {
                 DiceManager.Inst.set2[i].GetComponent<Dice>().IncreaseReroll();
+            }
+        }
+        for (int i = 0; i < 5; i++) {
+            if (indexes[2, i] == 0) {
+                DiceManager.Inst.set3[i].GetComponent<Dice>().IncreaseReroll();
             }
         }
     }
