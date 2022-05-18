@@ -39,6 +39,8 @@ public class RoundManager : MonoBehaviour {
         RollDice();
         ToggleDice();
         TriggerDice();
+        FireDamage();
+        ResetDamage();
     }
 
     void RollDice() {
@@ -47,8 +49,22 @@ public class RoundManager : MonoBehaviour {
 
             if (hit) {
                 go = hit.transform.gameObject;
-                if (go.tag == "RollButton") {
-                    RollSet();
+                if (go == RerollButton.Inst) {
+                    RerollButton.Inst.GetComponent<RerollButton>().ChangeSprite(true);
+                }
+            } else {
+                Debug.Log(hit);
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0)) {
+            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+
+            if (hit) {
+                go = hit.transform.gameObject;
+                if (go == RerollButton.Inst) {
+                    RerollButton.Inst.GetComponent<RerollButton>().ChangeSprite(false);
+                    RerollButton.Inst.GetComponent<RerollButton>().RerollSet();
                 }
             } else {
                 Debug.Log(hit);
@@ -86,9 +102,68 @@ public class RoundManager : MonoBehaviour {
         }
     }
 
-    void RollSet() {
+    void FireDamage() {
+        if (Input.GetMouseButtonDown(0)) {
+            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+
+            if (hit) {
+                go = hit.transform.gameObject;
+                if (go == FireButton.Inst) {
+                    FireButton.Inst.GetComponent<FireButton>().ChangeSprite(true);
+                }
+            } else {
+                Debug.Log(hit);
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0)) {
+            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+
+            if (hit) {
+                go = hit.transform.gameObject;
+                if (go == FireButton.Inst) {
+                    FireButton.Inst.GetComponent<FireButton>().ChangeSprite(false);
+                    FireButton.Inst.GetComponent<FireButton>().FireDamage();
+                }
+            } else {
+                Debug.Log(hit);
+            }
+        }
+    }
+
+    void ResetDamage() {
+        if (Input.GetMouseButtonDown(0)) {
+            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+
+            if (hit) {
+                go = hit.transform.gameObject;
+                if (go == ResetButton.Inst) {
+                    ResetButton.Inst.GetComponent<ResetButton>().ChangeSprite(true);
+                }
+            } else {
+                Debug.Log(hit);
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0)) {
+            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+
+            if (hit) {
+                go = hit.transform.gameObject;
+                if (go == ResetButton.Inst) {
+                    ResetButton.Inst.GetComponent<ResetButton>().ChangeSprite(false);
+                    ResetButton.Inst.GetComponent<ResetButton>().ResetDamage();
+                }
+            } else {
+                Debug.Log(hit);
+            }
+        }
+    }
+
+    public void RollSet() {
         DiceManager.Inst.RollSet();
         currentRoll++;
+        RerollButton.Inst.UpdateDot();
         currentNumbers = DiceManager.Inst.GetNumbers();
         MadeTable.Inst.canSelectMade = true;
         // MadeTable

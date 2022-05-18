@@ -23,6 +23,8 @@ public class Dice : MonoBehaviour {
     [SerializeField] protected Sprite smallSprite_;
     [SerializeField] protected Sprite darkSprite_;
 
+    [SerializeField] GameObject rerollDot_;
+
     public enum DiceRarity {
         Basic,
         Common,
@@ -43,6 +45,7 @@ public class Dice : MonoBehaviour {
         canFix = false;
         canTrigger = false;
 
+        MakeRerollDot();
         CheckReroll();
     }
 
@@ -72,6 +75,34 @@ public class Dice : MonoBehaviour {
         // DO NOTHING HERE
     }
 
+    void MakeRerollDot() {
+        switch (reroll_) {
+            case 0:
+                break;
+            case 1:
+                Vector2 pos1 = new Vector2(-0.03f, -1.05f);
+                Instantiate(rerollDot_, pos1, Quaternion.identity, gameObject.transform).name = "Dot1";
+                break;
+            case 2:
+                Vector2 pos2 = new Vector2(-0.09f, -1.05f);
+                Instantiate(rerollDot_, pos2, Quaternion.identity, gameObject.transform).name = "Dot1";
+                Vector2 pos3 = new Vector2(0.09f, -1.05f);
+                Instantiate(rerollDot_, pos3, Quaternion.identity, gameObject.transform).name = "Dot2";
+                break;
+            case 3:
+                Vector2 pos4 = new Vector2(-0.09f, -1.05f);
+                Instantiate(rerollDot_, pos4, Quaternion.identity, gameObject.transform).name = "Dot1";
+                Vector2 pos5 = new Vector2(-0.09f, -1.05f);
+                Instantiate(rerollDot_, pos5, Quaternion.identity, gameObject.transform).name = "Dot2";
+                Vector2 pos6 = new Vector2(-0.09f, -1.05f);
+                Instantiate(rerollDot_, pos6, Quaternion.identity, gameObject.transform).name = "Dot3";
+                break;
+            default:
+                Debug.Log("Error");
+                break;
+        }
+    }
+
     void CheckReroll() {
         if (reroll_ < count) {
             FixDice();
@@ -91,7 +122,7 @@ public class Dice : MonoBehaviour {
 
     void FixDice() {
         isFixed = true;
-        transform.Find("FixSquare").GetComponent<SpriteRenderer>().enabled = true;
+        transform.Find("FixSquare").GetComponent<SpriteRenderer>().enabled = true; // TODO
     }
 
     void UnfixDice() {
@@ -126,5 +157,10 @@ public class Dice : MonoBehaviour {
         } else {
             GetComponent<SpriteRenderer>().sprite = smallSprite_;
         }
+    }
+
+    public void UpdateReroll() {
+        int reroll = GetReroll();
+
     }
 }
