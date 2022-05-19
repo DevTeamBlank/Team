@@ -25,6 +25,10 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] GameObject chest;
     [SerializeField] GameObject enemy1;
 
+    public int set1Damage;
+    public int set2Damage;
+    public int set3Damage;
+
 
     public void Load(Save save) {
         currentRound = save.clearedRound;
@@ -165,7 +169,6 @@ public class RoundManager : MonoBehaviour {
         currentRoll++;
         RerollButton.Inst.UpdateDot();
         currentNumbers = DiceManager.Inst.GetNumbers();
-        MadeTable.Inst.canSelectMade = true;
         // MadeTable
     }
 
@@ -173,7 +176,6 @@ public class RoundManager : MonoBehaviour {
 
     void RoundStart() {
         roundStartS.CallArtifact();
-        MadeTable.Inst.RoundStart();
     }
 
 }

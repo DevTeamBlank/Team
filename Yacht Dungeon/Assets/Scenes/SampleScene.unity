@@ -595,6 +595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 101270319}
   - component: {fileID: 101270320}
+  - component: {fileID: 101270321}
   m_Layer: 0
   m_Name: Choice
   m_TagString: Untagged
@@ -667,6 +668,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &101270321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101270318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 6
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &104194206
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +983,9 @@ MonoBehaviour:
   enemy0: {fileID: 0}
   chest: {fileID: 0}
   enemy1: {fileID: 0}
+  set1Damage: 0
+  set2Damage: 0
+  set3Damage: 0
 --- !u!1 &163103755
 GameObject:
   m_ObjectHideFlags: 0
@@ -4738,6 +4760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1122022987}
+  - component: {fileID: 1122022988}
   m_Layer: 0
   m_Name: MadeTable
   m_TagString: Untagged
@@ -4774,6 +4797,32 @@ Transform:
   m_Father: {fileID: 1941119313}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1122022988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122022986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647b37aa491528346967d2388f636c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aces_: {fileID: 1771849341}
+  deuces_: {fileID: 1839315053}
+  threes_: {fileID: 1259691130}
+  fours_: {fileID: 1724522663}
+  fives_: {fileID: 2055826371}
+  sixes_: {fileID: 1147698046}
+  choice_: {fileID: 101270318}
+  fourOfAKind_: {fileID: 1215949751}
+  fullHouse_: {fileID: 1813566492}
+  smallStraight_: {fileID: 1903047377}
+  largeStraight_: {fileID: 1380842434}
+  yacht_: {fileID: 1293836903}
+  currentSet: 0
+  banMade: 
 --- !u!1 &1147698046
 GameObject:
   m_ObjectHideFlags: 0
@@ -4784,6 +4833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1147698047}
   - component: {fileID: 1147698048}
+  - component: {fileID: 1147698049}
   m_Layer: 0
   m_Name: Sixes
   m_TagString: Untagged
@@ -4856,6 +4906,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1147698049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147698046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 5
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &1155955536
 GameObject:
   m_ObjectHideFlags: 0
@@ -5305,6 +5373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1215949752}
   - component: {fileID: 1215949753}
+  - component: {fileID: 1215949754}
   m_Layer: 0
   m_Name: 4OfAKind
   m_TagString: Untagged
@@ -5377,6 +5446,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1215949754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215949751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 7
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &1242923778
 GameObject:
   m_ObjectHideFlags: 0
@@ -5469,6 +5556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1259691131}
   - component: {fileID: 1259691132}
+  - component: {fileID: 1259691133}
   m_Layer: 0
   m_Name: Threes
   m_TagString: Untagged
@@ -5541,6 +5629,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1259691133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259691130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 2
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &1293836903
 GameObject:
   m_ObjectHideFlags: 0
@@ -5551,6 +5657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1293836904}
   - component: {fileID: 1293836905}
+  - component: {fileID: 1293836906}
   m_Layer: 0
   m_Name: Yacht
   m_TagString: Untagged
@@ -5623,6 +5730,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1293836906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293836903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 11
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &1327105002
 GameObject:
   m_ObjectHideFlags: 0
@@ -6004,6 +6129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1380842435}
   - component: {fileID: 1380842436}
+  - component: {fileID: 1380842437}
   m_Layer: 0
   m_Name: L.Straight
   m_TagString: Untagged
@@ -6076,6 +6202,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1380842437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380842434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 10
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &1392024105
 GameObject:
   m_ObjectHideFlags: 0
@@ -7977,6 +8121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1724522664}
   - component: {fileID: 1724522665}
+  - component: {fileID: 1724522666}
   m_Layer: 0
   m_Name: Fours
   m_TagString: Untagged
@@ -8049,6 +8194,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1724522666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724522663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 3
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &1740379536
 GameObject:
   m_ObjectHideFlags: 0
@@ -8260,14 +8423,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!222 &1771849344
-CanvasRenderer:
+--- !u!114 &1771849344
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771849341}
-  m_CullTransparentMesh: 1
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 0
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &1797844539
 GameObject:
   m_ObjectHideFlags: 0
@@ -8442,6 +8615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1813566493}
   - component: {fileID: 1813566494}
+  - component: {fileID: 1813566495}
   m_Layer: 0
   m_Name: FullHouse
   m_TagString: Untagged
@@ -8514,6 +8688,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1813566495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813566492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 8
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &1822786961
 GameObject:
   m_ObjectHideFlags: 0
@@ -8609,6 +8801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1839315054}
   - component: {fileID: 1839315055}
+  - component: {fileID: 1839315056}
   m_Layer: 0
   m_Name: Deuces
   m_TagString: Untagged
@@ -8681,6 +8874,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1839315056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839315053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 1
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &1903047377
 GameObject:
   m_ObjectHideFlags: 0
@@ -8691,6 +8902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1903047378}
   - component: {fileID: 1903047379}
+  - component: {fileID: 1903047380}
   m_Layer: 0
   m_Name: S.Straight
   m_TagString: Untagged
@@ -8763,6 +8975,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1903047380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903047377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 9
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &1906362612
 GameObject:
   m_ObjectHideFlags: 0
@@ -9156,6 +9386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2055826372}
   - component: {fileID: 2055826373}
+  - component: {fileID: 2055826374}
   m_Layer: 0
   m_Name: Fives
   m_TagString: Untagged
@@ -9228,6 +9459,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2055826374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055826371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d3004ca0638404687221d0d758a670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  made: 4
+  barSprite_: {fileID: 21300000, guid: 3773f144d7b87e343a7cc7be121fa1fe, type: 3}
+  onMouseSprite_: {fileID: 21300000, guid: 16cc11dca2886124ebed47967804cb6f, type: 3}
+  usedSprite_: {fileID: 21300000, guid: 6b2eb16a01d683740877c5e24d5f41a8, type: 3}
+  canSelect: 1
+  onMouse: 0
 --- !u!1 &2072961302
 GameObject:
   m_ObjectHideFlags: 0
