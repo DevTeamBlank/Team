@@ -47,17 +47,17 @@ public class RoundManager : MonoBehaviour {
         ResetDamage();
     }
 
+    [SerializeField] GameObject rerollButton_;
+
     void RollDice() {
         if (Input.GetMouseButtonDown(0)) {
             hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
 
             if (hit) {
                 go = hit.transform.gameObject;
-                if (go == RerollButton.Inst) {
+                if (go == rerollButton_) {
                     RerollButton.Inst.GetComponent<RerollButton>().ChangeSprite(true);
                 }
-            } else {
-                Debug.Log(hit);
             }
         }
 
@@ -66,12 +66,10 @@ public class RoundManager : MonoBehaviour {
 
             if (hit) {
                 go = hit.transform.gameObject;
-                if (go == RerollButton.Inst) {
+                if (go == rerollButton_) {
                     RerollButton.Inst.GetComponent<RerollButton>().ChangeSprite(false);
                     RerollButton.Inst.GetComponent<RerollButton>().RerollSet();
                 }
-            } else {
-                Debug.Log(hit);
             }
         }
     }
@@ -85,8 +83,6 @@ public class RoundManager : MonoBehaviour {
                 if (go.tag == "Dice") {
                     go.GetComponent<Dice>().ToggleFixDice();
                 }
-            } else {
-                Debug.Log(hit);
             }
         }
     }
@@ -100,11 +96,12 @@ public class RoundManager : MonoBehaviour {
                 if (go.tag == "Dice") {
                     go.GetComponent<Dice>().TriggerDice();
                 }
-            } else {
-                Debug.Log(hit);
             }
         }
     }
+
+    [SerializeField] GameObject fireButton_;
+    [SerializeField] GameObject resetButton_;
 
     void FireDamage() {
         if (Input.GetMouseButtonDown(0)) {
@@ -112,11 +109,9 @@ public class RoundManager : MonoBehaviour {
 
             if (hit) {
                 go = hit.transform.gameObject;
-                if (go == FireButton.Inst) {
+                if (go == fireButton_) {
                     FireButton.Inst.GetComponent<FireButton>().ChangeSprite(true);
                 }
-            } else {
-                Debug.Log(hit);
             }
         }
 
@@ -125,12 +120,10 @@ public class RoundManager : MonoBehaviour {
 
             if (hit) {
                 go = hit.transform.gameObject;
-                if (go == FireButton.Inst) {
+                if (go == fireButton_) {
                     FireButton.Inst.GetComponent<FireButton>().ChangeSprite(false);
                     FireButton.Inst.GetComponent<FireButton>().FireDamage();
                 }
-            } else {
-                Debug.Log(hit);
             }
         }
     }
@@ -141,11 +134,9 @@ public class RoundManager : MonoBehaviour {
 
             if (hit) {
                 go = hit.transform.gameObject;
-                if (go == ResetButton.Inst) {
+                if (go == resetButton_) {
                     ResetButton.Inst.GetComponent<ResetButton>().ChangeSprite(true);
                 }
-            } else {
-                Debug.Log(hit);
             }
         }
 
@@ -154,12 +145,10 @@ public class RoundManager : MonoBehaviour {
 
             if (hit) {
                 go = hit.transform.gameObject;
-                if (go == ResetButton.Inst) {
+                if (go == resetButton_) {
                     ResetButton.Inst.GetComponent<ResetButton>().ChangeSprite(false);
                     ResetButton.Inst.GetComponent<ResetButton>().ResetDamage();
                 }
-            } else {
-                Debug.Log(hit);
             }
         }
     }

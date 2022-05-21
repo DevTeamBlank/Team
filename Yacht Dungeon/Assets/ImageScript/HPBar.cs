@@ -15,8 +15,8 @@ public class HPBar : MonoBehaviour {
 
     public void Start() {
         hpBars = new GameObject[5];
-        for (int i = 1; i <= 5; i++) {
-            hpBars[i] = transform.Find("HPBarEmpty" + i.ToString()).gameObject;
+        for (int i = 0; i < 5; i++) {
+            hpBars[i] = transform.Find("HPBarEmpty" + (i+1).ToString()).gameObject;
         }
     }
 

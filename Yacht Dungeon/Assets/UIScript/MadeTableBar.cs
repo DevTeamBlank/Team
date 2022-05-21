@@ -26,7 +26,7 @@ public class MadeTableBar : MonoBehaviour {
         hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
         if (hit) {
             go = hit.transform.gameObject;
-            if (go == this) {
+            if (go == gameObject) {
                 if (!onMouse) {
                     onMouse = true;
                     ChangeSprite(Sprites.onMouse);
@@ -48,7 +48,7 @@ public class MadeTableBar : MonoBehaviour {
 
             if (hit) {
                 go = hit.transform.gameObject;
-                if (go == this) {
+                if (go == gameObject) {
                     // MadeTable
                     MadeTable.Inst.SelectMade(made);
                 }

@@ -46,13 +46,13 @@ public class DiceManager : MonoBehaviour {
 
     public void ChangeDice(int set, int place, int index = 0) {
         switch (set) {
-            case 0:
+            case 1:
                 set1[place] = GameObject.Instantiate(diceDB_[index]);
                 break;
-            case 1:
+            case 2:
                 set2[place] = GameObject.Instantiate(diceDB_[index]);
                 break;
-            case 2:
+            case 3:
                 set3[place] = GameObject.Instantiate(diceDB_[index]);
                 break;
             default:
@@ -60,7 +60,7 @@ public class DiceManager : MonoBehaviour {
                 break;
         }
         diceGet[index] = true;
-        diceIndex[set, place] = index;
+        diceIndex[set - 1, place] = index;
     }
 
     public void RollSet() {

@@ -120,14 +120,17 @@ public class Dice : MonoBehaviour {
         }
     }
 
+    public GameObject diceKeep_;
+    GameObject diceKeep;
+
     void FixDice() {
         isFixed = true;
-        transform.Find("FixSquare").GetComponent<SpriteRenderer>().enabled = true; // TODO
+        diceKeep = Instantiate(diceKeep_, transform);
     }
 
     void UnfixDice() {
         isFixed = false;
-        transform.Find("FixSquare").GetComponent<SpriteRenderer>().enabled = false;
+        Destroy(diceKeep);
     }
 
     public void ChangeNumbers(int[] newNumbers, Sprite[] newSprites) {

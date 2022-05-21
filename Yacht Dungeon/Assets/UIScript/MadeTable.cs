@@ -12,46 +12,22 @@ public class MadeTable : MonoBehaviour {
         Inst = this;
     }
 
-    TextMeshPro acesT;
-    TextMeshPro deucesT;
-    TextMeshPro threesT;
-    TextMeshPro foursT;
-    TextMeshPro fivesT;
-    TextMeshPro sixesT;
-    TextMeshPro choiceT;
-    TextMeshPro fourOfAKindT;
-    TextMeshPro fullHouseT;
-    TextMeshPro smallStraightT;
-    TextMeshPro largeStraightT;
-    TextMeshPro yachtT;
+    [SerializeField] TextMeshPro[] madeDamageT_ = new TextMeshPro[12];
+    [SerializeField] TextMeshPro[] madeBonusT_ = new TextMeshPro[12];
+    [SerializeField] TextMeshPro setBonusT_;
 
-    TextMeshPro acesBT;
-    TextMeshPro deucesBT;
-    TextMeshPro threesBT;
-    TextMeshPro foursBT;
-    TextMeshPro fivesBT;
-    TextMeshPro sixesBT;
-    TextMeshPro choiceBT;
-    TextMeshPro fourOfAKindBT;
-    TextMeshPro fullHouseBT;
-    TextMeshPro smallStraightBT;
-    TextMeshPro largeStraightBT;
-    TextMeshPro yachtBT;
-
-    TextMeshPro setBT;
-
-    public GameObject aces_;
-    public GameObject deuces_;
-    public GameObject threes_;
-    public GameObject fours_;
-    public GameObject fives_;
-    public GameObject sixes_;
-    public GameObject choice_;
-    public GameObject fourOfAKind_;
-    public GameObject fullHouse_;
-    public GameObject smallStraight_;
-    public GameObject largeStraight_;
-    public GameObject yacht_;
+    [SerializeField] GameObject aces_;
+    [SerializeField] GameObject deuces_;
+    [SerializeField] GameObject threes_;
+    [SerializeField] GameObject fours_;
+    [SerializeField] GameObject fives_;
+    [SerializeField] GameObject sixes_;
+    [SerializeField] GameObject choice_;
+    [SerializeField] GameObject fourOfAKind_;
+    [SerializeField] GameObject fullHouse_;
+    [SerializeField] GameObject smallStraight_;
+    [SerializeField] GameObject largeStraight_;
+    [SerializeField] GameObject yacht_;
 
     [HideInInspector] public Subject acesS;
     [HideInInspector] public Subject deucesS;
@@ -72,70 +48,39 @@ public class MadeTable : MonoBehaviour {
     [SerializeField] List<Made> banMade;
 
     private void Start() {
-        FindText();
         MakeSubject();
         ResetTable();
     }
 
-    void FindText() {
-        acesT = transform.Find("Aces").GetComponent<TextMeshPro>();
-        deucesT = transform.Find("Deuces").GetComponent<TextMeshPro>();
-        threesT = transform.Find("Threes").GetComponent<TextMeshPro>();
-        foursT = transform.Find("Fours").GetComponent<TextMeshPro>();
-        fivesT = transform.Find("Fives").GetComponent<TextMeshPro>();
-        sixesT = transform.Find("Sixes").GetComponent<TextMeshPro>();
-        choiceT = transform.Find("Choice").GetComponent<TextMeshPro>();
-        fourOfAKindT = transform.Find("FourOfAKind").GetComponent<TextMeshPro>();
-        fullHouseT = transform.Find("FullHouse").GetComponent<TextMeshPro>();
-        smallStraightT = transform.Find("SmallStraight").GetComponent<TextMeshPro>();
-        largeStraightT = transform.Find("LargeStraight").GetComponent<TextMeshPro>();
-        yachtT = transform.Find("Yacht").GetComponent<TextMeshPro>();
-
-        acesBT = transform.Find("AcesB").GetComponent<TextMeshPro>();
-        deucesBT = transform.Find("DeucesB").GetComponent<TextMeshPro>();
-        threesBT = transform.Find("ThreesB").GetComponent<TextMeshPro>();
-        foursBT = transform.Find("FoursB").GetComponent<TextMeshPro>();
-        fivesBT = transform.Find("FivesB").GetComponent<TextMeshPro>();
-        sixesBT = transform.Find("SixesB").GetComponent<TextMeshPro>();
-        choiceBT = transform.Find("ChoiceB").GetComponent<TextMeshPro>();
-        fourOfAKindBT = transform.Find("FourOfAKindB").GetComponent<TextMeshPro>();
-        fullHouseBT = transform.Find("FullHouseB").GetComponent<TextMeshPro>();
-        smallStraightBT = transform.Find("SmallStraightB").GetComponent<TextMeshPro>();
-        largeStraightBT = transform.Find("LargeStraightB").GetComponent<TextMeshPro>();
-        yachtBT = transform.Find("Yacht").GetComponent<TextMeshPro>();
-
-        setBT = transform.Find("SetB").GetComponent<TextMeshPro>();
-    }
-
     void UpdateText() {
         int[] num = RoundManager.Inst.currentNumbers;
-        acesT.text = AcesScore(num).ToString();
-        deucesT.text = DeucesScore(num).ToString();
-        threesT.text = ThreesScore(num).ToString();
-        foursT.text = FoursScore(num).ToString();
-        fivesT.text = FivesScore(num).ToString();
-        sixesT.text = SixesScore(num).ToString();
-        choiceT.text = ChoiceScore(num).ToString();
-        fourOfAKindT.text = FourOfAKindScore(num).ToString();
-        fullHouseT.text = FullHouseScore(num).ToString();
-        smallStraightT.text = SmallStraightScore(num).ToString();
-        largeStraightT.text = LargeStraightScore(num).ToString();
-        yachtT.text = YachtScore(num).ToString();
+        madeDamageT_[0].text = AcesScore(num).ToString();
+        madeDamageT_[1].text = DeucesScore(num).ToString();
+        madeDamageT_[2].text = ThreesScore(num).ToString();
+        madeDamageT_[3].text = FoursScore(num).ToString();
+        madeDamageT_[4].text = FivesScore(num).ToString();
+        madeDamageT_[5].text = SixesScore(num).ToString();
+        madeDamageT_[6].text = ChoiceScore(num).ToString();
+        madeDamageT_[7].text = FourOfAKindScore(num).ToString();
+        madeDamageT_[8].text = FullHouseScore(num).ToString();
+        madeDamageT_[9].text = SmallStraightScore(num).ToString();
+        madeDamageT_[10].text = LargeStraightScore(num).ToString();
+        madeDamageT_[11].text = YachtScore(num).ToString();
 
-        acesBT.text = acesS.Bonus(num).ToString();
-        deucesBT.text = deucesS.Bonus(num).ToString();
-        threesBT.text = threesS.Bonus(num).ToString();
-        foursBT.text = foursS.Bonus(num).ToString();
-        fivesBT.text = fivesS.Bonus(num).ToString();
-        sixesBT.text = sixesS.Bonus(num).ToString();
-        choiceBT.text = choiceS.Bonus(num).ToString();
-        fourOfAKindBT.text = FourOfAKindScore(num) != 0 ? fourOfAKindS.Bonus(num).ToString() : "0";
-        fullHouseBT.text = FullHouseScore(num) != 0 ? fullHouseS.Bonus(num).ToString() : "0";
-        smallStraightBT.text = SmallStraightScore(num) != 0 ? smallStraightS.Bonus(num).ToString() : "0";
-        largeStraightBT.text = LargeStraightScore(num) != 0 ? largeStraightS.Bonus(num).ToString() : "0";
-        yachtBT.text = YachtScore(num) != 0 ? yachtS.Bonus(num).ToString() : "0";
+        madeBonusT_[0].text = acesS.Bonus(num).ToString();
+        madeBonusT_[1].text = deucesS.Bonus(num).ToString();
+        madeBonusT_[2].text = threesS.Bonus(num).ToString();
+        madeBonusT_[3].text = foursS.Bonus(num).ToString();
+        madeBonusT_[4].text = fivesS.Bonus(num).ToString();
+        madeBonusT_[5].text = sixesS.Bonus(num).ToString();
+        madeBonusT_[6].text = choiceS.Bonus(num).ToString();
+        madeBonusT_[7].text = FourOfAKindScore(num) != 0 ? fourOfAKindS.Bonus(num).ToString() : "0";
+        madeBonusT_[8].text = FullHouseScore(num) != 0 ? fullHouseS.Bonus(num).ToString() : "0";
+        madeBonusT_[9].text = SmallStraightScore(num) != 0 ? smallStraightS.Bonus(num).ToString() : "0";
+        madeBonusT_[10].text = LargeStraightScore(num) != 0 ? largeStraightS.Bonus(num).ToString() : "0";
+        madeBonusT_[11].text = YachtScore(num) != 0 ? yachtS.Bonus(num).ToString() : "0";
 
-        setBT.text = setS.Bonus(num).ToString();
+        setBonusT_.text = setS.Bonus(num).ToString();
     }
 
     void MakeSubject() {
