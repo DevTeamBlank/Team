@@ -12,7 +12,4 @@ public class FireButton : MonoBehaviour {
         GetComponent<SpriteRenderer>().sprite = isPushed ? pushedSprite_ : buttonSprite_;
     }
 
-    public void FireDamage() {
-        // TODO
-    }
 }

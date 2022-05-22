@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Artifact : MonoBehaviour {
 
-    [SerializeField] bool isEnabled;
+    [SerializeField] bool isEnabled = false;
 
     public int index_;
     public string nomenclature_;

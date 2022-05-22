@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public static int Seed { get; private set; }
+    [SerializeField] public static int Seed { get; private set; }
     public static GameManager Inst { get; private set ;}
 
     void Awake() {
@@ -35,9 +35,9 @@ public class GameManager : MonoBehaviour {
     void StartGame() {
         CreateSeed();
         Player.Inst.StartGame();
-        RoundManager.Inst.StartGame();
         ArtifactManager.Inst.StartGame();
         DiceManager.Inst.StartGame();
+        RoundManager.Inst.StartGame();
     }
 
     void LoadGame(Save save) {

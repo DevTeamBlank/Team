@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5737928244775901348}
   - component: {fileID: 5737928244775901349}
   - component: {fileID: 5737928244775901350}
+  - component: {fileID: 1487698979056159497}
   m_Layer: 0
   m_Name: Dice00
   m_TagString: Dice
@@ -69,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1058099199
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -110,10 +111,42 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 924a5d6f36246324190c4156209df68c, type: 3}
   - {fileID: 21300000, guid: d39892969cec57044876e6ddf658255a, type: 3}
   - {fileID: 21300000, guid: cd6c925ed419f204d92b36ffa93dce2e, type: 3}
+  smallSprite_:
+  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
+  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
+  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
+  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
+  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
+  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
   reroll_: 1
   canFix: 0
   canTrigger: 0
-  smallSprite_: {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
-  darkSprite_: {fileID: 0}
+  rerollDots: []
   rerollDot_: {fileID: 7019885826090297617, guid: 29112d0bd070812439798484526abfca, type: 3}
   diceKeep_: {fileID: 9093994333308990468, guid: 38873122141f4444188ff428327e42e5, type: 3}
+--- !u!61 &1487698979056159497
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5737928244775901351}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.08, y: 1.08}
+    newSize: {x: 1.08, y: 1.08}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.08, y: 1.08}
+  m_EdgeRadius: 0

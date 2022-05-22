@@ -15,14 +15,10 @@ public class Player : MonoBehaviour {
     void Awake() {
         Inst = this;
     }
-
-    // Update is called once per frame
-    void Update() {
-
-    }
     
     public void StartGame() {
         hp = startHp_;
+        HPBar.Inst.UpdateHP();
         choice = startChoice_;
     }
 
@@ -33,13 +29,17 @@ public class Player : MonoBehaviour {
 
     public void Damaged() {
         hp--;
+        HPBar.Inst.UpdateHP();
         if (hp <= 0) {
             GameManager.Inst.GameOver();
         }
     }
 
     public void Heal() {
-        if (hp < startHp_) hp++;
+        if (hp < startHp_) {
+            hp++;
+            HPBar.Inst.UpdateHP();
+        }
     }
 
     public int GetHp() {

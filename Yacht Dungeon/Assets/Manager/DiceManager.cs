@@ -28,7 +28,8 @@ public class DiceManager : MonoBehaviour {
             for (int j = 0; j < 5; j++) {
                 ChangeDice(i, j);
             }
-        }      
+        }
+        Set.Inst.ChangeDiceRollPosition(1);
     }
 
     public void Load(Save save) {
@@ -42,16 +43,27 @@ public class DiceManager : MonoBehaviour {
         }        
     }
 
+    GameObject tempGo;
+
     public void ChangeDice(int set, int place, int index = 0) {
         switch (set) {
             case 1:
-                set1[place] = GameObject.Instantiate(diceDB_[index]);
+                Destroy(set1[place]);
+                tempGo = Instantiate(diceDB_[index], Set.Inst.transform);
+                tempGo.name = "Dice" + (place + 1).ToString();
+                set1[place] = tempGo;
                 break;
             case 2:
-                set2[place] = GameObject.Instantiate(diceDB_[index]);
+                Destroy(set2[place]);
+                tempGo = Instantiate(diceDB_[index], Set.Inst.transform);
+                tempGo.name = "Dice" + (place + 6).ToString();
+                set2[place] = tempGo;
                 break;
             case 3:
-                set3[place] = GameObject.Instantiate(diceDB_[index]);
+                Destroy(set3[place]);
+                tempGo = Instantiate(diceDB_[index], Set.Inst.transform);
+                tempGo.name = "Dice" + (place + 11).ToString();
+                set3[place] = tempGo;
                 break;
             default:
                 Debug.Log("Error");

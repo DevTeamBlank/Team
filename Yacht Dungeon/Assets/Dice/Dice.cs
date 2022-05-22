@@ -15,14 +15,13 @@ public class Dice : MonoBehaviour {
 
     [SerializeField] protected int[] numbers_ = new int[6];
     [SerializeField] protected Sprite[] sprites_ = new Sprite[6];
+    [SerializeField] protected Sprite[] smallSprite_ = new Sprite[6];
     [SerializeField] protected int reroll_;
 
     [SerializeField] bool canFix = false;
     [SerializeField] protected bool canTrigger = false;
 
-    [SerializeField] protected Sprite smallSprite_;
-    [SerializeField] protected Sprite darkSprite_;
-
+    [SerializeField] GameObject[] rerollDots;
     [SerializeField] GameObject rerollDot_;
 
     public enum DiceRarity {
@@ -42,7 +41,7 @@ public class Dice : MonoBehaviour {
         face = 0;
         count = 0;
 
-        canFix = false;
+        canFix = true;
         canTrigger = false;
 
         MakeRerollDot();
@@ -80,22 +79,31 @@ public class Dice : MonoBehaviour {
             case 0:
                 break;
             case 1:
-                Vector2 pos1 = new Vector2(-0.03f, -1.05f);
-                Instantiate(rerollDot_, pos1, Quaternion.identity, gameObject.transform).name = "Dot1";
+                rerollDots = new GameObject[1];
+                Vector2 pos1 = (Vector2)transform.position + new Vector2(-0.03f, -1.05f);
+                rerollDots[0] = Instantiate(rerollDot_, pos1, Quaternion.identity, gameObject.transform);
+                rerollDots[0].name = "Dot1";
                 break;
             case 2:
-                Vector2 pos2 = new Vector2(-0.09f, -1.05f);
-                Instantiate(rerollDot_, pos2, Quaternion.identity, gameObject.transform).name = "Dot1";
-                Vector2 pos3 = new Vector2(0.09f, -1.05f);
-                Instantiate(rerollDot_, pos3, Quaternion.identity, gameObject.transform).name = "Dot2";
+                rerollDots = new GameObject[2];
+                Vector2 pos2 = (Vector2)transform.position + new Vector2(-0.09f, -1.05f);
+                rerollDots[0] = Instantiate(rerollDot_, pos2, Quaternion.identity, gameObject.transform);
+                rerollDots[0].name = "Dot1";
+                Vector2 pos3 = (Vector2)transform.position + new Vector2(0.09f, -1.05f);
+                rerollDots[1] = Instantiate(rerollDot_, pos3, Quaternion.identity, gameObject.transform);
+                rerollDots[1].name = "Dot2";
                 break;
             case 3:
-                Vector2 pos4 = new Vector2(-0.09f, -1.05f);
-                Instantiate(rerollDot_, pos4, Quaternion.identity, gameObject.transform).name = "Dot1";
-                Vector2 pos5 = new Vector2(-0.09f, -1.05f);
-                Instantiate(rerollDot_, pos5, Quaternion.identity, gameObject.transform).name = "Dot2";
-                Vector2 pos6 = new Vector2(-0.09f, -1.05f);
-                Instantiate(rerollDot_, pos6, Quaternion.identity, gameObject.transform).name = "Dot3";
+                rerollDots = new GameObject[3];
+                Vector2 pos4 = (Vector2)transform.position + new Vector2(-0.21f, -1.05f);
+                rerollDots[0] = Instantiate(rerollDot_, pos4, Quaternion.identity, gameObject.transform);
+                rerollDots[0].name = "Dot1";
+                Vector2 pos5 = (Vector2)transform.position + new Vector2(-0.03f, -1.05f);
+                rerollDots[1] = Instantiate(rerollDot_, pos5, Quaternion.identity, gameObject.transform);
+                rerollDots[1].name = "Dot2";
+                Vector2 pos6 = (Vector2)transform.position + new Vector2(0.15f, -1.05f);
+                rerollDots[2] = Instantiate(rerollDot_, pos6, Quaternion.identity, gameObject.transform);
+                rerollDots[2].name = "Dot3";
                 break;
             default:
                 Debug.Log("Error");
@@ -157,8 +165,14 @@ public class Dice : MonoBehaviour {
     public void ChangeSprite(bool changeToLarge) {
         if (changeToLarge) {
             GetComponent<SpriteRenderer>().sprite = sprites_[face];
+            for (int i = 0; i < rerollDots.Length; i++) {
+                rerollDots[i].GetComponent<SpriteRenderer>().enabled = true;
+            }
         } else {
-            GetComponent<SpriteRenderer>().sprite = smallSprite_;
+            GetComponent<SpriteRenderer>().sprite = smallSprite_[face];
+            for (int i = 0; i < rerollDots.Length; i++) {
+                rerollDots[i].GetComponent<SpriteRenderer>().enabled = false;
+            }
         }
     }
 

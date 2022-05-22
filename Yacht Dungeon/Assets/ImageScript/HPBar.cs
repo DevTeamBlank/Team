@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class HPBar : MonoBehaviour {
 
-    [SerializeField] Sprite fullSprite;
-    [SerializeField] Sprite emptySprite;
+    public static HPBar Inst { get; private set; }
 
-    GameObject[] hpBars;
-    GameObject hpBar2;
-    GameObject hpBar3;
-    GameObject hpBar4;
-    GameObject hpBar5;
-
-    public void Start() {
-        hpBars = new GameObject[5];
-        for (int i = 0; i < 5; i++) {
-            hpBars[i] = transform.Find("HPBarEmpty" + (i+1).ToString()).gameObject;
-        }
+    void Awake() {
+        Inst = this;
     }
 
-    public void UpdateHP(int hp) {
+    [SerializeField] Sprite fullSprite_;
+    [SerializeField] Sprite emptySprite_;
+
+    [SerializeField] GameObject[] hpBars_ = new GameObject[5];
+
+    public void UpdateHP() {
+        int hp = Player.Inst.hp;
         for (int i = 0; i < hp; i++) {
-            hpBars[i].GetComponent<SpriteRenderer>().sprite = fullSprite;
+            hpBars_[i].GetComponent<SpriteRenderer>().sprite = fullSprite_;
         }
         for (int i = hp; i < 5; i++) {
-            hpBars[i].GetComponent<SpriteRenderer>().sprite = emptySprite;
+            hpBars_[i].GetComponent<SpriteRenderer>().sprite = emptySprite_;
         }
     }
 }

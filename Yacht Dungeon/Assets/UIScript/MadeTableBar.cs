@@ -52,8 +52,6 @@ public class MadeTableBar : MonoBehaviour {
                 if (target == gameObject) {
                     MadeTable.Inst.SelectMade(made);
                 }
-            } else {
-                Debug.Log(hit);
             }
         }
     }

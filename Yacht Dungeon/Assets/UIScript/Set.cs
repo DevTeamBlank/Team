@@ -46,7 +46,7 @@ public class Set : MonoBehaviour {
         }
     }
 
-    void ChangeDiceRollPosition(int set) {
+    public void ChangeDiceRollPosition(int set) {
         ChangeDiceSetPosition();
         if (set == 1) {
             ChangeDiceRollPositionSet(DiceManager.Inst.set1);

@@ -126,7 +126,7 @@ public class RoundManager : MonoBehaviour {
                 target = hit.collider.gameObject;
                 if (target == fireButton_) {
                     FireButton.Inst.ChangeSprite(false);
-                    FireButton.Inst.FireDamage();
+                    // TODO
                 }
             }
         }

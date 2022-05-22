@@ -307,6 +307,7 @@ public class MadeTable : MonoBehaviour {
             if (banMade[i] == made) return;
         }
         BanMade(made);
+        Debug.Log((int)made);
         RoundManager.Inst.GetComponent<RoundManager>().SetDamage(madeDamage[(int)made]);
     }
 

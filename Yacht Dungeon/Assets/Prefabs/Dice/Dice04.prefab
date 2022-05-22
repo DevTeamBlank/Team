@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1058099199
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0c934fdaf3fba0e448503795a71892c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -110,10 +110,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fa86fe083364c2646888030034cde852, type: 3}
   - {fileID: 21300000, guid: bbe20b0ff2d14184889f608550a54abe, type: 3}
   - {fileID: 21300000, guid: bbe20b0ff2d14184889f608550a54abe, type: 3}
+  smallSprite_:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   reroll_: 1
   canFix: 0
   canTrigger: 0
-  smallSprite_: {fileID: 21300000, guid: 0c934fdaf3fba0e448503795a71892c4, type: 3}
-  darkSprite_: {fileID: 0}
   rerollDot_: {fileID: 7019885826090297617, guid: 29112d0bd070812439798484526abfca, type: 3}
   diceKeep_: {fileID: 9093994333308990468, guid: 38873122141f4444188ff428327e42e5, type: 3}
