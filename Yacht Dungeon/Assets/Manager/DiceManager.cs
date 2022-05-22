@@ -20,8 +20,6 @@ public class DiceManager : MonoBehaviour {
         Inst = this;
     }
 
-
-
     public void StartGame() {
         for (int i = 0; i < diceGet.Length; i++) {
             diceGet[i] = false;

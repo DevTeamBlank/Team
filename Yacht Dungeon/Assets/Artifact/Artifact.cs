@@ -13,6 +13,8 @@ public class Artifact : MonoBehaviour {
     public ArtifactRarity rarity_;
     public string description_;
 
+    [SerializeField] Sprite largeSprite_;
+
     public enum ArtifactRarity {
         Basic,
         Common,

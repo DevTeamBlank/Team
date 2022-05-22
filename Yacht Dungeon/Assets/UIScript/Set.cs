@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Set : MonoBehaviour {
 
+    public static Set Inst { get; private set; }
+
+    void Awake() {
+        Inst = this;
+    }
+
     [SerializeField] Sprite set1Sprite_;
     [SerializeField] Sprite set2Sprite_;
     [SerializeField] Sprite set3Sprite_;
@@ -15,27 +21,32 @@ public class Set : MonoBehaviour {
     [SerializeField] float setPositionOffsetX_;
     [SerializeField] float setPositionOffsetY_;
 
-    [SerializeField] Sprite rerollDotBrightSprite_;
-    [SerializeField] Sprite rerollDotDarkSprite_;
+    [SerializeField] GameObject nameTagSet_;
 
-    public void ChangeSetSprite(int set) {
+    public void NextSet() {
+        int set = RoundManager.Inst.currentSet;
+        ChangeSetSprite(set);
+        ChangeDiceRollPosition(set);
+    }
+
+    void ChangeSetSprite(int set) {
         switch (set) {
             case 0:
-                transform.Find("NameTagSet").GetComponent<SpriteRenderer>().sprite = null;
+                nameTagSet_.GetComponent<SpriteRenderer>().sprite = null;
                 break;
             case 1:
-                transform.Find("NameTagSet").GetComponent<SpriteRenderer>().sprite = set1Sprite_;
+                nameTagSet_.GetComponent<SpriteRenderer>().sprite = set1Sprite_;
                 break;
             case 2:
-                transform.Find("NameTagSet").GetComponent<SpriteRenderer>().sprite = set2Sprite_;
+                nameTagSet_.GetComponent<SpriteRenderer>().sprite = set2Sprite_;
                 break;
             case 3:
-                transform.Find("NameTagSet").GetComponent<SpriteRenderer>().sprite = set3Sprite_;
+                nameTagSet_.GetComponent<SpriteRenderer>().sprite = set3Sprite_;
                 break;
         }
     }
 
-    public void ChangeDiceRollPosition(int set) {
+    void ChangeDiceRollPosition(int set) {
         ChangeDiceSetPosition();
         if (set == 1) {
             ChangeDiceRollPositionSet(DiceManager.Inst.set1);
@@ -55,7 +66,7 @@ public class Set : MonoBehaviour {
         }
     }
 
-    public void ChangeDiceSetPosition() {
+    void ChangeDiceSetPosition() {
         GameObject[] set1 = DiceManager.Inst.set1;
         GameObject[] set2 = DiceManager.Inst.set2;
         GameObject[] set3 = DiceManager.Inst.set3;

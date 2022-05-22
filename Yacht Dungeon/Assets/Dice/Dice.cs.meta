@@ -3,7 +3,11 @@ guid: ed22a2c67fdc3194aa225cadafd7a69b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - smallSprite_: {instanceID: 0}
+  - darkSprite_: {instanceID: 0}
+  - rerollDot_: {fileID: 7019885826090297617, guid: 29112d0bd070812439798484526abfca, type: 3}
+  - diceKeep_: {fileID: 9093994333308990468, guid: 38873122141f4444188ff428327e42e5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

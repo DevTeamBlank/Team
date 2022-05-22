@@ -12,10 +12,11 @@ public class MadeTableBar : MonoBehaviour {
     public bool canSelect = true;
 
     RaycastHit2D hit;
-    GameObject go;
+    GameObject target;
 
     void Update() {
         OnMouse();
+        Click();
     }
 
     [SerializeField] bool onMouse = false;
@@ -23,10 +24,10 @@ public class MadeTableBar : MonoBehaviour {
     void OnMouse() {
         if (!canSelect) return;
 
-        hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
-        if (hit) {
-            go = hit.transform.gameObject;
-            if (go == gameObject) {
+        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
+        if (hit.collider != null) {
+            target = hit.collider.gameObject;
+            if (target == gameObject) {
                 if (!onMouse) {
                     onMouse = true;
                     ChangeSprite(Sprites.onMouse);
@@ -44,12 +45,11 @@ public class MadeTableBar : MonoBehaviour {
         if (!canSelect) return;
 
         if (Input.GetMouseButtonDown(0)) {
-            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
 
-            if (hit) {
-                go = hit.transform.gameObject;
-                if (go == gameObject) {
-                    // MadeTable
+            if (hit.collider != null) {
+                target = hit.transform.gameObject;
+                if (target == gameObject) {
                     MadeTable.Inst.SelectMade(made);
                 }
             } else {

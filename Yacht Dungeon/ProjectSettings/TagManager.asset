@@ -7,6 +7,7 @@ TagManager:
   - Dice
   - Manager
   - RollButton
+  - Artifact
   layers:
   - Default
   - TransparentFX

@@ -23,7 +23,7 @@ public class RerollButton : MonoBehaviour {
         GetComponent<SpriteRenderer>().sprite = isPushed ? pushedSprite_ : buttonSprite_;
     }
 
-    public void ResetReroll() {
+    void ResetReroll() {
         dot1.ChangeSprite();
         dot2.ChangeSprite();
         dot3.ChangeSprite();
@@ -46,9 +46,5 @@ public class RerollButton : MonoBehaviour {
                 dot3.ChangeSprite(false);
                 break;
         }
-    }
-
-    public void RerollSet() {
-        RoundManager.Inst.RollSet();
     }
 }

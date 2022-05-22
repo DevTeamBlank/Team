@@ -150,6 +150,7 @@
     <Compile Include="Assets\Save.cs" />
     <Compile Include="Assets\Artifact\Artifact05.cs" />
     <Compile Include="Assets\Artifact\Artifact07.cs" />
+    <Compile Include="Assets\UIScript\MadeTableBar.cs" />
     <Compile Include="Assets\Dice\Dice19.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Artifact\Artifact33.cs" />
@@ -157,7 +158,7 @@
     <Compile Include="Assets\Artifact\Artifact00.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\UIScript\MadeTableBar.cs" />
+    <Compile Include="Assets\Manager\EnemyManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

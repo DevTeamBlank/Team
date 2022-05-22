@@ -13,21 +13,13 @@ public class MadeTable : MonoBehaviour {
     }
 
     [SerializeField] TextMeshPro[] madeDamageT_ = new TextMeshPro[12];
+    [SerializeField] int[] madeDamage = new int[12];
     [SerializeField] TextMeshPro[] madeBonusT_ = new TextMeshPro[12];
+    [SerializeField] int[] madeBonus = new int[12];
     [SerializeField] TextMeshPro setBonusT_;
+    [SerializeField] int setBonus;
 
-    [SerializeField] GameObject aces_;
-    [SerializeField] GameObject deuces_;
-    [SerializeField] GameObject threes_;
-    [SerializeField] GameObject fours_;
-    [SerializeField] GameObject fives_;
-    [SerializeField] GameObject sixes_;
-    [SerializeField] GameObject choice_;
-    [SerializeField] GameObject fourOfAKind_;
-    [SerializeField] GameObject fullHouse_;
-    [SerializeField] GameObject smallStraight_;
-    [SerializeField] GameObject largeStraight_;
-    [SerializeField] GameObject yacht_;
+    [SerializeField] GameObject[] madeBar_ = new GameObject[12];
 
     [HideInInspector] public Subject acesS;
     [HideInInspector] public Subject deucesS;
@@ -44,7 +36,6 @@ public class MadeTable : MonoBehaviour {
 
     [HideInInspector] public Subject setS;
 
-    [SerializeField] int currentSet;
     [SerializeField] List<Made> banMade;
 
     private void Start() {
@@ -54,33 +45,17 @@ public class MadeTable : MonoBehaviour {
 
     void UpdateText() {
         int[] num = RoundManager.Inst.currentNumbers;
-        madeDamageT_[0].text = AcesScore(num).ToString();
-        madeDamageT_[1].text = DeucesScore(num).ToString();
-        madeDamageT_[2].text = ThreesScore(num).ToString();
-        madeDamageT_[3].text = FoursScore(num).ToString();
-        madeDamageT_[4].text = FivesScore(num).ToString();
-        madeDamageT_[5].text = SixesScore(num).ToString();
-        madeDamageT_[6].text = ChoiceScore(num).ToString();
-        madeDamageT_[7].text = FourOfAKindScore(num).ToString();
-        madeDamageT_[8].text = FullHouseScore(num).ToString();
-        madeDamageT_[9].text = SmallStraightScore(num).ToString();
-        madeDamageT_[10].text = LargeStraightScore(num).ToString();
-        madeDamageT_[11].text = YachtScore(num).ToString();
 
-        madeBonusT_[0].text = acesS.Bonus(num).ToString();
-        madeBonusT_[1].text = deucesS.Bonus(num).ToString();
-        madeBonusT_[2].text = threesS.Bonus(num).ToString();
-        madeBonusT_[3].text = foursS.Bonus(num).ToString();
-        madeBonusT_[4].text = fivesS.Bonus(num).ToString();
-        madeBonusT_[5].text = sixesS.Bonus(num).ToString();
-        madeBonusT_[6].text = choiceS.Bonus(num).ToString();
-        madeBonusT_[7].text = FourOfAKindScore(num) != 0 ? fourOfAKindS.Bonus(num).ToString() : "0";
-        madeBonusT_[8].text = FullHouseScore(num) != 0 ? fullHouseS.Bonus(num).ToString() : "0";
-        madeBonusT_[9].text = SmallStraightScore(num) != 0 ? smallStraightS.Bonus(num).ToString() : "0";
-        madeBonusT_[10].text = LargeStraightScore(num) != 0 ? largeStraightS.Bonus(num).ToString() : "0";
-        madeBonusT_[11].text = YachtScore(num) != 0 ? yachtS.Bonus(num).ToString() : "0";
+        for (int i = 0; i < 12; i++) {
+            madeDamage[i] = Score(num, (Made)i);
+            madeDamageT_[i].text = madeDamage[i].ToString();
 
-        setBonusT_.text = setS.Bonus(num).ToString();
+            madeBonus[i] = Bonus(num, (Made)i);
+            madeBonusT_[i].text = madeBonus[i].ToString();
+        }
+
+        setBonus = setS.Bonus(num);
+        setBonusT_.text = setBonus.ToString();
     }
 
     void MakeSubject() {
@@ -101,7 +76,6 @@ public class MadeTable : MonoBehaviour {
     }
 
     void ResetTable() {
-        currentSet = 0;
         banMade = new List<Made>();
     }
 
@@ -116,7 +90,7 @@ public class MadeTable : MonoBehaviour {
         FourOfAKind,
         FullHouse,
         SmallStraight,
-        LargeStragith,
+        LargeStraight,
         Yacht
     }
 
@@ -125,10 +99,70 @@ public class MadeTable : MonoBehaviour {
     }
 
     void InactiveMade() {
-        for(int i = 0; i < banMade.Count; i++) {
-            // TODO
-            // Blur Texts
-            // Inactive buttons
+        for (int i = 0; i < banMade.Count; i++) {
+            madeBar_[(int)banMade[i]].GetComponent<MadeTableBar>().BanMade();
+        }
+    }
+
+    public int Score(int[] num, Made made) {
+        switch (made) {
+            case Made.Aces:
+                return AcesScore(num);
+            case Made.Deuces:
+                return DeucesScore(num);
+            case Made.Threes:
+                return ThreesScore(num);
+            case Made.Fours:
+                return FoursScore(num);
+            case Made.Fives:
+                return FivesScore(num);
+            case Made.Sixes:
+                return SixesScore(num);
+            case Made.Choice:
+                return ChoiceScore(num);
+            case Made.FourOfAKind:
+                return FourOfAKindScore(num);
+            case Made.FullHouse:
+                return FullHouseScore(num);
+            case Made.SmallStraight:
+                return SmallStraightScore(num);
+            case Made.LargeStraight:
+                return LargeStraightScore(num);
+            case Made.Yacht:
+                return YachtScore(num);
+            default:
+                return -1;
+        }
+    }
+
+    public int Bonus(int[] num, Made made) {
+        switch (made) {
+            case Made.Aces:
+                return acesS.Bonus(num);
+            case Made.Deuces:
+                return deucesS.Bonus(num);
+            case Made.Threes:
+                return threesS.Bonus(num);
+            case Made.Fours:
+                return foursS.Bonus(num);
+            case Made.Fives:
+                return fivesS.Bonus(num);
+            case Made.Sixes:
+                return sixesS.Bonus(num);
+            case Made.Choice:
+                return choiceS.Bonus(num);
+            case Made.FourOfAKind:
+                return FourOfAKindScore(num) != 0 ? fourOfAKindS.Bonus(num) : 0;
+            case Made.FullHouse:
+                return FullHouseScore(num) != 0 ? fullHouseS.Bonus(num) : 0;
+            case Made.SmallStraight:
+                return SmallStraightScore(num) != 0 ? smallStraightS.Bonus(num) : 0;
+            case Made.LargeStraight:
+                return LargeStraightScore(num) != 0 ? largeStraightS.Bonus(num) : 0;
+            case Made.Yacht:
+                return YachtScore(num) != 0 ? yachtS.Bonus(num) : 0;
+            default:
+                return -1;
         }
     }
 
@@ -250,7 +284,7 @@ public class MadeTable : MonoBehaviour {
             return 30;
         } else if (Contain(num, 3) && Contain(num, 4) && Contain(num, 5) && Contain(num, 6) && Contain(num, 7)) {
             return 30;
-        } else { 
+        } else {
             return 0;
         }
     }
@@ -273,5 +307,7 @@ public class MadeTable : MonoBehaviour {
             if (banMade[i] == made) return;
         }
         BanMade(made);
+        RoundManager.Inst.GetComponent<RoundManager>().SetDamage(madeDamage[(int)made]);
     }
+
 }

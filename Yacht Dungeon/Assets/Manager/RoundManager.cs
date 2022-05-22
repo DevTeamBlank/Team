@@ -21,14 +21,13 @@ public class RoundManager : MonoBehaviour {
         currentRoll = 0;
     }
 
-    [SerializeField] GameObject enemy0;
-    [SerializeField] GameObject chest;
-    [SerializeField] GameObject enemy1;
+    [SerializeField] int chest; // enemy0
+    [SerializeField] int enemy1;
+    [SerializeField] int enemy2;
 
     public int set1Damage;
     public int set2Damage;
     public int set3Damage;
-
 
     public void Load(Save save) {
         currentRound = save.clearedRound;
@@ -37,38 +36,43 @@ public class RoundManager : MonoBehaviour {
     }
 
     RaycastHit2D hit;
-    GameObject go;
+    GameObject target;
 
     void Update() {
         RollDice();
         ToggleDice();
         TriggerDice();
-        FireDamage();
-        ResetDamage();
+        if (choseDamage) {
+            FireDamage();
+            ResetDamage();
+        }
     }
 
     [SerializeField] GameObject rerollButton_;
 
     void RollDice() {
-        if (Input.GetMouseButtonDown(0)) {
-            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+        if (currentRoll >= 3) return;
 
-            if (hit) {
-                go = hit.transform.gameObject;
-                if (go == rerollButton_) {
-                    RerollButton.Inst.GetComponent<RerollButton>().ChangeSprite(true);
+        if (Input.GetMouseButtonDown(0)) {
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
+
+            if (hit.collider != null) {
+                target = hit.collider.gameObject;
+                if (target == rerollButton_) {
+                    RerollButton.Inst.ChangeSprite(true);
                 }
             }
         }
 
         if (Input.GetMouseButtonUp(0)) {
-            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
 
-            if (hit) {
-                go = hit.transform.gameObject;
-                if (go == rerollButton_) {
-                    RerollButton.Inst.GetComponent<RerollButton>().ChangeSprite(false);
-                    RerollButton.Inst.GetComponent<RerollButton>().RerollSet();
+            if (hit.collider != null) {
+                target = hit.collider.gameObject;
+                if (target == rerollButton_) {
+                    RerollButton.Inst.ChangeSprite(false);
+                    RollSet();
+                    MadeTable.Inst.UpdateMadeTable();
                 }
             }
         }
@@ -76,12 +80,12 @@ public class RoundManager : MonoBehaviour {
 
     void ToggleDice() {
         if (Input.GetMouseButtonDown(0)) {
-            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
 
-            if (hit) {
-                go = hit.transform.gameObject;
-                if (go.tag == "Dice") {
-                    go.GetComponent<Dice>().ToggleFixDice();
+            if (hit.collider != null) {
+                target = hit.collider.gameObject;
+                if (target.tag == "Dice") {
+                    target.GetComponent<Dice>().ToggleFixDice();
                 }
             }
         }
@@ -89,12 +93,12 @@ public class RoundManager : MonoBehaviour {
 
     void TriggerDice() {
         if (Input.GetMouseButtonDown(1)) {
-            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
 
-            if (hit) {
-                go = hit.transform.gameObject;
-                if (go.tag == "Dice") {
-                    go.GetComponent<Dice>().TriggerDice();
+            if (hit.collider != null) {
+                target = hit.collider.gameObject;
+                if (target.tag == "Dice") {
+                    target.GetComponent<Dice>().TriggerDice();
                 }
             }
         }
@@ -105,24 +109,24 @@ public class RoundManager : MonoBehaviour {
 
     void FireDamage() {
         if (Input.GetMouseButtonDown(0)) {
-            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
 
-            if (hit) {
-                go = hit.transform.gameObject;
-                if (go == fireButton_) {
-                    FireButton.Inst.GetComponent<FireButton>().ChangeSprite(true);
+            if (hit.collider != null) {
+                target = hit.collider.gameObject;
+                if (target == fireButton_) {
+                    FireButton.Inst.ChangeSprite(true);
                 }
             }
         }
 
         if (Input.GetMouseButtonUp(0)) {
-            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
 
-            if (hit) {
-                go = hit.transform.gameObject;
-                if (go == fireButton_) {
-                    FireButton.Inst.GetComponent<FireButton>().ChangeSprite(false);
-                    FireButton.Inst.GetComponent<FireButton>().FireDamage();
+            if (hit.collider != null) {
+                target = hit.collider.gameObject;
+                if (target == fireButton_) {
+                    FireButton.Inst.ChangeSprite(false);
+                    FireButton.Inst.FireDamage();
                 }
             }
         }
@@ -130,24 +134,24 @@ public class RoundManager : MonoBehaviour {
 
     void ResetDamage() {
         if (Input.GetMouseButtonDown(0)) {
-            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
 
-            if (hit) {
-                go = hit.transform.gameObject;
-                if (go == resetButton_) {
-                    ResetButton.Inst.GetComponent<ResetButton>().ChangeSprite(true);
+            if (hit.collider != null) {
+                target = hit.collider.gameObject;
+                if (target == resetButton_) {
+                    ResetButton.Inst.ChangeSprite(true);
                 }
             }
         }
 
         if (Input.GetMouseButtonUp(0)) {
-            hit = Physics2D.Raycast(transform.position, Vector2.zero, 0f);
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
 
-            if (hit) {
-                go = hit.transform.gameObject;
-                if (go == resetButton_) {
-                    ResetButton.Inst.GetComponent<ResetButton>().ChangeSprite(false);
-                    ResetButton.Inst.GetComponent<ResetButton>().ResetDamage();
+            if (hit.collider != null) {
+                target = hit.collider.gameObject;
+                if (target == resetButton_) {
+                    ResetButton.Inst.ChangeSprite(false);
+                    ResetButton.Inst.ResetDamage();
                 }
             }
         }
@@ -165,6 +169,38 @@ public class RoundManager : MonoBehaviour {
 
     void RoundStart() {
         roundStartS.CallArtifact();
+        chest = EnemyManager.Inst.ChestHp(currentRound);
+        enemy1 = EnemyManager.Inst.GetComponent<EnemyManager>().Enemy1Hp(currentRound);
+        enemy2 = EnemyManager.Inst.GetComponent<EnemyManager>().Enemy2Hp(currentRound);
     }
 
+    public void SetDamage(int damage) {
+        switch (currentSet) {
+            case 1:
+                set1Damage = damage;
+                break;
+            case 2:
+                set2Damage = damage;
+                break;
+            case 3:
+                set3Damage = damage;
+                break;
+            default:
+                Debug.Log("Error");
+                break;
+        }
+        NextSet();
+    }
+
+    bool choseDamage = false;
+
+    void NextSet() {
+        if (currentSet == 1 || currentSet == 2) {
+            currentSet++;
+            Set.Inst.NextSet();
+            DiceManager.Inst.RollSet();
+        } else {
+            choseDamage = true;
+        }
+    }
 }
