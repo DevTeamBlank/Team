@@ -12,11 +12,11 @@ public class MadeTable : MonoBehaviour {
         Inst = this;
     }
 
-    [SerializeField] TextMeshPro[] madeDamageT_ = new TextMeshPro[12];
+    [SerializeField] GameObject[] madeDamageT_ = new GameObject[12];
     [SerializeField] int[] madeDamage = new int[12];
-    [SerializeField] TextMeshPro[] madeBonusT_ = new TextMeshPro[12];
+    [SerializeField] GameObject[] madeBonusT_ = new GameObject[12];
     [SerializeField] int[] madeBonus = new int[12];
-    [SerializeField] TextMeshPro setBonusT_;
+    [SerializeField] GameObject setBonusT_;
     [SerializeField] int setBonus;
 
     [SerializeField] GameObject[] madeBar_ = new GameObject[12];
@@ -48,14 +48,37 @@ public class MadeTable : MonoBehaviour {
 
         for (int i = 0; i < 12; i++) {
             madeDamage[i] = Score(num, (Made)i);
-            madeDamageT_[i].text = madeDamage[i].ToString();
+            DamageUpdate((Made)i, madeDamage[i]);
 
             madeBonus[i] = Bonus(num, (Made)i);
-            madeBonusT_[i].text = madeBonus[i].ToString();
+            BonusUpdate((Made)i, madeBonus[i]);
         }
 
         setBonus = setS.Bonus(num);
-        setBonusT_.text = setBonus.ToString();
+        SetBonusUpdate(setBonus);
+    }
+
+    void DamageUpdate(Made made, int damage) {
+        int index = MadeToInt(made);
+        Vector3 pos = madeDamageT_[index].transform.position;
+       TextManager.Inst.ChangeText(damage, madeDamageT_[index], TextManager.TextMode.Default);
+        madeDamageT_[index].transform.position = pos;
+        madeDamageT_[index].name = made.ToString() + " Damage: " + damage.ToString();
+    }
+
+    void BonusUpdate(Made made, int damage) {
+        int index = MadeToInt(made);
+        Vector3 pos = madeBonusT_[index].transform.position;
+        TextManager.Inst.ChangeText(damage, madeBonusT_[index], TextManager.TextMode.Default);
+        madeBonusT_[index].transform.position = pos;
+        madeBonusT_[index].name = made.ToString() + " Bonus: " + damage.ToString();
+    }
+
+    void SetBonusUpdate(int damage) {
+        Vector3 pos = setBonusT_.transform.position;
+        TextManager.Inst.ChangeText(damage, setBonusT_, TextManager.TextMode.Default);
+        setBonusT_.transform.position = pos;
+        setBonusT_.name = "Set Bonus: " + damage.ToString();
     }
 
     void MakeSubject() {
@@ -92,6 +115,37 @@ public class MadeTable : MonoBehaviour {
         SmallStraight,
         LargeStraight,
         Yacht
+    }
+
+    int MadeToInt(Made made) {
+        switch (made) {
+            case Made.Aces:
+                return 0;
+            case Made.Deuces:
+                return 1;
+            case Made.Threes:
+                return 2;
+            case Made.Fours:
+                return 3;
+            case Made.Fives:
+                return 4;
+            case Made.Sixes:
+                return 5;
+            case Made.Choice:
+                return 6;
+            case Made.FourOfAKind:
+                return 7;
+            case Made.FullHouse:
+                return 8;
+            case Made.SmallStraight:
+                return 9;
+            case Made.LargeStraight:
+                return 10;
+            case Made.Yacht:
+                return 11;
+            default:
+                return -1;
+        }
     }
 
     public void BanMade(Made m) {

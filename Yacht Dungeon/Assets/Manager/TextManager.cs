@@ -23,21 +23,22 @@ public class TextManager : MonoBehaviour {
     [SerializeField] GameObject emptyPrefab_;
     GameObject[] sprites;
 
-    public GameObject SpriteToString(int number, Transform parent, TextMode mode) {
-        GameObject ret = Instantiate(emptyPrefab_, parent);
+    public void ChangeText(int number, GameObject go, TextMode mode) {
+        int childs = go.transform.childCount;
+        for (int i = childs - 1; i > 0; i--) {
+            Destroy(go.transform.GetChild(i).gameObject);
+        }
         string str = number.ToString();
-        char[] chs = new char[str.Length];
+        char[] chs = str.ToCharArray();
         sprites = new GameObject[str.Length];
         for (int i = 0; i < sprites.Length; i++) {
-            sprites[i] = Instantiate(NumberToGameObject(chs[i], mode), ret.transform);
+            sprites[i] = Instantiate(NumberToGameObject(chs[i], mode), go.transform);
         }
         float offset = 0f;
         for (int i = 0; i < sprites.Length; i++) {
             sprites[i].transform.Translate(new Vector2(offset, 0f));
             offset += (NumberToWidth(chs[i]) + 1) * 0.06f;
         }
-        ret.name = number.ToString();
-        return ret;
     }
 
     int NumberToWidth(char i) {
