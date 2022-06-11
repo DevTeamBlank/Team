@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour {
    
 
     void CreateSeed() {
-        Seed = (int) (Time.time * 100f);
+        Seed = Random.Range(0, 100);
+        Debug.Log("Seed: " + Seed);
     }
 
     void LoadSeed(Save save) {

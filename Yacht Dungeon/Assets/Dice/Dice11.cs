@@ -10,7 +10,7 @@ public class Dice11 : Dice {
     protected override int Roll() {
         int random;
         do {
-            Random.InitState(GameManager.Seed + count * 13 + RoundManager.Inst.currentRound * 17 + offset * 19);
+            // Random.InitState(GameManager.Seed + count * 13 + RoundManager.Inst.currentRound * 17 + offset * 19);
             random = Random.Range(0, 6);
         } while (Check(random));
 

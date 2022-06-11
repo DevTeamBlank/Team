@@ -41,7 +41,7 @@ public class Dice : MonoBehaviour {
         face = 0;
         count = 0;
 
-        canFix = true;
+        canFix = false;
         canTrigger = false;
 
         MakeRerollDot();
@@ -52,15 +52,22 @@ public class Dice : MonoBehaviour {
         if (!isFixed) {
             face = Roll();
             GetComponent<SpriteRenderer>().sprite = sprites_[face];
+            if (0 < count) UpdateDot();
             count++;
             canFix = true;
             CheckReroll();
+            
         }
     }
 
+    public void UpdateDot() {
+        rerollDots[count - 1].GetComponent<RerollDot>().ChangeSprite(false);
+    }
+
     protected virtual int Roll() {
-        Random.InitState(GameManager.Seed + count * 13 + RoundManager.Inst.currentRound * 17);
-        return Random.Range(0, 6);
+        // Random.InitState(GameManager.Seed + count * 13 + RoundManager.Inst.currentRound * 17);
+        int random = Random.Range(0, 6);
+        return random;
     }
 
     public void TriggerDice() {

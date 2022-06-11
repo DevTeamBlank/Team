@@ -75,15 +75,15 @@ public class DiceManager : MonoBehaviour {
 
     public void RollSet() {
         int set = RoundManager.Inst.currentSet;
-        if (set == 0) {
+        if (set == 1) {
             for (int i = 0; i < 5; i++) {
                 set1[i].GetComponent<Dice>().RollDice();
             }
-        } else if (set == 1) {
+        } else if (set == 2) {
             for (int i = 0; i < 5; i++) {
                 set2[i].GetComponent<Dice>().RollDice();
             }
-        } else if (set == 2) {
+        } else if (set == 3) {
             for (int i = 0; i < 5; i++) {
                 set3[i].GetComponent<Dice>().RollDice();
             }
