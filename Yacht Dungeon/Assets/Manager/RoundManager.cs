@@ -11,6 +11,8 @@ public class RoundManager : MonoBehaviour {
     public int currentRoll;
     public int[] currentNumbers = new int[5];
 
+    [SerializeField] GameObject[] setDamageBar_ = new GameObject[3];
+
     void Awake() {
         Inst = this;
     }
@@ -19,6 +21,7 @@ public class RoundManager : MonoBehaviour {
         currentRound = 0;
         currentSet = 1;
         currentRoll = 0;
+        RoundStart();
     }
 
     [SerializeField] int chest; // enemy0
@@ -114,7 +117,7 @@ public class RoundManager : MonoBehaviour {
             if (hit.collider != null) {
                 target = hit.collider.gameObject;
                 if (target == fireButton_) {
-                    FireButton.Inst.ChangeSprite(true);
+                    fireButton_.GetComponent<FireButton>().ChangeSprite(true);
                 }
             }
         }
@@ -125,7 +128,7 @@ public class RoundManager : MonoBehaviour {
             if (hit.collider != null) {
                 target = hit.collider.gameObject;
                 if (target == fireButton_) {
-                    FireButton.Inst.ChangeSprite(false);
+                    fireButton_.GetComponent<FireButton>().ChangeSprite(false);
                     // TODO
                 }
             }
@@ -168,27 +171,32 @@ public class RoundManager : MonoBehaviour {
     [HideInInspector] public RoundStartSubject roundStartS;
 
     void RoundStart() {
-        roundStartS.CallArtifact();
+        // roundStartS.CallArtifact();
         chest = EnemyManager.Inst.ChestHp(currentRound);
         enemy1 = EnemyManager.Inst.GetComponent<EnemyManager>().Enemy1Hp(currentRound);
         enemy2 = EnemyManager.Inst.GetComponent<EnemyManager>().Enemy2Hp(currentRound);
+        ChangeSetDamageBarSprite(currentSet);
     }
 
     public void SetDamage(int damage) {
         switch (currentSet) {
             case 1:
                 set1Damage = damage;
+                setDamageBar_[0].GetComponent<SetDamageBar>().DamageUpdate(damage);
                 break;
             case 2:
                 set2Damage = damage;
+                setDamageBar_[1].GetComponent<SetDamageBar>().DamageUpdate(damage);
                 break;
             case 3:
                 set3Damage = damage;
+                setDamageBar_[2].GetComponent<SetDamageBar>().DamageUpdate(damage);
                 break;
             default:
                 Debug.Log("Error");
                 break;
         }
+        
         NextSet();
     }
 
@@ -197,10 +205,34 @@ public class RoundManager : MonoBehaviour {
     void NextSet() {
         if (currentSet == 1 || currentSet == 2) {
             currentSet++;
+            ChangeSetDamageBarSprite(currentSet);
             Set.Inst.NextSet();
             DiceManager.Inst.RollSet();
         } else {
             choseDamage = true;
+        }
+    }
+
+    void ChangeSetDamageBarSprite(int set) {
+        switch (set) {
+            case 1:
+                setDamageBar_[0].GetComponent<SetDamageBar>().ChangeSprite(true);
+                setDamageBar_[1].GetComponent<SetDamageBar>().ChangeSprite(false);
+                setDamageBar_[2].GetComponent<SetDamageBar>().ChangeSprite(false);
+                break;
+            case 2:
+                setDamageBar_[0].GetComponent<SetDamageBar>().ChangeSprite(false);
+                setDamageBar_[1].GetComponent<SetDamageBar>().ChangeSprite(true);
+                setDamageBar_[2].GetComponent<SetDamageBar>().ChangeSprite(false);
+                break;
+            case 3:
+                setDamageBar_[0].GetComponent<SetDamageBar>().ChangeSprite(false);
+                setDamageBar_[1].GetComponent<SetDamageBar>().ChangeSprite(false);
+                setDamageBar_[2].GetComponent<SetDamageBar>().ChangeSprite(true);
+                break;
+            default:
+                Debug.Log("Error");
+                break;
         }
     }
 }

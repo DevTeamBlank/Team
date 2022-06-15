@@ -31,11 +31,12 @@ public class MadeTableBar : MonoBehaviour {
                 if (!onMouse) {
                     onMouse = true;
                     ChangeSprite(Sprites.onMouse);
-                }
-                
+                }                
+            } else {
+                onMouse = false;
+                ChangeSprite(Sprites.normal);
             }
-        }
-        if (onMouse) {
+        } else {
             onMouse = false;
             ChangeSprite(Sprites.normal);
         }
@@ -51,6 +52,7 @@ public class MadeTableBar : MonoBehaviour {
                 target = hit.transform.gameObject;
                 if (target == gameObject) {
                     MadeTable.Inst.SelectMade(made);
+                    MadeTable.Inst.UpdateMadeTable();
                 }
             }
         }

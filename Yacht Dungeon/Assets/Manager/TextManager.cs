@@ -21,7 +21,6 @@ public class TextManager : MonoBehaviour {
     [SerializeField] Sprite[] used_ = new Sprite[10];
     [SerializeField] int[] width_ = new int[10]; // 3, 4
     [SerializeField] GameObject emptyPrefab_;
-    GameObject[] sprites;
 
     public void ChangeText(int number, GameObject go, TextMode mode) {
         int childs = go.transform.childCount;
@@ -30,13 +29,12 @@ public class TextManager : MonoBehaviour {
         }
         string str = number.ToString();
         char[] chs = str.ToCharArray();
-        sprites = new GameObject[str.Length];
-        for (int i = 0; i < sprites.Length; i++) {
-            sprites[i] = Instantiate(NumberToGameObject(chs[i], mode), go.transform);
-        }
         float offset = 0f;
-        for (int i = 0; i < sprites.Length; i++) {
-            sprites[i].transform.Translate(new Vector2(offset, 0f));
+        for (int i = 0; i < str.Length; i++) {    
+            GameObject sprite = NumberToGameObject(chs[i], mode);
+            sprite.transform.parent = go.transform;
+            sprite.transform.localPosition = Vector3.zero;
+            sprite.transform.Translate(new Vector2(offset, 0f));
             offset += (NumberToWidth(chs[i]) + 1) * 0.06f;
         }
     }

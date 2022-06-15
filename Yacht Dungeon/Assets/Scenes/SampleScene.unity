@@ -163,6 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2960427}
   - component: {fileID: 2960428}
+  - component: {fileID: 2960429}
   m_Layer: 0
   m_Name: Set2DMG
   m_TagString: Untagged
@@ -235,6 +236,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2960429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2960426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1945761af2513b4c80c4eda39f7d0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedSprite_: {fileID: 21300000, guid: 535e6aa9486e72c44ab34743f2b2562b, type: 3}
+  normalSprite_: {fileID: 21300000, guid: a81579fba69829a41846db7a3b126548, type: 3}
+  madeDamageT_: {fileID: 486698655}
 --- !u!1 &16927319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,6 +1221,10 @@ MonoBehaviour:
   currentSet: 0
   currentRoll: 0
   currentNumbers: 0000000000000000000000000000000000000000
+  setDamageBar_:
+  - {fileID: 2081446032}
+  - {fileID: 2960426}
+  - {fileID: 1540350027}
   chest: 0
   enemy1: 0
   enemy2: 0
@@ -2621,6 +2641,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &486698655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 486698656}
+  m_Layer: 0
+  m_Name: Set2Damage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &486698656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486698655}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.39, y: -3.72, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 545262986}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &499837988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2786,6 +2836,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &545262985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 545262986}
+  m_Layer: 0
+  m_Name: Texts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &545262986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545262985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2014120783}
+  - {fileID: 486698656}
+  - {fileID: 586778571}
+  m_Father: {fileID: 1679724142}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &560286529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,6 +2930,36 @@ Transform:
   - {fileID: 2072961303}
   m_Father: {fileID: 1941119313}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &586778570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586778571}
+  m_Layer: 0
+  m_Name: Set3Damage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586778571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586778570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.43, y: -3.72, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 545262986}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &602699548
 GameObject:
@@ -4813,18 +4926,18 @@ MonoBehaviour:
   setBonusT_: {fileID: 203809908}
   setBonus: 0
   madeBar_:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1771849341}
+  - {fileID: 1839315053}
+  - {fileID: 1259691130}
+  - {fileID: 1724522663}
+  - {fileID: 2055826371}
+  - {fileID: 1147698046}
+  - {fileID: 101270318}
+  - {fileID: 1215949751}
+  - {fileID: 1813566492}
+  - {fileID: 1903047377}
+  - {fileID: 1380842434}
+  - {fileID: 1293836903}
   banMade: 
 --- !u!1 &1133360019
 GameObject:
@@ -7216,6 +7329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1540350028}
   - component: {fileID: 1540350029}
+  - component: {fileID: 1540350030}
   m_Layer: 0
   m_Name: Set3DMG
   m_TagString: Untagged
@@ -7277,7 +7391,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a844f10555c1bf54fb4d4dd086f75687, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8859cb51c28d959409d2c438730006ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7288,6 +7402,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1540350030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540350027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1945761af2513b4c80c4eda39f7d0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedSprite_: {fileID: 21300000, guid: a844f10555c1bf54fb4d4dd086f75687, type: 3}
+  normalSprite_: {fileID: 21300000, guid: 8859cb51c28d959409d2c438730006ac, type: 3}
+  madeDamageT_: {fileID: 586778570}
 --- !u!1 &1543923901
 GameObject:
   m_ObjectHideFlags: 0
@@ -7958,6 +8087,7 @@ Transform:
   - {fileID: 2960427}
   - {fileID: 1365870723}
   - {fileID: 1540350028}
+  - {fileID: 545262986}
   m_Father: {fileID: 1941119313}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8494,7 +8624,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -9367,6 +9497,36 @@ Transform:
   m_Father: {fileID: 1941119313}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2014120782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2014120783}
+  m_Layer: 0
+  m_Name: Set1Damage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2014120783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014120782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.35, y: -3.72, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 545262986}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2023391015
 GameObject:
   m_ObjectHideFlags: 0
@@ -9689,6 +9849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2081446033}
   - component: {fileID: 2081446034}
+  - component: {fileID: 2081446035}
   m_Layer: 0
   m_Name: Set1DMG
   m_TagString: Untagged
@@ -9761,6 +9922,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2081446035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081446032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1945761af2513b4c80c4eda39f7d0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedSprite_: {fileID: 21300000, guid: 8851ec575fd1f4c44bb8cd93624566b9, type: 3}
+  normalSprite_: {fileID: 21300000, guid: f0f0c0508963e0d4bbe93e2c69527309, type: 3}
+  madeDamageT_: {fileID: 2014120782}
 --- !u!1 &2088851827
 GameObject:
   m_ObjectHideFlags: 0

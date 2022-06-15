@@ -61,7 +61,7 @@ public class MadeTable : MonoBehaviour {
     void DamageUpdate(Made made, int damage) {
         int index = MadeToInt(made);
         Vector3 pos = madeDamageT_[index].transform.position;
-       TextManager.Inst.ChangeText(damage, madeDamageT_[index], TextManager.TextMode.Default);
+        TextManager.Inst.ChangeText(damage, madeDamageT_[index], TextManager.TextMode.Default);
         madeDamageT_[index].transform.position = pos;
         madeDamageT_[index].name = made.ToString() + " Damage: " + damage.ToString();
     }
@@ -361,8 +361,9 @@ public class MadeTable : MonoBehaviour {
             if (banMade[i] == made) return;
         }
         BanMade(made);
-        Debug.Log((int)made);
-        RoundManager.Inst.GetComponent<RoundManager>().SetDamage(madeDamage[(int)made]);
+        int damage = madeDamage[(int)made] + madeBonus[(int)made] + setBonus;
+        
+        RoundManager.Inst.GetComponent<RoundManager>().SetDamage(damage);
     }
 
 }
