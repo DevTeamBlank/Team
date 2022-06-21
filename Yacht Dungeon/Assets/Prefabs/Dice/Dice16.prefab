@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2967635491006616401}
   - component: {fileID: 2967635491006616400}
   - component: {fileID: 3941879424479447469}
+  - component: {fileID: 5281375105790837785}
   m_Layer: 0
   m_Name: Dice16
   m_TagString: Dice
@@ -139,3 +140,29 @@ MonoBehaviour:
   - {fileID: 3290318708070703648, guid: 211b61faed35da64faae0e52d8b2819c, type: 3}
   - {fileID: -2302784209748755390, guid: 211b61faed35da64faae0e52d8b2819c, type: 3}
   - {fileID: -2302784209748755390, guid: 211b61faed35da64faae0e52d8b2819c, type: 3}
+--- !u!61 &5281375105790837785
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967635491006616402}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.08, y: 1.08}
+    newSize: {x: 1.08, y: 1.08}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.08, y: 1.08}
+  m_EdgeRadius: 0

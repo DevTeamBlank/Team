@@ -144,6 +144,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\UIScript\RerollButton.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
+    <Compile Include="Assets\UIScript\SetDamageBar.cs" />
     <Compile Include="Assets\Artifact\Artifact11.cs" />
     <Compile Include="Assets\Artifact\Artifact37.cs" />
     <Compile Include="Assets\Artifact\Artifact18.cs" />
@@ -160,7 +161,7 @@
     <Compile Include="Assets\Artifact\Artifact00.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\UIScript\SetDamageBar.cs" />
+    <Compile Include="Assets\UIScript\DicePopUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -22,7 +22,7 @@ public class Dice : MonoBehaviour {
     [SerializeField] protected bool canTrigger = false;
 
     [SerializeField] GameObject[] rerollDots;
-    [SerializeField] GameObject rerollDot_;
+    GameObject diceKeep;
 
     public enum DiceRarity {
         Basic,
@@ -88,28 +88,28 @@ public class Dice : MonoBehaviour {
             case 1:
                 rerollDots = new GameObject[1];
                 Vector2 pos1 = (Vector2)transform.position + new Vector2(-0.03f, -1.05f);
-                rerollDots[0] = Instantiate(rerollDot_, pos1, Quaternion.identity, gameObject.transform);
+                rerollDots[0] = Instantiate(DiceManager.Inst.rerollDot_, pos1, Quaternion.identity, gameObject.transform);
                 rerollDots[0].name = "Dot1";
                 break;
             case 2:
                 rerollDots = new GameObject[2];
                 Vector2 pos2 = (Vector2)transform.position + new Vector2(-0.09f, -1.05f);
-                rerollDots[0] = Instantiate(rerollDot_, pos2, Quaternion.identity, gameObject.transform);
+                rerollDots[0] = Instantiate(DiceManager.Inst.rerollDot_, pos2, Quaternion.identity, gameObject.transform);
                 rerollDots[0].name = "Dot1";
                 Vector2 pos3 = (Vector2)transform.position + new Vector2(0.09f, -1.05f);
-                rerollDots[1] = Instantiate(rerollDot_, pos3, Quaternion.identity, gameObject.transform);
+                rerollDots[1] = Instantiate(DiceManager.Inst.rerollDot_, pos3, Quaternion.identity, gameObject.transform);
                 rerollDots[1].name = "Dot2";
                 break;
             case 3:
                 rerollDots = new GameObject[3];
                 Vector2 pos4 = (Vector2)transform.position + new Vector2(-0.21f, -1.05f);
-                rerollDots[0] = Instantiate(rerollDot_, pos4, Quaternion.identity, gameObject.transform);
+                rerollDots[0] = Instantiate(DiceManager.Inst.rerollDot_, pos4, Quaternion.identity, gameObject.transform);
                 rerollDots[0].name = "Dot1";
                 Vector2 pos5 = (Vector2)transform.position + new Vector2(-0.03f, -1.05f);
-                rerollDots[1] = Instantiate(rerollDot_, pos5, Quaternion.identity, gameObject.transform);
+                rerollDots[1] = Instantiate(DiceManager.Inst.rerollDot_, pos5, Quaternion.identity, gameObject.transform);
                 rerollDots[1].name = "Dot2";
                 Vector2 pos6 = (Vector2)transform.position + new Vector2(0.15f, -1.05f);
-                rerollDots[2] = Instantiate(rerollDot_, pos6, Quaternion.identity, gameObject.transform);
+                rerollDots[2] = Instantiate(DiceManager.Inst.rerollDot_, pos6, Quaternion.identity, gameObject.transform);
                 rerollDots[2].name = "Dot3";
                 break;
             default:
@@ -135,12 +135,9 @@ public class Dice : MonoBehaviour {
         }
     }
 
-    public GameObject diceKeep_;
-    GameObject diceKeep;
-
     void FixDice() {
         isFixed = true;
-        diceKeep = Instantiate(diceKeep_, transform);
+        diceKeep = Instantiate(DiceManager.Inst.diceKeep_, transform);
     }
 
     void UnfixDice() {
@@ -175,16 +172,47 @@ public class Dice : MonoBehaviour {
             for (int i = 0; i < rerollDots.Length; i++) {
                 rerollDots[i].GetComponent<SpriteRenderer>().enabled = true;
             }
+            GetComponent<BoxCollider2D>().size = new Vector2(1.62f, 1.62f);
         } else {
             GetComponent<SpriteRenderer>().sprite = smallSprite_[face];
             for (int i = 0; i < rerollDots.Length; i++) {
                 rerollDots[i].GetComponent<SpriteRenderer>().enabled = false;
             }
+            GetComponent<BoxCollider2D>().size = new Vector2(1.08f, 1.08f);
         }
     }
 
     public void UpdateReroll() {
         int reroll = GetReroll();
+    }
 
+    float time = 0f;
+    RaycastHit2D hit;
+
+    void Update() {
+        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
+
+        if (hit.collider != null && hit.collider.gameObject == gameObject) {
+            time += Time.deltaTime;
+            if (1 < time && !hasPopUp) MakePopUp();
+        } else {
+            time = 0;
+            if (hasPopUp) DestroyPopUp();
+        }
+        
+    }
+
+    bool hasPopUp;
+    GameObject dicePopUp;
+
+    void MakePopUp() {
+        hasPopUp = true;
+        Vector2 pos = transform.position; // TODO
+        dicePopUp = Instantiate(DiceManager.Inst.dicePopUp_, pos, Quaternion.identity, gameObject.transform);
+    }
+
+    void DestroyPopUp() {
+        hasPopUp = false;
+        Destroy(dicePopUp);
     }
 }
