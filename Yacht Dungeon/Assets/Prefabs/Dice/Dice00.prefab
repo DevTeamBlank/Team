@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1058099199
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
+  m_Sprite: {fileID: -7173385458918623685, guid: 3d40a3a4d82d4b147b8c5e645a1ae0d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,22 +102,22 @@ MonoBehaviour:
   index_: 0
   nomenclature_: Basic Dice
   rarity_: 0
-  description_: "\uC81C\uC77C \uAE30\uBCF8\uC801\uC778 \uC8FC\uC0AC\uC704."
+  description_: "\uC81C\uC77C \uAE30\uBCF8\uC801\uC778 \uC8FC\uC0AC\uC704"
   numbers_: 010000000200000003000000040000000500000006000000
   sprites_:
-  - {fileID: 21300000, guid: ab6439d7b571b87428ce16aed6a5ccef, type: 3}
-  - {fileID: 21300000, guid: 38fb77b6b5a87c94098f3010470eec94, type: 3}
-  - {fileID: 21300000, guid: 6c5b18beab226d94d99e1335d777d4cb, type: 3}
-  - {fileID: 21300000, guid: 924a5d6f36246324190c4156209df68c, type: 3}
-  - {fileID: 21300000, guid: d39892969cec57044876e6ddf658255a, type: 3}
-  - {fileID: 21300000, guid: cd6c925ed419f204d92b36ffa93dce2e, type: 3}
+  - {fileID: -6523824478267976030, guid: f7ad2682d2d5e2c48acab9e554b74a99, type: 3}
+  - {fileID: 2732180631439190374, guid: f7ad2682d2d5e2c48acab9e554b74a99, type: 3}
+  - {fileID: -4694866541327378972, guid: f7ad2682d2d5e2c48acab9e554b74a99, type: 3}
+  - {fileID: -6072844566165761574, guid: f7ad2682d2d5e2c48acab9e554b74a99, type: 3}
+  - {fileID: 8800270260476842821, guid: f7ad2682d2d5e2c48acab9e554b74a99, type: 3}
+  - {fileID: 1073152327551125443, guid: f7ad2682d2d5e2c48acab9e554b74a99, type: 3}
   smallSprite_:
-  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
-  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
-  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
-  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
-  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
-  - {fileID: 21300000, guid: 735a4692cc03100409085cf10acb354f, type: 3}
+  - {fileID: -7173385458918623685, guid: 3d40a3a4d82d4b147b8c5e645a1ae0d3, type: 3}
+  - {fileID: -8359710949431884723, guid: 3d40a3a4d82d4b147b8c5e645a1ae0d3, type: 3}
+  - {fileID: 1653123238484243799, guid: 3d40a3a4d82d4b147b8c5e645a1ae0d3, type: 3}
+  - {fileID: 2504582902663099855, guid: 3d40a3a4d82d4b147b8c5e645a1ae0d3, type: 3}
+  - {fileID: -5117298524682409375, guid: 3d40a3a4d82d4b147b8c5e645a1ae0d3, type: 3}
+  - {fileID: -6942623526450866365, guid: 3d40a3a4d82d4b147b8c5e645a1ae0d3, type: 3}
   reroll_: 1
   canFix: 0
   canTrigger: 0

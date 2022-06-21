@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8196304870322024690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8196304870322024689}
+  - component: {fileID: 8196304870322024688}
+  - component: {fileID: 4346044810473969446}
+  m_Layer: 0
+  m_Name: Dice14
+  m_TagString: Dice
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8196304870322024689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196304870322024690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &8196304870322024688
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196304870322024690}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1058099199
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2429749996359916784, guid: ab1d1c04dcbce614690708f4ddba6c94, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.08, y: 1.08}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &4346044810473969446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196304870322024690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34237497896ba01429cd13f0b32ca5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFixed: 0
+  face: 0
+  count: 0
+  index_: 14
+  nomenclature_: "\uB9AC\uB864: \uD604\uC7AC \uB208\uBCF4\uB2E4 \uB192\uC740 \uC218\uB294
+    \uB098\uC624\uC9C0 \uC54A\uC74C"
+  rarity_: 1
+  description_: Rock
+  numbers_: 010000000200000003000000040000000500000006000000
+  sprites_:
+  - {fileID: 7263787503199382383, guid: e3a7ac9328e696942b7b2f33df2a2eff, type: 3}
+  - {fileID: -3203659707932108263, guid: e3a7ac9328e696942b7b2f33df2a2eff, type: 3}
+  - {fileID: 3477745166137224962, guid: e3a7ac9328e696942b7b2f33df2a2eff, type: 3}
+  - {fileID: 5458284265285243767, guid: e3a7ac9328e696942b7b2f33df2a2eff, type: 3}
+  - {fileID: -1321198406335795462, guid: e3a7ac9328e696942b7b2f33df2a2eff, type: 3}
+  - {fileID: -7092418672094813410, guid: e3a7ac9328e696942b7b2f33df2a2eff, type: 3}
+  smallSprite_:
+  - {fileID: -2429749996359916784, guid: ab1d1c04dcbce614690708f4ddba6c94, type: 3}
+  - {fileID: -4706033662340627134, guid: ab1d1c04dcbce614690708f4ddba6c94, type: 3}
+  - {fileID: 3377031509231433493, guid: ab1d1c04dcbce614690708f4ddba6c94, type: 3}
+  - {fileID: -4842331836854380946, guid: ab1d1c04dcbce614690708f4ddba6c94, type: 3}
+  - {fileID: 193197348448343478, guid: ab1d1c04dcbce614690708f4ddba6c94, type: 3}
+  - {fileID: -7783244238246566955, guid: ab1d1c04dcbce614690708f4ddba6c94, type: 3}
+  reroll_: 3
+  canFix: 0
+  canTrigger: 0
+  rerollDots: []
+  rerollDot_: {fileID: 7019885826090297617, guid: 29112d0bd070812439798484526abfca, type: 3}
+  diceKeep_: {fileID: 9093994333308990468, guid: 38873122141f4444188ff428327e42e5, type: 3}

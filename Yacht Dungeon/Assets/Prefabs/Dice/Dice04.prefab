@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: -1058099199
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0c934fdaf3fba0e448503795a71892c4, type: 3}
+  m_Sprite: {fileID: -1810400454224534607, guid: bd2c53851c5d12a499b684a55ee623d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,24 +101,25 @@ MonoBehaviour:
   index_: 4
   nomenclature_: Low Dice
   rarity_: 1
-  description_: "3 \uC774\uD558\uC758 \uC218\uB9CC \uB098\uC624\uB294 \uC8FC\uC0AC\uC704."
+  description_: "3 \uC774\uD558\uC758 \uC218\uB9CC \uB098\uC624\uB294 \uC8FC\uC0AC\uC704"
   numbers_: 010000000100000002000000020000000300000003000000
   sprites_:
-  - {fileID: 21300000, guid: 4445b25a9596aba498532c0483842dd7, type: 3}
-  - {fileID: 21300000, guid: 4445b25a9596aba498532c0483842dd7, type: 3}
-  - {fileID: 21300000, guid: fa86fe083364c2646888030034cde852, type: 3}
-  - {fileID: 21300000, guid: fa86fe083364c2646888030034cde852, type: 3}
-  - {fileID: 21300000, guid: bbe20b0ff2d14184889f608550a54abe, type: 3}
-  - {fileID: 21300000, guid: bbe20b0ff2d14184889f608550a54abe, type: 3}
+  - {fileID: 569697312892358796, guid: 06c7dce7e7762ae4fab2fe1fc2ef6b26, type: 3}
+  - {fileID: -3548980176487926412, guid: 06c7dce7e7762ae4fab2fe1fc2ef6b26, type: 3}
+  - {fileID: 6526526149007763365, guid: 06c7dce7e7762ae4fab2fe1fc2ef6b26, type: 3}
+  - {fileID: 4033177430659224545, guid: 06c7dce7e7762ae4fab2fe1fc2ef6b26, type: 3}
+  - {fileID: -766918259488961362, guid: 06c7dce7e7762ae4fab2fe1fc2ef6b26, type: 3}
+  - {fileID: 4251139846831111639, guid: 06c7dce7e7762ae4fab2fe1fc2ef6b26, type: 3}
   smallSprite_:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -1810400454224534607, guid: bd2c53851c5d12a499b684a55ee623d0, type: 3}
+  - {fileID: -4764000093472732447, guid: bd2c53851c5d12a499b684a55ee623d0, type: 3}
+  - {fileID: 2893366865631680867, guid: bd2c53851c5d12a499b684a55ee623d0, type: 3}
+  - {fileID: 5835021611335392226, guid: bd2c53851c5d12a499b684a55ee623d0, type: 3}
+  - {fileID: -4153810043709058729, guid: bd2c53851c5d12a499b684a55ee623d0, type: 3}
+  - {fileID: 7546688095558751331, guid: bd2c53851c5d12a499b684a55ee623d0, type: 3}
   reroll_: 1
   canFix: 0
   canTrigger: 0
+  rerollDots: []
   rerollDot_: {fileID: 7019885826090297617, guid: 29112d0bd070812439798484526abfca, type: 3}
   diceKeep_: {fileID: 9093994333308990468, guid: 38873122141f4444188ff428327e42e5, type: 3}

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: -1058099199
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f5cf08f0bec18144bb54744942255b9f, type: 3}
+  m_Sprite: {fileID: 7165899351504020413, guid: 124b003319f080447b93979e3e66ec4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,24 +101,25 @@ MonoBehaviour:
   index_: 3
   nomenclature_: High Dice
   rarity_: 1
-  description_: "4 \uC774\uC0C1\uC758 \uC218\uB9CC \uB098\uC624\uB294 \uC8FC\uC0AC\uC704."
+  description_: "4 \uC774\uC0C1\uC758 \uC218\uB9CC \uB098\uC624\uB294 \uC8FC\uC0AC\uC704"
   numbers_: 040000000400000005000000050000000600000006000000
   sprites_:
-  - {fileID: 21300000, guid: 5679123d8d41afc42bad06cc24ed007f, type: 3}
-  - {fileID: 21300000, guid: 5679123d8d41afc42bad06cc24ed007f, type: 3}
-  - {fileID: 21300000, guid: 726856f2ab525014399d0c4e384b1d55, type: 3}
-  - {fileID: 21300000, guid: 726856f2ab525014399d0c4e384b1d55, type: 3}
-  - {fileID: 21300000, guid: e77c23f4fa1f863408cae6404769ff78, type: 3}
-  - {fileID: 21300000, guid: e77c23f4fa1f863408cae6404769ff78, type: 3}
+  - {fileID: -2002934265764606088, guid: ea532bde55ce27046a5137a8fe4a57ba, type: 3}
+  - {fileID: 4188119366607246492, guid: ea532bde55ce27046a5137a8fe4a57ba, type: 3}
+  - {fileID: 6164609825949129657, guid: ea532bde55ce27046a5137a8fe4a57ba, type: 3}
+  - {fileID: 3780220672379868943, guid: ea532bde55ce27046a5137a8fe4a57ba, type: 3}
+  - {fileID: -8685475545693481678, guid: ea532bde55ce27046a5137a8fe4a57ba, type: 3}
+  - {fileID: 7004541185776786266, guid: ea532bde55ce27046a5137a8fe4a57ba, type: 3}
   smallSprite_:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7165899351504020413, guid: 124b003319f080447b93979e3e66ec4f, type: 3}
+  - {fileID: 1324420222306010335, guid: 124b003319f080447b93979e3e66ec4f, type: 3}
+  - {fileID: -2906003490895426618, guid: 124b003319f080447b93979e3e66ec4f, type: 3}
+  - {fileID: 1362883229327551349, guid: 124b003319f080447b93979e3e66ec4f, type: 3}
+  - {fileID: -2713964294757183672, guid: 124b003319f080447b93979e3e66ec4f, type: 3}
+  - {fileID: -797947858518093003, guid: 124b003319f080447b93979e3e66ec4f, type: 3}
   reroll_: 1
   canFix: 0
   canTrigger: 0
+  rerollDots: []
   rerollDot_: {fileID: 7019885826090297617, guid: 29112d0bd070812439798484526abfca, type: 3}
   diceKeep_: {fileID: 9093994333308990468, guid: 38873122141f4444188ff428327e42e5, type: 3}
