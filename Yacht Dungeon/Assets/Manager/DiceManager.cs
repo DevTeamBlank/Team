@@ -18,6 +18,7 @@ public class DiceManager : MonoBehaviour {
     public GameObject rerollDot_;
     public GameObject diceKeep_;
     public GameObject dicePopUp_;
+    public float popUpOffset_ = 1f;
 
     void Awake() {
         Inst = this;

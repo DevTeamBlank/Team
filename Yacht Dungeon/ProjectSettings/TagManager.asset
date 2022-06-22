@@ -54,6 +54,9 @@ TagManager:
   - name: Dice
     uniqueID: 3236868097
     locked: 0
+  - name: Artifact
+    uniqueID: 311073687
+    locked: 0
   - name: Cursor
     uniqueID: 720396139
     locked: 0

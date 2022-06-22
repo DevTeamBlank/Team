@@ -207,7 +207,19 @@ public class Dice : MonoBehaviour {
 
     void MakePopUp() {
         hasPopUp = true;
-        Vector2 pos = transform.position; // TODO
+        Vector2 pos = transform.position;
+        float x = pos.x;
+        float y = pos.y;
+        float offset = DiceManager.Inst.popUpOffset_;
+        if (0 < x && 0 < y) {
+            pos += new Vector2(-1 * offset, -1 * offset);
+        } else if (0 < x && y <= 0) {
+            pos += new Vector2(-1 * offset, offset);
+        } else if (x <= 0 && 0 < y) {
+            pos += new Vector2(offset, -1 * offset);
+        } else {
+            pos += new Vector2(offset, offset);
+        }
         dicePopUp = Instantiate(DiceManager.Inst.dicePopUp_, pos, Quaternion.identity, gameObject.transform);
     }
 

@@ -13,6 +13,7 @@ public class Artifact : MonoBehaviour {
     public ArtifactRarity rarity_;
     public string description_;
 
+    [SerializeField] Sprite smallSprite_;
     [SerializeField] Sprite largeSprite_;
 
     public enum ArtifactRarity {
@@ -61,6 +62,58 @@ public class Artifact : MonoBehaviour {
     public virtual void Notify() {
         // DO NOTHING HERE
         // Implemented by derived classes
+    }
+
+    public void ChangeSprite(bool changeToLarge) {
+        if (changeToLarge) {
+            GetComponent<SpriteRenderer>().sprite = largeSprite_;
+            GetComponent<BoxCollider2D>().size = new Vector2(1.62f, 1.62f);
+        } else {
+            GetComponent<SpriteRenderer>().sprite = smallSprite_;
+            GetComponent<BoxCollider2D>().size = new Vector2(1.08f, 1.08f);
+        }
+    }
+
+    float time = 0f;
+    RaycastHit2D hit;
+
+    void Update() {
+        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
+
+        if (hit.collider != null && hit.collider.gameObject == gameObject) {
+            time += Time.deltaTime;
+            if (1 < time && !hasPopUp) MakePopUp();
+        } else {
+            time = 0;
+            if (hasPopUp) DestroyPopUp();
+        }
+
+    }
+
+    bool hasPopUp;
+    GameObject artifactPopUp;
+
+    void MakePopUp() {
+        hasPopUp = true;
+        Vector2 pos = transform.position;
+        float x = pos.x;
+        float y = pos.y;
+        float offset = ArtifactManager.Inst.popUpOffset_;
+        if (0 < x && 0 < y) {
+            pos += new Vector2(-1 * offset, -1 * offset);
+        } else if (0 < x && y <= 0) {
+            pos += new Vector2(-1 * offset, offset);
+        } else if (x <= 0 && 0 < y) {
+            pos += new Vector2(offset, -1 * offset);
+        } else {
+            pos += new Vector2(offset, offset);
+        }
+        artifactPopUp = Instantiate(ArtifactManager.Inst.artifactPopUp_, pos, Quaternion.identity, gameObject.transform);
+    }
+
+    void DestroyPopUp() {
+        hasPopUp = false;
+        Destroy(artifactPopUp);
     }
 
     // Below protected methods are used in derived classes' override methods

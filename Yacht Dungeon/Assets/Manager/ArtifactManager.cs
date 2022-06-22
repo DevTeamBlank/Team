@@ -10,6 +10,8 @@ public class ArtifactManager : MonoBehaviour {
     [SerializeField] List<int> artifactIndex = new List<int>(15);
 
     public GameObject[] artifactDB_ = new GameObject[40]; // DataBase
+    public GameObject artifactPopUp_;
+    public float popUpOffset_ = 1f;
     bool[] artifactGet = new bool[40];
 
     void Awake() {

@@ -123,7 +123,7 @@ MonoBehaviour:
   m_MinSize: {x: 710, y: 492}
   m_MaxSize: {x: 18005, y: 14042}
   vertical: 0
-  controlID: 15
+  controlID: 83
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_MinSize: {x: 231, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 16
+  controlID: 84
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -380,9 +380,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 8.67487, y: -0.36770904, z: -6.4670625}
+    m_Target: {x: -0.9043251, y: 0.30647406, z: -0.15445761}
     speed: 2
-    m_Value: {x: 8.67487, y: -0.36770904, z: -6.4670625}
+    m_Value: {x: 0, y: 0, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -433,9 +433,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 9.043564
+    m_Target: 2.314771
     speed: 2
-    m_Value: 9.043564
+    m_Value: 0.7701948
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -498,22 +498,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Dice
+    - Assets/Prefabs/Artifact
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Dice
+  - Assets/Prefabs/Artifact
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Oh Jinsu\Documents\GitHub\Yacht Dungeon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 78}
-    m_SelectedIDs: 264a0000
-    m_LastClickedID: 18982
-    m_ExpandedIDs: 000000001c4a00001e4a0000204a0000224a0000244a0000264a0000284a00002a4a0000344a00005c4c000000ca9a3b
+    scrollPos: {x: 0, y: 14}
+    m_SelectedIDs: f44d0000
+    m_LastClickedID: 19956
+    m_ExpandedIDs: 000000008c4d00008e4d0000904d0000924d0000984d00009a4d00009c4d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -541,7 +541,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001c4a00001e4a0000204a0000224a0000244a0000264a0000284a00002a4a0000
+    m_ExpandedIDs: 000000008c4d00008e4d0000904d0000924d0000944d0000964d0000984d00009a4d00009c4d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -652,7 +652,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 46fbffff04470000
+      m_ExpandedIDs: 46fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
