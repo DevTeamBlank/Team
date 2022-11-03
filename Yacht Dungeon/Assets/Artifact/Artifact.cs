@@ -131,8 +131,8 @@ public class Artifact : MonoBehaviour {
         int[] dices = new int[5];
         for (int i = 0; i < 5; i++) {
             dices[i] = DiceManager.Inst.diceIndex[set, i];
-        }
-        return dices;
+            }
+            return dices;
     }
 
     protected GameObject[] GetDice() {
