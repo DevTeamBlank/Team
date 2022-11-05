@@ -29,7 +29,7 @@ public class DiceManager : MonoBehaviour {
             diceGet[i] = false;
         }
         for (int i = 1; i <= 3; i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 1; j <= 5; j++) {
                 ChangeDice(i, j);
             }
         }
@@ -40,10 +40,10 @@ public class DiceManager : MonoBehaviour {
         for (int i = 0; i < diceGet.Length; i++) {
             diceGet[i] = false;
         }
-        for (int i = 0; i < 5; i++) {
-            ChangeDice(1, i, save.set0[i]);
-            ChangeDice(2, i, save.set1[i]);
-            ChangeDice(3, i, save.set2[i]);
+        for (int i = 1; i <= 5; i++) {
+            ChangeDice(1, i, save.set1[i]);
+            ChangeDice(2, i, save.set2[i]);
+            ChangeDice(3, i, save.set3[i]);
         }        
     }
 
@@ -54,19 +54,19 @@ public class DiceManager : MonoBehaviour {
             case 1:
                 Destroy(set1[place]);
                 tempGo = Instantiate(diceDB_[index], Set.Inst.transform);
-                tempGo.name = "Dice" + (place + 1).ToString();
+                tempGo.name = "Dice" + place.ToString();
                 set1[place] = tempGo;
                 break;
             case 2:
                 Destroy(set2[place]);
                 tempGo = Instantiate(diceDB_[index], Set.Inst.transform);
-                tempGo.name = "Dice" + (place + 6).ToString();
+                tempGo.name = "Dice" + (place + 5).ToString();
                 set2[place] = tempGo;
                 break;
             case 3:
                 Destroy(set3[place]);
                 tempGo = Instantiate(diceDB_[index], Set.Inst.transform);
-                tempGo.name = "Dice" + (place + 11).ToString();
+                tempGo.name = "Dice" + (place + 10).ToString();
                 set3[place] = tempGo;
                 break;
             default:
@@ -113,5 +113,19 @@ public class DiceManager : MonoBehaviour {
         return ret;
     }
 
-    
+
+    public List<int> RemainingIndexes() {
+        List<int> list = new List<int>();
+        for (int i = 1; i < diceDB_.Length; i++) {
+            if (!diceGet[i]) list.Add(i);
+        }
+        return list;
+    }
+
+    [SerializeField] GameObject[] rewardDices_ = new GameObject[30]; // This is different from Database, please put prefab here.
+
+    public GameObject RewardDice(int index) {
+        return Instantiate(rewardDices_[index]);
+    }
+
 }

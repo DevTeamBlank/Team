@@ -11,7 +11,6 @@ public class ArtifactManager : MonoBehaviour {
 
     public GameObject[] artifactDB_ = new GameObject[40]; // DataBase
     public GameObject artifactPopUp_;
-    public float popUpOffset_ = 1f;
     bool[] artifactGet = new bool[40];
 
     void Awake() {
@@ -43,6 +42,20 @@ public class ArtifactManager : MonoBehaviour {
         artifacts.Add(go);
         artifactGet[index] = true;
         go.GetComponent<Artifact>().Enable();
+    }
+
+    public List<int> RemainingIndexes() {
+        List<int> list = new List<int>();
+        for (int i = 1; i < artifactDB_.Length; i++) {
+            if (!artifactDB_[i]) list.Add(i);
+        }
+        return list;
+    }
+
+    [SerializeField] GameObject[] rewardArtifacts_ = new GameObject[40]; // This is different from Database, please put prefab here.
+
+    public GameObject RewardArtifact(int index) {
+        return Instantiate(rewardArtifacts_[index]);
     }
 
 }

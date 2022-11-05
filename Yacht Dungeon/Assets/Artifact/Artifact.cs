@@ -98,7 +98,7 @@ public class Artifact : MonoBehaviour {
         Vector2 pos = transform.position;
         float x = pos.x;
         float y = pos.y;
-        float offset = ArtifactManager.Inst.popUpOffset_;
+        float offset = 1;
         if (0 < x && 0 < y) {
             pos += new Vector2(-1 * offset, -1 * offset);
         } else if (0 < x && y <= 0) {
