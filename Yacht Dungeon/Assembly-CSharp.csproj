@@ -116,6 +116,7 @@
     <Compile Include="Assets\Entity\Meteor.cs" />
     <Compile Include="Assets\Artifact\Artifact30.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\Manager\DiceRewardManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Artifact\Artifact09.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
@@ -160,14 +161,14 @@
     <Compile Include="Assets\Dice\Dice19.cs" />
     <Compile Include="Assets\Entity\Attack.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\Manager\ArtifactRewardManager.cs" />
     <Compile Include="Assets\Artifact\Artifact33.cs" />
     <Compile Include="Assets\Artifact\Artifact.cs" />
     <Compile Include="Assets\Artifact\Artifact00.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Entity\Entity.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\Manager\DiceRewardManager.cs" />
-    <Compile Include="Assets\Manager\ArtifactRewardManager.cs" />
+    <Compile Include="Assets\Prefabs\DiceReward\DiceReward.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

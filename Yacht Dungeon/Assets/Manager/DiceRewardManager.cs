@@ -12,6 +12,7 @@ public class DiceRewardManager : MonoBehaviour {
 
     [SerializeField] int rewardNumber = 2;
     [SerializeField] GameObject[] positions_ = new GameObject[5];
+    [SerializeField] GameObject description_;
 
     void Start() {
 
@@ -73,6 +74,10 @@ public class DiceRewardManager : MonoBehaviour {
             reward1.transform.position = positions_[5].transform.position;
             reward1.name = "Reward2: Dice" + indexes[2].ToString();
         }
+    }
+
+    public void ChangeDescription(Sprite sprite) {
+        description_.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
     public void ChoseReward() {

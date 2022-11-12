@@ -668,7 +668,7 @@ GameObject:
   - component: {fileID: 69961266}
   m_Layer: 0
   m_Name: DiceManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,35 +754,38 @@ MonoBehaviour:
   popUpOffset_: 1
   rewardDices_:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4557088833486403399, guid: 0502bd5da7a957445ba8b393694e581f, type: 3}
+  - {fileID: 6644954622103813482, guid: 68d7e53b454f4134987461b715d56a96, type: 3}
+  - {fileID: 796886777072241357, guid: dc93ad4b63de38b4ba5096ba7d093749, type: 3}
+  - {fileID: 1207852526412014794, guid: ff3899d00edfa8542aa89ef4f15c5136, type: 3}
+  - {fileID: 4105032737224992252, guid: d5f2ac7715c5cd14a92a8624c584b508, type: 3}
+  - {fileID: 4765907346597044900, guid: 4b13c045b4c91e2479bd3dfe24d2b02a, type: 3}
+  - {fileID: 424439874623932582, guid: cef5cdf6ca7aab74c9b86d0b22f496df, type: 3}
+  - {fileID: 6033291481546917734, guid: 9abfc110198f7fe45813ede47391b3b6, type: 3}
+  - {fileID: 1083370670126051439, guid: c7d701d563c168848addf71e0cdabba7, type: 3}
+  - {fileID: 8643077585142651139, guid: fc070c38fa9c3994a892c692f35aa1c1, type: 3}
+  - {fileID: 6488920267087207275, guid: 3671581dc56ef554988fe6b88bf1b78d, type: 3}
+  - {fileID: 7188844327676185275, guid: e9579aab9fc412e40afacd6634b7130a, type: 3}
+  - {fileID: 7782751273057579745, guid: c37a3d9b39fee744f83c2a57e396b236, type: 3}
+  - {fileID: 2276485867973574092, guid: 3eeb6f7d2d024cc46a57f6a16c0c049f, type: 3}
+  - {fileID: 7940032108558811501, guid: 6d9433c7dec6e634eaf51e698ecd2e26, type: 3}
+  - {fileID: 703297438139506638, guid: d2552c1f365c3ee4d9a40e35ce9161d0, type: 3}
+  - {fileID: 5126746964275163732, guid: 2f521e61811da7d4a957164aff052980, type: 3}
+  - {fileID: 8414149626673666174, guid: e4e0a44d3262b694aab1f0060deaf34c, type: 3}
+  - {fileID: 7535108304798236129, guid: 638510cb16d3a9a4590a119d1caf605f, type: 3}
+  - {fileID: 8568847137601543138, guid: a02421601a929da4fbd043c439497f9d, type: 3}
+  - {fileID: 4865525964331298235, guid: d2e78c1e42893d94891f97418641b3eb, type: 3}
+  - {fileID: 1773083288620689130, guid: 39fb077ff2c873d4287c39b0c1175c01, type: 3}
+  - {fileID: 2938521559057181946, guid: 8f4677376b2c01d45b7928874a578b4c, type: 3}
+  - {fileID: 3811802862860820196, guid: cb7b422b5e11c6c4dbb1cdf2eeaec396, type: 3}
+  - {fileID: 7898681942640835608, guid: 276172b6d1ae2c847bfae91c7b1ce789, type: 3}
+  - {fileID: 2901060896612428966, guid: 9ee1c62bdba795642b5da777a5fc8721, type: 3}
+  - {fileID: 8538140281521937072, guid: c3d7cb45f6190f04492a78d6ee555946, type: 3}
+  - {fileID: 4841579982413716982, guid: b4d949fde44729c4a80ee34c09df4b77, type: 3}
+  - {fileID: 3448931533349919088, guid: 24806f28cef919e49b2206b6dcc77398, type: 3}
+  offsetSet: {x: -8.12, y: 3.38}
+  offsetX: 1.24
+  offsetY: 1.44
 --- !u!1 &73785932
 GameObject:
   m_ObjectHideFlags: 0
@@ -3218,7 +3221,7 @@ GameObject:
   - component: {fileID: 377963312}
   m_Layer: 0
   m_Name: DiceRewardManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3256,6 +3259,7 @@ MonoBehaviour:
   - {fileID: 626306273}
   - {fileID: 607507348}
   - {fileID: 1402315287}
+  description_: {fileID: 1962996690}
   indexes: 000000000000000000000000
 --- !u!1 &393969566
 GameObject:
@@ -3433,7 +3437,7 @@ GameObject:
   - component: {fileID: 404035294}
   m_Layer: 0
   m_Name: ArtifactManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3889,7 +3893,7 @@ GameObject:
   - component: {fileID: 462838563}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6213,7 +6217,7 @@ GameObject:
   - component: {fileID: 915346969}
   m_Layer: 0
   m_Name: TextManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8447,7 +8451,7 @@ GameObject:
   - component: {fileID: 1213905499}
   m_Layer: 0
   m_Name: ArtifactRewardManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8485,6 +8489,7 @@ MonoBehaviour:
   - {fileID: 362498650}
   - {fileID: 1482579938}
   - {fileID: 73785932}
+  description_: {fileID: 663116615}
   indexes: 000000000000000000000000
 --- !u!1 &1215949751
 GameObject:
@@ -15249,7 +15254,7 @@ GameObject:
   - component: {fileID: 2138673964}
   m_Layer: 0
   m_Name: EnemyManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
