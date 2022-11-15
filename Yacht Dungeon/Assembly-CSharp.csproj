@@ -97,6 +97,7 @@
     <Compile Include="Assets\Artifact\Artifact38.cs" />
     <Compile Include="Assets\Dice\Dice12.cs" />
     <Compile Include="Assets\Artifact\Artifact06.cs" />
+    <Compile Include="Assets\Prefabs\DiceReward\DiceReward.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Artifact\Artifact28.cs" />
     <Compile Include="Assets\Artifact\Artifact15.cs" />
@@ -168,7 +169,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Entity\Entity.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\Prefabs\DiceReward\DiceReward.cs" />
+    <Compile Include="Assets\Prefabs\ArtifactReward\ArtifactReward.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
