@@ -248,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1945761af2513b4c80c4eda39f7d0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  set_: 2
   selectedSprite_: {fileID: 21300000, guid: 535e6aa9486e72c44ab34743f2b2562b, type: 3}
   normalSprite_: {fileID: 21300000, guid: a81579fba69829a41846db7a3b126548, type: 3}
   madeDamageT_: {fileID: 486698655}
@@ -1869,15 +1870,13 @@ MonoBehaviour:
   - {fileID: 2081446032}
   - {fileID: 2960426}
   - {fileID: 1540350027}
-  chest: 0
+  meteor: 0
   enemy1: 0
   enemy2: 0
   set1Damage: 0
   set2Damage: 0
   set3Damage: 0
   rerollButton_: {fileID: 1492283771}
-  fireButton_: {fileID: 2105267191}
-  resetButton_: {fileID: 2072961302}
 --- !u!1 &153661933
 GameObject:
   m_ObjectHideFlags: 0
@@ -6474,9 +6473,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1159086333}
   - {fileID: 1877614646}
   - {fileID: 1160139829}
-  - {fileID: 1159086333}
   m_Father: {fileID: 296656184}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8032,7 +8031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223008583820034475, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5223008583820034475, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8079,6 +8078,11 @@ PrefabInstance:
 --- !u!4 &1160139829 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5223008583820034475, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
+  m_PrefabInstance: {fileID: 1160139828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1160139830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5223008583820034474, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
   m_PrefabInstance: {fileID: 1160139828}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1174350166
@@ -11429,6 +11433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1945761af2513b4c80c4eda39f7d0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  set_: 3
   selectedSprite_: {fileID: 21300000, guid: a844f10555c1bf54fb4d4dd086f75687, type: 3}
   normalSprite_: {fileID: 21300000, guid: 8859cb51c28d959409d2c438730006ac, type: 3}
   madeDamageT_: {fileID: 586778570}
@@ -12315,6 +12320,7 @@ Transform:
   - {fileID: 915346968}
   - {fileID: 377963311}
   - {fileID: 1213905498}
+  - {fileID: 2111512237}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13812,7 +13818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223008583820034475, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5223008583820034475, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13859,6 +13865,11 @@ PrefabInstance:
 --- !u!4 &1877614646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5223008583820034475, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
+  m_PrefabInstance: {fileID: 1877614645}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1877614647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5223008583820034474, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
   m_PrefabInstance: {fileID: 1877614645}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1903047377
@@ -15033,6 +15044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1945761af2513b4c80c4eda39f7d0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  set_: 1
   selectedSprite_: {fileID: 21300000, guid: 8851ec575fd1f4c44bb8cd93624566b9, type: 3}
   normalSprite_: {fileID: 21300000, guid: f0f0c0508963e0d4bbe93e2c69527309, type: 3}
   madeDamageT_: {fileID: 2014120782}
@@ -15242,6 +15254,58 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.86, y: 0.66}
   m_EdgeRadius: 0
+--- !u!1 &2111512236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2111512237}
+  - component: {fileID: 2111512238}
+  m_Layer: 0
+  m_Name: AttackManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2111512237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111512236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1662424407}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2111512238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111512236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c472e36d097eda04db38660d5ec3ec92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
+  meteor_: {fileID: 5802119115523293426}
+  enemy1_: {fileID: 1877614647}
+  enemy2_: {fileID: 1160139830}
+  meteorHp: 0
+  enemy1Hp: 0
+  enemy2Hp: 0
+  SetDMG_: {fileID: 1679724141}
+  DMGButton_: {fileID: 584799167}
 --- !u!1 &2138673962
 GameObject:
   m_ObjectHideFlags: 0
@@ -15296,7 +15360,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5802119116648300556, guid: adc65a078a2cac446a5e1831b6b925e1, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5802119116648300556, guid: adc65a078a2cac446a5e1831b6b925e1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15344,3 +15408,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adc65a078a2cac446a5e1831b6b925e1, type: 3}
+--- !u!1 &5802119115523293426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5802119116648300557, guid: adc65a078a2cac446a5e1831b6b925e1, type: 3}
+  m_PrefabInstance: {fileID: 5802119115523293425}
+  m_PrefabAsset: {fileID: 0}

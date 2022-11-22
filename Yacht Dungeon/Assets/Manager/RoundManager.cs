@@ -24,7 +24,7 @@ public class RoundManager : MonoBehaviour {
         RoundStart();
     }
 
-    [SerializeField] int chest; // enemy0
+    [SerializeField] int meteor; // enemy0
     [SerializeField] int enemy1;
     [SerializeField] int enemy2;
 
@@ -45,10 +45,6 @@ public class RoundManager : MonoBehaviour {
         RollDice();
         ToggleDice();
         TriggerDice();
-        if (choseDamage) {
-            FireDamage();
-            ResetDamage();
-        }
     }
 
     [SerializeField] GameObject rerollButton_;
@@ -107,59 +103,6 @@ public class RoundManager : MonoBehaviour {
         }
     }
 
-    [SerializeField] GameObject fireButton_;
-    [SerializeField] GameObject resetButton_;
-
-    void FireDamage() {
-        if (Input.GetMouseButtonDown(0)) {
-            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
-
-            if (hit.collider != null) {
-                target = hit.collider.gameObject;
-                if (target == fireButton_) {
-                    fireButton_.GetComponent<FireButton>().ChangeSprite(true);
-                }
-            }
-        }
-
-        if (Input.GetMouseButtonUp(0)) {
-            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
-
-            if (hit.collider != null) {
-                target = hit.collider.gameObject;
-                if (target == fireButton_) {
-                    fireButton_.GetComponent<FireButton>().ChangeSprite(false);
-                    // TODO
-                }
-            }
-        }
-    }
-
-    void ResetDamage() {
-        if (Input.GetMouseButtonDown(0)) {
-            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
-
-            if (hit.collider != null) {
-                target = hit.collider.gameObject;
-                if (target == resetButton_) {
-                    ResetButton.Inst.ChangeSprite(true);
-                }
-            }
-        }
-
-        if (Input.GetMouseButtonUp(0)) {
-            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
-
-            if (hit.collider != null) {
-                target = hit.collider.gameObject;
-                if (target == resetButton_) {
-                    ResetButton.Inst.ChangeSprite(false);
-                    ResetButton.Inst.ResetDamage();
-                }
-            }
-        }
-    }
-
     public void RollSet() {
         DiceManager.Inst.RollSet();
         currentRoll++;
@@ -171,10 +114,10 @@ public class RoundManager : MonoBehaviour {
     [HideInInspector] public RoundStartSubject roundStartS;
 
     void RoundStart() {
-        // roundStartS.CallArtifact();
-        chest = EnemyManager.Inst.ChestHp(currentRound);
-        enemy1 = EnemyManager.Inst.GetComponent<EnemyManager>().Enemy1Hp(currentRound);
-        enemy2 = EnemyManager.Inst.GetComponent<EnemyManager>().Enemy2Hp(currentRound);
+        roundStartS.CallArtifact();
+        meteor = EnemyManager.Inst.MeteorHp(currentRound);
+        enemy1 = EnemyManager.Inst.Enemy1Hp(currentRound);
+        enemy2 = EnemyManager.Inst.Enemy2Hp(currentRound);
         ChangeSetDamageBarSprite(currentSet);
     }
 
@@ -213,7 +156,7 @@ public class RoundManager : MonoBehaviour {
         }
     }
 
-    void ChangeSetDamageBarSprite(int set) {
+    public void ChangeSetDamageBarSprite(int set) {
         switch (set) {
             case 1:
                 setDamageBar_[0].GetComponent<SetDamageBar>().ChangeSprite(true);
@@ -229,6 +172,11 @@ public class RoundManager : MonoBehaviour {
                 setDamageBar_[0].GetComponent<SetDamageBar>().ChangeSprite(false);
                 setDamageBar_[1].GetComponent<SetDamageBar>().ChangeSprite(false);
                 setDamageBar_[2].GetComponent<SetDamageBar>().ChangeSprite(true);
+                break;
+            case -1:
+                setDamageBar_[0].GetComponent<SetDamageBar>().ChangeSprite(false);
+                setDamageBar_[1].GetComponent<SetDamageBar>().ChangeSprite(false);
+                setDamageBar_[2].GetComponent<SetDamageBar>().ChangeSprite(false);
                 break;
             default:
                 Debug.Log("Error");

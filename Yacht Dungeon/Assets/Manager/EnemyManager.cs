@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour {
         Inst = this;
     }
 
-    public int ChestHp(int round) {
+    public int MeteorHp(int round) {
         return roundHp_[round];
     }
 
