@@ -26,4 +26,25 @@ public class Meteor : Entity {
         }
     }
 
+    public override void SetMaxHp() {
+        maxHp = EnemyManager.Inst.MeteorHp();
+        hp = maxHp;
+    }
+
+    RaycastHit2D hit;
+    GameObject target;
+
+    protected override void SelectEntity() {
+        if (Input.GetMouseButtonDown(0)) {
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
+
+            if (hit.collider != null) {
+                target = hit.collider.gameObject;
+                if (target == gameObject) {
+                    AttackManager.Inst.SelectEntity(true);
+                }
+            }
+        }
+    }
+
 }

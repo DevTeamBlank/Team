@@ -5,8 +5,8 @@ using UnityEngine;
 public class Entity : MonoBehaviour {
 
     public string nomenclature_;
-    public int maxHp_;
-    [SerializeField] int hp;
+    [SerializeField] protected int maxHp;
+    [SerializeField] protected int hp;
     [SerializeField] protected float animationDelay_;
     protected bool onAnimation;
     protected float time;
@@ -17,9 +17,11 @@ public class Entity : MonoBehaviour {
         time = 0f;
         count = 0;
 
-        hp = maxHp_;
-
         sprite = GetComponent<SpriteRenderer>().sprite;
+    }
+
+    private void Update() {
+        SelectEntity();
     }
 
     public void Damaged(int damage) {
@@ -40,10 +42,20 @@ public class Entity : MonoBehaviour {
     Sprite sprite;
 
     public void ResetEntity() {
-        hp = maxHp_;
+        hp = maxHp;
         onAnimation = false;
         time = 0f;
         count = 0;
         GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+
+    public virtual void SetMaxHp() {
+        // DO NOTHING HERE
+        // Implemented by derived classes (Enemy.cs and Meteor.cs)
+    }
+
+    protected virtual void SelectEntity() {
+        // DO NOTHING HERE
+        // Implemented by derived classes (Enemy.cs and Meteor.cs)
     }
 }

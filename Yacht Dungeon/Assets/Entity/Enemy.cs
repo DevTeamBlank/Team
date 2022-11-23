@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : Entity {
 
+    [SerializeField] int index_;
+
     public Sprite[] sprites_ = new Sprite[6];
 
     void Update() {
@@ -24,6 +26,31 @@ public class Enemy : Entity {
                 }                
             }
         }    
+    }
+
+    public override void SetMaxHp() {
+        if (index_ == 1) {
+            maxHp = EnemyManager.Inst.Enemy1Hp();
+        } else { // if (index_ == 2)
+            maxHp = EnemyManager.Inst.Enemy2Hp();
+        }
+        hp = maxHp;
+    }
+
+    RaycastHit2D hit;
+    GameObject target;
+
+    protected override void SelectEntity() {
+        if (Input.GetMouseButtonDown(0)) {
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
+
+            if (hit.collider != null) {
+                target = hit.collider.gameObject;
+                if (target == gameObject) {
+                    AttackManager.Inst.SelectEntity(false, index_);
+                }
+            }
+        }
     }
 
 }

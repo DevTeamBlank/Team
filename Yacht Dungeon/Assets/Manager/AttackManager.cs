@@ -11,10 +11,6 @@ public class AttackManager : MonoBehaviour {
     public GameObject enemy1_;
     public GameObject enemy2_;
 
-    [SerializeField] int meteorHp;
-    [SerializeField] int enemy1Hp;
-    [SerializeField] int enemy2Hp;
-
     public GameObject SetDMG_;
     public GameObject DMGButton_;
 
@@ -39,15 +35,14 @@ public class AttackManager : MonoBehaviour {
         SetDMG_.transform.Translate(30, 0, 0);
         DMGButton_.transform.Translate(30, 0, 0);
         Camera.main.transform.position = new Vector2(30, 0);
-        GetEnemyHp();
+        SetEnemyHp();
         isAttacking = true;
     }
 
-    void GetEnemyHp() {
-        int round = RoundManager.Inst.currentRound;
-        meteorHp = EnemyManager.Inst.MeteorHp(round);
-        enemy1Hp = EnemyManager.Inst.Enemy1Hp(round);
-        enemy2Hp = EnemyManager.Inst.Enemy2Hp(round);
+    void SetEnemyHp() {
+        meteor_.GetComponent<Entity>().SetMaxHp();
+        enemy1_.GetComponent<Entity>().SetMaxHp();
+        enemy2_.GetComponent<Entity>().SetMaxHp();
     }
 
     public void EndAttack() {
@@ -57,13 +52,31 @@ public class AttackManager : MonoBehaviour {
         // Call RoundManager or RewardManager
     }
 
+    [SerializeField] bool isSelecting = false;
     [SerializeField] int selectedSet;
     [SerializeField] int selectedDamage;
     [SerializeField] bool[] isSetFired = new bool[3];
 
     public void SelectSet(int set, int damage) {
+        isSelecting = true;
         selectedSet = set;
         selectedDamage = damage;
+    }
+
+    public void SelectEntity(bool meteor, int index = 0) {
+        if (!isSelecting) {
+            Debug.Log("Please select a Set first");
+        } else {
+            if (meteor || index == 0) {
+                FireSet(meteor_);
+            } else { // if the target entity is an enemy
+                if (index == 1) {
+                    FireSet(enemy1_);
+                } else { // if (index == 2)
+                    FireSet(enemy2_);
+                }
+            }
+        }
     }
 
     public void FireSet(GameObject target) {
@@ -75,6 +88,7 @@ public class AttackManager : MonoBehaviour {
             } else {
                 target.GetComponent<Entity>().Damaged(selectedDamage);
                 isSetFired[selectedSet - 1] = true;
+                isSelecting = false;
             }
         }
     }

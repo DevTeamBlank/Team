@@ -17,12 +17,23 @@ public class EnemyManager : MonoBehaviour {
         return roundHp_[round];
     }
 
+    public int MeteorHp() {
+        return roundHp_[RoundManager.Inst.currentRound];
+    }
+
     public int Enemy1Hp(int round) {
         return roundHp_[round] + roundOffset_[round];
     }
 
+    public int Enemy1Hp() {
+        return roundHp_[RoundManager.Inst.currentRound] + roundOffset_[RoundManager.Inst.currentRound];
+    }
     public int Enemy2Hp(int round) {
         return roundHp_[round] - roundOffset_[round];
+    }
+
+    public int Enemy2Hp() {
+        return roundHp_[RoundManager.Inst.currentRound] - roundOffset_[RoundManager.Inst.currentRound];
     }
 
 }
