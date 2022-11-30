@@ -39,7 +39,6 @@ public class ResetButton : MonoBehaviour {
                 if (target == gameObject) {
                     ChangeSprite(false);
                     AttackManager.Inst.ResetDamage();
-                    ResetDamage();
                 }
             }
         }

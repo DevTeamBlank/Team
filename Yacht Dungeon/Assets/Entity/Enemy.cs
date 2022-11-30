@@ -9,6 +9,8 @@ public class Enemy : Entity {
     public Sprite[] sprites_ = new Sprite[6];
 
     void Update() {
+        SelectEntity();
+
         if (onAnimation) {
             time += Time.deltaTime;
             if (animationDelay_ <= time) {

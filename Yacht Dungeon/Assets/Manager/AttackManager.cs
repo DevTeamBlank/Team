@@ -19,7 +19,7 @@ public class AttackManager : MonoBehaviour {
     }
 
     private void Start() {
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 0; i < 3; i++) {
             isSetFired[i] = false;
         }
     }
@@ -27,7 +27,7 @@ public class AttackManager : MonoBehaviour {
     public void Attack() {
         SetDMG_.transform.Translate(30, 0, 0);
         DMGButton_.transform.Translate(30, 0, 0);
-        Camera.main.transform.position = new Vector2(30, 0);
+        Camera.main.transform.position = new Vector3(30, 0, -10);
         SetEnemyHp();
         isAttacking = true;
     }
@@ -50,6 +50,7 @@ public class AttackManager : MonoBehaviour {
         DMGButton_.transform.Translate(-30, 0, 0);
         isAttacking = false;
 
+        Camera.main.transform.position = new Vector3(60, 0, -10);
         RoundManager.Inst.RoundEnd(!meteor_.GetComponent<Meteor>().IsAlive());
     }
 
@@ -109,7 +110,7 @@ public class AttackManager : MonoBehaviour {
             enemy1_.GetComponent<Entity>().ResetEntity();
             enemy2_.GetComponent<Entity>().ResetEntity();
             
-            for (int i = 1; i <= 3; i++) {
+            for (int i = 0; i < 3; i++) {
                 isSetFired[i] = false;
             }
 

@@ -45,12 +45,13 @@ public class MadeTableBar : MonoBehaviour {
     public void Click() {
         if (!canSelect) return;
 
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0)) {            
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
 
             if (hit.collider != null) {
                 target = hit.transform.gameObject;
                 if (target == gameObject) {
+                    if (RoundManager.Inst.currentRoll == 0) return;
                     MadeTable.Inst.SelectMade(made);
                     MadeTable.Inst.UpdateMadeTable();
                 }

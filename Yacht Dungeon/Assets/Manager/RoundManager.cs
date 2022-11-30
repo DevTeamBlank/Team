@@ -18,9 +18,9 @@ public class RoundManager : MonoBehaviour {
     }
 
     public void StartGame() {
+        roundStartS = new RoundStartSubject();
         currentRound = 0;
-        currentSet = 1;
-        currentRoll = 0;
+        
         RoundStart();
     }
 
@@ -38,39 +38,8 @@ public class RoundManager : MonoBehaviour {
     GameObject target;
 
     void Update() {
-        RollDice();
         ToggleDice();
         TriggerDice();
-    }
-
-    [SerializeField] GameObject rerollButton_;
-
-    void RollDice() {
-        if (currentRoll >= 3) return;
-
-        if (Input.GetMouseButtonDown(0)) {
-            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
-
-            if (hit.collider != null) {
-                target = hit.collider.gameObject;
-                if (target == rerollButton_) {
-                    RerollButton.Inst.ChangeSprite(true);
-                }
-            }
-        }
-
-        if (Input.GetMouseButtonUp(0)) {
-            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
-
-            if (hit.collider != null) {
-                target = hit.collider.gameObject;
-                if (target == rerollButton_) {
-                    RerollButton.Inst.ChangeSprite(false);
-                    RollSet();
-                    MadeTable.Inst.UpdateMadeTable();
-                }
-            }
-        }
     }
 
     void ToggleDice() {
@@ -110,6 +79,10 @@ public class RoundManager : MonoBehaviour {
     [HideInInspector] public RoundStartSubject roundStartS;
 
     void RoundStart() {
+        currentSet = 1;
+        currentRoll = 0;
+        RerollButton.Inst.UpdateDot();
+        Set.Inst.StartSet();
         roundStartS.CallArtifact();
         DiceManager.Inst.ResetDice();
         ChangeSetDamageBarSprite(currentSet);
@@ -139,21 +112,20 @@ public class RoundManager : MonoBehaviour {
             default:
                 Debug.Log("Error");
                 break;
-        }
-        
+        }        
         NextSet();
     }
-
-    bool choseDamage = false;
 
     void NextSet() {
         if (currentSet == 1 || currentSet == 2) {
             currentSet++;
+            currentRoll = 0;
+            RerollButton.Inst.UpdateDot();
             ChangeSetDamageBarSprite(currentSet);
-            Set.Inst.NextSet();
-            DiceManager.Inst.RollSet();
+            Set.Inst.StartSet();
+            DiceManager.Inst.ResetDice();
         } else {
-            choseDamage = true;
+            Camera.main.transform.position = new Vector3(30, 0, -10);
             AttackManager.Inst.Attack();
         }
     }

@@ -7,6 +7,8 @@ public class Meteor : Entity {
     public Sprite[] sprites_ = new Sprite[10];
 
     void Update() {
+        SelectEntity();
+
         if (onAnimation) {
             time += Time.deltaTime;
             if (animationDelay_ <= time) {

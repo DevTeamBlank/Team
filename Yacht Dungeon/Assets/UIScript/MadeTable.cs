@@ -58,6 +58,12 @@ public class MadeTable : MonoBehaviour {
         SetBonusUpdate(setBonus);
     }
 
+    public void StartSet() {
+        for (int i = 0; i < 12; i++) {
+            DamageUpdate((Made)i, 0);
+        }
+    }
+
     void DamageUpdate(Made made, int damage) {
         int index = MadeToInt(made);
         Vector3 pos = madeDamageT_[index].transform.position;

@@ -82,8 +82,10 @@ public class DiceRewardManager : MonoBehaviour {
 
     public void ChoseReward() {
         if (RoundManager.Inst.gettingArtifact) {
+            Camera.main.transform.position = new Vector3(60, -15, -10);
             ArtifactRewardManager.Inst.StartArtifactReward();
         } else {
+            Camera.main.transform.position = new Vector3(0, 0, -10);
             RoundManager.Inst.NextRound();
         }
     }

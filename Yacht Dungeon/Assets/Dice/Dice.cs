@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Dice : MonoBehaviour {
@@ -43,9 +41,6 @@ public class Dice : MonoBehaviour {
 
         canFix = false;
         canTrigger = false;
-
-        MakeRerollDot();
-        CheckReroll();
     }
 
     public virtual void RollDice() {
@@ -81,7 +76,7 @@ public class Dice : MonoBehaviour {
         // DO NOTHING HERE
     }
 
-    void MakeRerollDot() {
+    public void MakeRerollDot() {
         switch (reroll_) {
             case 0:
                 break;
@@ -116,6 +111,16 @@ public class Dice : MonoBehaviour {
                 Debug.Log("Error");
                 break;
         }
+        haveRerollDot = true;
+        CheckReroll();
+    }
+
+    public void DestroyRerollDot() {
+        for (int i = 0; i < reroll_; i++) {
+            Destroy(rerollDots[i]);
+        }
+        rerollDots = new GameObject[reroll_];
+        haveRerollDot = false;
     }
 
     void CheckReroll() {
@@ -169,14 +174,14 @@ public class Dice : MonoBehaviour {
     public void ChangeSprite(bool changeToLarge) {
         if (changeToLarge) {
             GetComponent<SpriteRenderer>().sprite = sprites_[face];
-            for (int i = 0; i < rerollDots.Length; i++) {
-                rerollDots[i].GetComponent<SpriteRenderer>().enabled = true;
+            if (!haveRerollDot) {
+                MakeRerollDot();
             }
             GetComponent<BoxCollider2D>().size = new Vector2(1.62f, 1.62f);
         } else {
             GetComponent<SpriteRenderer>().sprite = smallSprite_[face];
-            for (int i = 0; i < rerollDots.Length; i++) {
-                rerollDots[i].GetComponent<SpriteRenderer>().enabled = false;
+            if (haveRerollDot) { 
+                DestroyRerollDot();
             }
             GetComponent<BoxCollider2D>().size = new Vector2(1.08f, 1.08f);
         }
@@ -186,45 +191,6 @@ public class Dice : MonoBehaviour {
         int reroll = GetReroll();
     }
 
-    float time = 0f;
-    RaycastHit2D hit;
+    bool haveRerollDot = false;
 
-    void Update() {
-        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
-
-        if (hit.collider != null && hit.collider.gameObject == gameObject) {
-            time += Time.deltaTime;
-            if (1 < time && !hasPopUp) MakePopUp();
-        } else {
-            time = 0;
-            if (hasPopUp) DestroyPopUp();
-        }
-        
-    }
-
-    bool hasPopUp;
-    GameObject dicePopUp;
-
-    void MakePopUp() {
-        hasPopUp = true;
-        Vector2 pos = transform.position;
-        float x = pos.x;
-        float y = pos.y;
-        float offset = DiceManager.Inst.popUpOffset_;
-        if (0 < x && 0 < y) {
-            pos += new Vector2(-1 * offset, -1 * offset);
-        } else if (0 < x && y <= 0) {
-            pos += new Vector2(-1 * offset, offset);
-        } else if (x <= 0 && 0 < y) {
-            pos += new Vector2(offset, -1 * offset);
-        } else {
-            pos += new Vector2(offset, offset);
-        }
-        dicePopUp = Instantiate(DiceManager.Inst.dicePopUp_, pos, Quaternion.identity, gameObject.transform);
-    }
-
-    void DestroyPopUp() {
-        hasPopUp = false;
-        Destroy(dicePopUp);
-    }
 }

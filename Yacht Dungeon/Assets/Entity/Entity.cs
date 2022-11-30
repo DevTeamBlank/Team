@@ -20,9 +20,7 @@ public class Entity : MonoBehaviour {
         sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
-    private void Update() {
-        SelectEntity();
-    }
+    
 
     public void Damaged(int damage) {
         if (hp <= damage) {

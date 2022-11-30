@@ -23,10 +23,11 @@ public class Set : MonoBehaviour {
 
     [SerializeField] GameObject nameTagSet_;
 
-    public void NextSet() {
+    public void StartSet() {
         int set = RoundManager.Inst.currentSet;
         ChangeSetSprite(set);
         ChangeDiceRollPosition(set);
+        MadeTable.Inst.StartSet();
     }
 
     void ChangeSetSprite(int set) {

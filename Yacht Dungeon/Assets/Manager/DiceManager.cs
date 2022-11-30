@@ -17,7 +17,6 @@ public class DiceManager : MonoBehaviour {
 
     public GameObject rerollDot_;
     public GameObject diceKeep_;
-    public GameObject dicePopUp_;
     public float popUpOffset_ = 1f;
 
     void Awake() {
@@ -34,17 +33,6 @@ public class DiceManager : MonoBehaviour {
             }
         }
         Set.Inst.ChangeDiceRollPosition(1);
-    }
-
-    public void Load(Save save) {
-        for (int i = 0; i < diceGet.Length; i++) {
-            diceGet[i] = false;
-        }
-        for (int i = 1; i <= 5; i++) {
-            ChangeDice(1, i, save.set1[i]);
-            ChangeDice(2, i, save.set2[i]);
-            ChangeDice(3, i, save.set3[i]);
-        }        
     }
 
     GameObject tempGo;

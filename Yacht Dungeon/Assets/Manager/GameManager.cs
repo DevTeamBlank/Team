@@ -25,9 +25,6 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Seed: " + Seed);
     }
 
-    void LoadSeed(Save save) {
-        Seed = save.seed;
-    }
 
     public void SaveGame() {
         // Save save = new Save(
@@ -41,13 +38,6 @@ public class GameManager : MonoBehaviour {
         RoundManager.Inst.StartGame();
     }
 
-    void LoadGame(Save save) {
-        LoadSeed(save);
-        Player.Inst.Load(save);
-        RoundManager.Inst.Load(save);
-        ArtifactManager.Inst.Load(save);
-        DiceManager.Inst.Load(save);
-    }
 
     public void GameOver() {
         Debug.Log("Game Over");
