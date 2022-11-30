@@ -189,4 +189,12 @@ public class DiceManager : MonoBehaviour {
         }
     }
 
+    public void ResetDice() {
+        for (int i = 0; i < 5; i++) {
+            set1[i].GetComponent<Dice>().SetDice();
+            set2[i].GetComponent<Dice>().SetDice();
+            set3[i].GetComponent<Dice>().SetDice();
+        }
+    }
+
 }

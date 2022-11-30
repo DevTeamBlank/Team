@@ -81,6 +81,10 @@ public class DiceRewardManager : MonoBehaviour {
     }
 
     public void ChoseReward() {
-
+        if (RoundManager.Inst.gettingArtifact) {
+            ArtifactRewardManager.Inst.StartArtifactReward();
+        } else {
+            RoundManager.Inst.NextRound();
+        }
     }
 }

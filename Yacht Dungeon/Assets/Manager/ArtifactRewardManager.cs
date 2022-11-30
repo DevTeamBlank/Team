@@ -81,6 +81,6 @@ public class ArtifactRewardManager : MonoBehaviour {
     }
 
     public void ChoseReward() {
-
+        RoundManager.Inst.NextRound();
     }
 }

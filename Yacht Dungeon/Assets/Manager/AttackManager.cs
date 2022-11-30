@@ -24,13 +24,6 @@ public class AttackManager : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
-    void Update() {
-        if (isAttacking) {
-
-        }
-    }
-
     public void Attack() {
         SetDMG_.transform.Translate(30, 0, 0);
         DMGButton_.transform.Translate(30, 0, 0);
@@ -46,10 +39,18 @@ public class AttackManager : MonoBehaviour {
     }
 
     public void EndAttack() {
+        if (enemy1_.GetComponent<Enemy>().IsAlive()) {
+            Player.Inst.Damaged();
+        }
+        if (enemy2_.GetComponent<Enemy>().IsAlive()) {
+            Player.Inst.Damaged();
+        }
+
         SetDMG_.transform.Translate(-30, 0, 0);
         DMGButton_.transform.Translate(-30, 0, 0);
         isAttacking = false;
-        // Call RoundManager or RewardManager
+
+        RoundManager.Inst.RoundEnd(!meteor_.GetComponent<Meteor>().IsAlive());
     }
 
     [SerializeField] bool isSelecting = false;
@@ -89,8 +90,15 @@ public class AttackManager : MonoBehaviour {
                 target.GetComponent<Entity>().Damaged(selectedDamage);
                 isSetFired[selectedSet - 1] = true;
                 isSelecting = false;
+                if (CheckAllFired()) { // Fired all sets
+                    EndAttack();
+                }
             }
         }
+    }
+
+    bool CheckAllFired() {
+        return isSetFired[0] && isSetFired[1] && isSetFired[2];
     }
 
     public void ResetDamage() {

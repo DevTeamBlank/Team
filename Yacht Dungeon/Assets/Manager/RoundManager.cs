@@ -24,10 +24,6 @@ public class RoundManager : MonoBehaviour {
         RoundStart();
     }
 
-    [SerializeField] int meteor; // enemy0
-    [SerializeField] int enemy1;
-    [SerializeField] int enemy2;
-
     public int set1Damage;
     public int set2Damage;
     public int set3Damage;
@@ -115,10 +111,15 @@ public class RoundManager : MonoBehaviour {
 
     void RoundStart() {
         roundStartS.CallArtifact();
-        meteor = EnemyManager.Inst.MeteorHp(currentRound);
-        enemy1 = EnemyManager.Inst.Enemy1Hp(currentRound);
-        enemy2 = EnemyManager.Inst.Enemy2Hp(currentRound);
+        DiceManager.Inst.ResetDice();
         ChangeSetDamageBarSprite(currentSet);
+    }
+
+    public bool gettingArtifact = false;
+
+    public void RoundEnd(bool getArtifact) {
+        gettingArtifact = getArtifact;
+        DiceRewardManager.Inst.StartDiceReward();
     }
 
     public void SetDamage(int damage) {
@@ -153,6 +154,7 @@ public class RoundManager : MonoBehaviour {
             DiceManager.Inst.RollSet();
         } else {
             choseDamage = true;
+            AttackManager.Inst.Attack();
         }
     }
 
@@ -182,5 +184,19 @@ public class RoundManager : MonoBehaviour {
                 Debug.Log("Error");
                 break;
         }
+    }
+
+    public void NextRound() {
+        if (currentRound == 14) {
+            GameCleared();
+        }
+        currentRound++;
+        currentSet = 1;
+        currentRoll = 0;
+        RoundStart();
+    }
+
+    void GameCleared() {
+        Debug.Log("You Win!");
     }
 }
