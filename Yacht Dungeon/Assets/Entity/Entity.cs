@@ -12,6 +12,8 @@ public class Entity : MonoBehaviour {
     protected float time;
     protected int count;
 
+    [SerializeField] GameObject hpT_;
+
     void Start() {
         onAnimation = false;
         time = 0f;
@@ -20,11 +22,16 @@ public class Entity : MonoBehaviour {
         sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
-    
+    protected void HPUpdate() {
+        hpT_.name = "HP: " + hp.ToString();
+        TextManager.Inst.ChangeText(hp, hpT_, TextManager.TextMode.Default);
+    }
+
 
     public void Damaged(int damage) {
         if (hp <= damage) {
             hp = 0;
+            HPUpdate();
             Destroy();
         }
     }
@@ -41,6 +48,7 @@ public class Entity : MonoBehaviour {
 
     public void ResetEntity() {
         hp = maxHp;
+        HPUpdate();
         onAnimation = false;
         time = 0f;
         count = 0;

@@ -158,7 +158,7 @@ public class MadeTable : MonoBehaviour {
         banMade.Add(m);
     }
 
-    void InactiveMade() {
+    public void InactiveMade() {
         for (int i = 0; i < banMade.Count; i++) {
             madeBar_[(int)banMade[i]].GetComponent<MadeTableBar>().BanMade();
         }

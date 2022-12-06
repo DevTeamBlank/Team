@@ -1983,6 +1983,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &160007582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 160007583}
+  m_Layer: 0
+  m_Name: Enemy1 HP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &160007583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160007582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4, y: 1.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 220743738}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &163103755
 GameObject:
   m_ObjectHideFlags: 0
@@ -2527,6 +2557,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &220743737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 220743738}
+  m_Layer: 0
+  m_Name: Texts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &220743738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220743737}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 160007583}
+  - {fileID: 439694526}
+  - {fileID: 1087142309}
+  m_Father: {fileID: 296656184}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &223527542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2863,6 +2926,7 @@ Transform:
   - {fileID: 93397660}
   - {fileID: 955306573}
   - {fileID: 177756937}
+  - {fileID: 220743738}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3740,6 +3804,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &439694525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439694526}
+  m_Layer: 0
+  m_Name: Meteor HP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &439694526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439694525}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 220743738}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &442205595
 GameObject:
   m_ObjectHideFlags: 0
@@ -6497,8 +6591,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1159086333}
   - {fileID: 1877614646}
+  - {fileID: 1159086333}
   - {fileID: 1160139829}
   m_Father: {fileID: 296656184}
   m_RootOrder: 1
@@ -7449,6 +7543,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1087142308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1087142309}
+  m_Layer: 0
+  m_Name: Enemy2 HP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1087142309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087142308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: 1.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 220743738}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111874842
 GameObject:
   m_ObjectHideFlags: 0
@@ -8097,6 +8221,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6755231887336563572, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
+      propertyPath: hpT_
+      value: 
+      objectReference: {fileID: 1087142308}
     - target: {fileID: 6755231887336563572, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
       propertyPath: index_
       value: 2
@@ -13900,7 +14028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223008583820034475, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5223008583820034475, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13942,6 +14070,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6755231887336563572, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
+      propertyPath: hpT_
+      value: 
+      objectReference: {fileID: 160007582}
     - target: {fileID: 6755231887336563572, guid: 6a433ddbb80e2c644bea8a8c1ae2bdc4, type: 3}
       propertyPath: index_
       value: 1
@@ -15442,11 +15574,13 @@ MonoBehaviour:
   enemy1_: {fileID: 1877614647}
   enemy2_: {fileID: 1160139830}
   SetDMG_: {fileID: 1679724141}
+  SetDMGs_:
+  - {fileID: 2081446032}
+  - {fileID: 2960426}
+  - {fileID: 1540350027}
   DMGButton_: {fileID: 584799167}
-  isSelecting: 0
   selectedSet: 0
   selectedDamage: 0
-  isSetFired: 000000
 --- !u!1 &2138673962
 GameObject:
   m_ObjectHideFlags: 0
@@ -15501,7 +15635,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5802119116648300556, guid: adc65a078a2cac446a5e1831b6b925e1, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5802119116648300556, guid: adc65a078a2cac446a5e1831b6b925e1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15547,6 +15681,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meteor
       objectReference: {fileID: 0}
+    - target: {fileID: 5802119116648300558, guid: adc65a078a2cac446a5e1831b6b925e1, type: 3}
+      propertyPath: hpT_
+      value: 
+      objectReference: {fileID: 439694525}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adc65a078a2cac446a5e1831b6b925e1, type: 3}
 --- !u!1 &5802119115523293426 stripped

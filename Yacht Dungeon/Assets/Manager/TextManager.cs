@@ -24,7 +24,7 @@ public class TextManager : MonoBehaviour {
 
     public void ChangeText(int number, GameObject go, TextMode mode) {
         int childs = go.transform.childCount;
-        for (int i = childs - 1; i > 0; i--) {
+        for (int i = childs - 1; i >= 0; i--) {
             Destroy(go.transform.GetChild(i).gameObject);
         }
         string str = number.ToString();

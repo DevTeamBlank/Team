@@ -12,16 +12,11 @@ public class AttackManager : MonoBehaviour {
     public GameObject enemy2_;
 
     public GameObject SetDMG_;
+    public GameObject[] SetDMGs_ = new GameObject[3];
     public GameObject DMGButton_;
 
     void Awake() {
         Inst = this;
-    }
-
-    private void Start() {
-        for (int i = 0; i < 3; i++) {
-            isSetFired[i] = false;
-        }
     }
 
     public void Attack() {
@@ -30,6 +25,10 @@ public class AttackManager : MonoBehaviour {
         Camera.main.transform.position = new Vector3(30, 0, -10);
         SetEnemyHp();
         isAttacking = true;
+
+        selectedSet = 1;
+        RoundManager.Inst.ChangeSetDamageBarSprite(1);
+        selectedDamage = SetDMGs_[0].GetComponent<SetDamageBar>().currentDamage;
     }
 
     void SetEnemyHp() {
@@ -54,52 +53,38 @@ public class AttackManager : MonoBehaviour {
         RoundManager.Inst.RoundEnd(!meteor_.GetComponent<Meteor>().IsAlive());
     }
 
-    [SerializeField] bool isSelecting = false;
-    [SerializeField] int selectedSet;
+    [SerializeField] int selectedSet = 1;
     [SerializeField] int selectedDamage;
-    [SerializeField] bool[] isSetFired = new bool[3];
-
-    public void SelectSet(int set, int damage) {
-        isSelecting = true;
-        selectedSet = set;
-        selectedDamage = damage;
-    }
 
     public void SelectEntity(bool meteor, int index = 0) {
-        if (!isSelecting) {
-            Debug.Log("Please select a Set first");
-        } else {
-            if (meteor || index == 0) {
-                FireSet(meteor_);
-            } else { // if the target entity is an enemy
-                if (index == 1) {
-                    FireSet(enemy1_);
-                } else { // if (index == 2)
-                    FireSet(enemy2_);
-                }
+        if (meteor || index == 0) {
+            FireSet(meteor_);
+        } else { // if the target entity is an enemy
+            if (index == 1) {
+                FireSet(enemy1_);
+            } else { // if (index == 2)
+                FireSet(enemy2_);
             }
         }
     }
 
     public void FireSet(GameObject target) {
-        if (isSetFired[selectedSet - 1]) { // Selected set is fired
+        if (!target.GetComponent<Entity>().IsAlive()) { // Target enemy is dead already
             return;
         } else {
-            if (!target.GetComponent<Entity>().IsAlive()) { // Target enemy is dead already
-                return;
-            } else {
-                target.GetComponent<Entity>().Damaged(selectedDamage);
-                isSetFired[selectedSet - 1] = true;
-                isSelecting = false;
-                if (CheckAllFired()) { // Fired all sets
-                    EndAttack();
-                }
-            }
+            target.GetComponent<Entity>().Damaged(selectedDamage);
+            NextSet();
         }
     }
 
-    bool CheckAllFired() {
-        return isSetFired[0] && isSetFired[1] && isSetFired[2];
+    void NextSet() {
+        if (selectedSet == 3) {
+            selectedSet = 1;
+            EndAttack();
+        }
+        selectedSet++;
+        RoundManager.Inst.ChangeSetDamageBarSprite(selectedSet);
+        selectedDamage = SetDMGs_[selectedSet - 1].GetComponent<SetDamageBar>().currentDamage;
     }
 
     public void ResetDamage() {
@@ -109,12 +94,10 @@ public class AttackManager : MonoBehaviour {
             meteor_.GetComponent<Entity>().ResetEntity();
             enemy1_.GetComponent<Entity>().ResetEntity();
             enemy2_.GetComponent<Entity>().ResetEntity();
-            
-            for (int i = 0; i < 3; i++) {
-                isSetFired[i] = false;
-            }
 
-            RoundManager.Inst.ChangeSetDamageBarSprite(-1);
+            selectedSet = 1;
+            RoundManager.Inst.ChangeSetDamageBarSprite(1);
+            selectedDamage = SetDMGs_[0].GetComponent<SetDamageBar>().currentDamage;
         }
     }
 

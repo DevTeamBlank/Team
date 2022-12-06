@@ -53,7 +53,8 @@ public class MadeTableBar : MonoBehaviour {
                 if (target == gameObject) {
                     if (RoundManager.Inst.currentRoll == 0) return;
                     MadeTable.Inst.SelectMade(made);
-                    MadeTable.Inst.UpdateMadeTable();
+                    // MadeTable.Inst.UpdateMadeTable();
+                    MadeTable.Inst.InactiveMade();
                 }
             }
         }

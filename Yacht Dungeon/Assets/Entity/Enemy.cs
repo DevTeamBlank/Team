@@ -24,7 +24,6 @@ public class Enemy : Entity {
                     count = 0;
                     // TODO
                     // RoundManager »£√‚
-                    Destroy(gameObject);
                 }                
             }
         }    
@@ -37,6 +36,7 @@ public class Enemy : Entity {
             maxHp = EnemyManager.Inst.Enemy2Hp();
         }
         hp = maxHp;
+        HPUpdate();
     }
 
     RaycastHit2D hit;

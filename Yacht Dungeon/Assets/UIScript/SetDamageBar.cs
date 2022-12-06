@@ -12,7 +12,7 @@ public class SetDamageBar : MonoBehaviour {
     [SerializeField] GameObject madeDamageT_;
 
     private void Update() {
-        SelectSetDamageBar();
+        // SelectSetDamageBar();
     }
 
     public void ChangeSprite(bool isSelected) {
@@ -23,7 +23,7 @@ public class SetDamageBar : MonoBehaviour {
         }
     }
 
-    [SerializeField] int currentDamage;
+    public int currentDamage;
 
     public void DamageUpdate(int damage) {
         currentDamage = damage;
@@ -36,6 +36,7 @@ public class SetDamageBar : MonoBehaviour {
     RaycastHit2D hit;
     GameObject target;
 
+    /*
     void SelectSetDamageBar() {
         if (Input.GetMouseButtonDown(0)) {
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
@@ -49,4 +50,5 @@ public class SetDamageBar : MonoBehaviour {
             }
         }
     }
+    */
 }

@@ -20,7 +20,6 @@ public class Meteor : Entity {
                     onAnimation = false;
                     time = 0;
                     count = 0;
-                    Destroy(gameObject, 2f);
                     // TODO
                     // RoundManager »£√‚
                 }
@@ -31,6 +30,7 @@ public class Meteor : Entity {
     public override void SetMaxHp() {
         maxHp = EnemyManager.Inst.MeteorHp();
         hp = maxHp;
+        HPUpdate();
     }
 
     RaycastHit2D hit;
