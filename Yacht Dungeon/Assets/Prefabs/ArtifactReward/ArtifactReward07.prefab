@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 563632647067166707}
   - component: {fileID: 2816249250979331149}
   - component: {fileID: 2426521115040121060}
+  - component: {fileID: 6100596170107739780}
   m_Layer: 0
   m_Name: ArtifactReward07
   m_TagString: Reward
@@ -69,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 325483771
+  m_SortingLayer: 4
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: af9251f62f8f0864b8cf30ff1d314ee1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,3 +98,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index_: 7
   description_: {fileID: 21300000, guid: baa21a0e494eeac4498f5212239e8a63, type: 3}
+--- !u!61 &6100596170107739780
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7176275435271768973}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.16, y: 2.16}
+    newSize: {x: 2.16, y: 2.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.16, y: 2.16}
+  m_EdgeRadius: 0

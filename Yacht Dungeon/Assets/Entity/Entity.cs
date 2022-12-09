@@ -33,6 +33,9 @@ public class Entity : MonoBehaviour {
             hp = 0;
             HPUpdate();
             Destroy();
+        } else {
+            hp -= damage;
+            HPUpdate();
         }
     }
 

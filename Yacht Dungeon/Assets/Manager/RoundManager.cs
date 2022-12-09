@@ -124,7 +124,19 @@ public class RoundManager : MonoBehaviour {
             ChangeSetDamageBarSprite(currentSet);
             Set.Inst.StartSet();
             DiceManager.Inst.ResetDice();
+            for (int i = 0; i < 5; i++) {
+                DiceManager.Inst.set1[i].GetComponent<Dice>().DestroyDiceKeep();
+                DiceManager.Inst.set2[i].GetComponent<Dice>().DestroyDiceKeep();
+                DiceManager.Inst.set3[i].GetComponent<Dice>().DestroyDiceKeep();
+            }            
         } else {
+            DiceManager.Inst.ResetDice();
+            Set.Inst.ChangeDiceRollPosition(0);
+            for (int i = 0; i < 5; i++) {
+                DiceManager.Inst.set1[i].GetComponent<Dice>().DestroyDiceKeep();
+                DiceManager.Inst.set2[i].GetComponent<Dice>().DestroyDiceKeep();
+                DiceManager.Inst.set3[i].GetComponent<Dice>().DestroyDiceKeep();
+            }
             Camera.main.transform.position = new Vector3(30, 0, -10);
             AttackManager.Inst.Attack();
         }

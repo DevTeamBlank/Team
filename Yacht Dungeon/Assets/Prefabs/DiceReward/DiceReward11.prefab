@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6488920267087207276}
   - component: {fileID: 6488920267087207277}
   - component: {fileID: 6488920267087207278}
+  - component: {fileID: -5048804053225717561}
   m_Layer: 0
   m_Name: DiceReward11
   m_TagString: Reward
@@ -69,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 325483771
+  m_SortingLayer: 4
   m_SortingOrder: 3
   m_Sprite: {fileID: -1026675761155431585, guid: 95180791bebe7ea45976a3d42d25d17f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,3 +99,29 @@ MonoBehaviour:
   index_: 11
   smallSprite_: {fileID: 2736508518215283861, guid: e6f7b9669df3a52448abc1c8462d5751, type: 3}
   description_: {fileID: 21300000, guid: ecc06f347b18fe14da8343272965afc0, type: 3}
+--- !u!61 &-5048804053225717561
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6488920267087207275}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.62, y: 1.62}
+    newSize: {x: 1.62, y: 1.62}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.62, y: 1.62}
+  m_EdgeRadius: 0

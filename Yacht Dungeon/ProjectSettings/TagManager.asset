@@ -58,6 +58,9 @@ TagManager:
   - name: Artifact
     uniqueID: 311073687
     locked: 0
+  - name: Reward
+    uniqueID: 325483771
+    locked: 0
   - name: Cursor
     uniqueID: 720396139
     locked: 0

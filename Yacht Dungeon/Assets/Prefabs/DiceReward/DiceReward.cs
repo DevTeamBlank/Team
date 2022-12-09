@@ -21,7 +21,7 @@ public class DiceReward : MonoBehaviour {
 
     private void Update() {
         if (isChosen) {
-            gameObject.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            gameObject.transform.position = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
         hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);

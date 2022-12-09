@@ -150,6 +150,12 @@ public class Dice : MonoBehaviour {
         Destroy(diceKeep);
     }
 
+    public void DestroyDiceKeep() {
+        if (isFixed) {
+            Destroy(diceKeep);
+        }
+    }
+
     public void ChangeNumbers(int[] newNumbers, Sprite[] newSprites) {
         numbers_ = newNumbers;
         sprites_ = newSprites;
