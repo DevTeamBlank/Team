@@ -43,18 +43,21 @@ public class DiceManager : MonoBehaviour {
                 Destroy(set1[place - 1]);
                 tempGo = Instantiate(diceDB_[index], Set.Inst.transform);
                 tempGo.name = "Dice" + place.ToString();
+                tempGo.transform.position = Set.Inst.DicePositionInSet(1, place);
                 set1[place - 1] = tempGo;
                 break;
             case 2:
                 Destroy(set2[place - 1]);
                 tempGo = Instantiate(diceDB_[index], Set.Inst.transform);
                 tempGo.name = "Dice" + (place + 5).ToString();
+                tempGo.transform.position = Set.Inst.DicePositionInSet(2, place);
                 set2[place - 1] = tempGo;
                 break;
             case 3:
                 Destroy(set3[place - 1]);
                 tempGo = Instantiate(diceDB_[index], Set.Inst.transform);
                 tempGo.name = "Dice" + (place + 10).ToString();
+                tempGo.transform.position = Set.Inst.DicePositionInSet(3, place);
                 set3[place - 1] = tempGo;
                 break;
             default:

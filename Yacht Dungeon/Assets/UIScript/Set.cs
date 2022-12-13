@@ -72,6 +72,10 @@ public class Set : MonoBehaviour {
         GameObject[] set2 = DiceManager.Inst.set2;
         GameObject[] set3 = DiceManager.Inst.set3;
         for (int i = 0; i < 5; i++) {
+            set1[i].transform.position = DicePositionInSet(1, i + 1);
+            set2[i].transform.position = DicePositionInSet(2, i + 1);
+            set3[i].transform.position = DicePositionInSet(3, i + 1);
+            /*
             set1[i].transform.position = dice8SetPosition_;
             set2[i].transform.position = dice8SetPosition_;
             set3[i].transform.position = dice8SetPosition_;
@@ -79,6 +83,7 @@ public class Set : MonoBehaviour {
             set1[i].transform.Translate(new Vector2(offsetX, -setPositionOffsetY_));
             set2[i].transform.Translate(new Vector2(offsetX, 0));
             set3[i].transform.Translate(new Vector2(offsetX, setPositionOffsetY_));
+            */
             ChangeDiceSprite(set1[i], false);
             ChangeDiceSprite(set2[i], false);
             ChangeDiceSprite(set3[i], false);
@@ -89,6 +94,37 @@ public class Set : MonoBehaviour {
         dice.GetComponent<Dice>().ChangeSprite(changeToLarge);
     }
 
+    public Vector2 DicePositionInSet(int set, int place) {
+        Vector2 vec = dice8SetPosition_;
+        switch (set) {
+            case 1:
+                vec += new Vector2(0, -setPositionOffsetY_);
+                break;
+            case 2:
+                break;
+            case 3:
+                vec += new Vector2(0, setPositionOffsetY_);
+                break;
+            default:
+                Debug.Log("Error");
+                break;
+        }
+        float offsetX = (place - 3) * setPositionOffsetX_;
+        vec += new Vector2(offsetX, 0);
+
+        return vec;
+    }
+
+    public void DiceRewardToArtifactReward() {
+        GameObject[] set1 = DiceManager.Inst.set1;
+        GameObject[] set2 = DiceManager.Inst.set2;
+        GameObject[] set3 = DiceManager.Inst.set3;
+        for (int i = 0; i < 5; i++) {
+            set1[i].transform.Translate(new Vector2(0, -15));
+            set2[i].transform.Translate(new Vector2(0, -15));
+            set3[i].transform.Translate(new Vector2(0, -15));
+        }
+    }
 }
 
 

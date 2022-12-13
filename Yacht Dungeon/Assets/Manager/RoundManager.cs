@@ -79,6 +79,7 @@ public class RoundManager : MonoBehaviour {
     [HideInInspector] public RoundStartSubject roundStartS;
 
     void RoundStart() {
+        Debug.Log("Current Round is a Round " + currentRound);
         currentSet = 1;
         currentRoll = 0;
         RerollButton.Inst.UpdateDot();
@@ -138,6 +139,7 @@ public class RoundManager : MonoBehaviour {
                 DiceManager.Inst.set3[i].GetComponent<Dice>().DestroyDiceKeep();
             }
             Camera.main.transform.position = new Vector3(30, 0, -10);
+            ArtifactManager.Inst.MainToDiceReward();
             AttackManager.Inst.Attack();
         }
     }

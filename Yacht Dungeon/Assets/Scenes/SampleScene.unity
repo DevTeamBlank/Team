@@ -3598,7 +3598,23 @@ MonoBehaviour:
   - {fileID: 37534575855150918, guid: cd96109dfed161247928a49ca6c0cb12, type: 3}
   - {fileID: 1144084318232336746, guid: 6486b5a204ad52143a4ba4527a5dd01f, type: 3}
   - {fileID: 766565264341423105, guid: f7c3dc89d73a2a94492a6881f90bfc2d, type: 3}
-  artifactPopUp_: {fileID: 0}
+  artifactObserver_: {fileID: 5623769024112092977, guid: 26b2b33cd7cb8bd4ba3a3cca57412dd7, type: 3}
+  artifactPositions:
+  - {fileID: 1704715876}
+  - {fileID: 933405793}
+  - {fileID: 1225212479}
+  - {fileID: 2054363148}
+  - {fileID: 1590078790}
+  - {fileID: 122124919}
+  - {fileID: 770788489}
+  - {fileID: 1859589606}
+  - {fileID: 1319977672}
+  - {fileID: 1938407636}
+  - {fileID: 51147024}
+  - {fileID: 252650111}
+  - {fileID: 503063325}
+  - {fileID: 44691056}
+  - {fileID: 1019753839}
   rewardArtifacts_:
   - {fileID: 5632134914059798975, guid: 12b7ed96923419b44ab54dc03321e207, type: 3}
   - {fileID: 3407673585068097986, guid: dcc28eb8ed5b56e4784c66a2a6b78970, type: 3}

@@ -29,8 +29,14 @@ public class Artifact : MonoBehaviour {
         Update
     }
 
+    [SerializeField] protected GameObject observer;
+
     public void Enable() {
         isEnabled = true;
+        GameObject tempGo = Instantiate(ArtifactManager.Inst.artifactObserver_);
+        observer = tempGo;
+        // observer = Instantiate(ArtifactManager.Inst.artifactObserver_, gameObject.transform);
+        observer.GetComponent<Observer>().SetArtifact(gameObject);
         switch (type_) {
             case ArtifactType.Made:
                 EnableMade();
@@ -50,8 +56,7 @@ public class Artifact : MonoBehaviour {
     }
 
     public virtual void EnableSet() {
-        Observer o = new Observer(this);
-        o.AddSubject(MadeTable.Inst.setS);
+        observer.GetComponent<Observer>().AddSubject(MadeTable.Inst.setS);
     }
 
     public virtual void EnableUpdate() {
@@ -74,48 +79,6 @@ public class Artifact : MonoBehaviour {
         }
     }
 
-    float time = 0f;
-    RaycastHit2D hit;
-
-    void Update() {
-        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f);
-
-        if (hit.collider != null && hit.collider.gameObject == gameObject) {
-            time += Time.deltaTime;
-            if (1 < time && !hasPopUp) MakePopUp();
-        } else {
-            time = 0;
-            if (hasPopUp) DestroyPopUp();
-        }
-
-    }
-
-    bool hasPopUp;
-    GameObject artifactPopUp;
-
-    void MakePopUp() {
-        hasPopUp = true;
-        Vector2 pos = transform.position;
-        float x = pos.x;
-        float y = pos.y;
-        float offset = 1;
-        if (0 < x && 0 < y) {
-            pos += new Vector2(-1 * offset, -1 * offset);
-        } else if (0 < x && y <= 0) {
-            pos += new Vector2(-1 * offset, offset);
-        } else if (x <= 0 && 0 < y) {
-            pos += new Vector2(offset, -1 * offset);
-        } else {
-            pos += new Vector2(offset, offset);
-        }
-        artifactPopUp = Instantiate(ArtifactManager.Inst.artifactPopUp_, pos, Quaternion.identity, gameObject.transform);
-    }
-
-    void DestroyPopUp() {
-        hasPopUp = false;
-        Destroy(artifactPopUp);
-    }
-
     // Below protected methods are used in derived classes' override methods
 
     protected bool Contain(int[] num, int n) {
@@ -132,7 +95,7 @@ public class Artifact : MonoBehaviour {
         for (int i = 0; i < 5; i++) {
             dices[i] = DiceManager.Inst.diceIndex[set, i];
             }
-            return dices;
+        return dices;
     }
 
     protected GameObject[] GetDice() {

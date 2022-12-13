@@ -7,8 +7,7 @@ public class Artifact23 : Artifact {
     [SerializeField] int count = 2;
 
     public override void EnableMade() {
-        Observer o = new Observer(this);
-        o.AddSubject(MadeTable.Inst.yachtS);
+        observer.GetComponent<Observer>().AddSubject(MadeTable.Inst.yachtS);
     }
 
     public override int CalculateBonus(int[] num) {

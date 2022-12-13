@@ -5,8 +5,7 @@ using UnityEngine;
 public class Artifact27 : Artifact {
 
     public override void EnableUpdate() {
-        Observer o = new Observer(this);
-        o.AddSubject(RoundManager.Inst.roundStartS);
+        observer.GetComponent<Observer>().AddSubject(RoundManager.Inst.roundStartS);
 
     }
 

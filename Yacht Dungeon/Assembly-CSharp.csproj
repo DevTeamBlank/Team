@@ -70,6 +70,7 @@
     <Compile Include="Assets\Dice\Dice10.cs" />
     <Compile Include="Assets\Dice\Dice.cs" />
     <Compile Include="Assets\Artifact\Artifact04.cs" />
+    <Compile Include="Assets\Manager\AttackManager.cs" />
     <Compile Include="Assets\Artifact\Artifact17.cs" />
     <Compile Include="Assets\Artifact\Artifact32.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -126,7 +127,7 @@
     <Compile Include="Assets\Entity\Weapon.cs" />
     <Compile Include="Assets\Dice\Dice27.cs" />
     <Compile Include="Assets\Artifact\Artifact12.cs" />
-    <Compile Include="Assets\Observer.cs" />
+    <Compile Include="Assets\Prefabs\Observer.cs" />
     <Compile Include="Assets\Manager\DiceManager.cs" />
     <Compile Include="Assets\Manager\GameManager.cs" />
     <Compile Include="Assets\Artifact\Artifact14.cs" />
@@ -170,7 +171,11 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Entity\Entity.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\Manager\AttackManager.cs" />
+    <Compile Include="Assets\Artifact\Artifact19.cs" />
+    <Compile Include="Assets\Artifact\Artifact22.cs" />
+    <Compile Include="Assets\Artifact\Artifact24.cs" />
+    <Compile Include="Assets\Artifact\Artifact25.cs" />
+    <Compile Include="Assets\Artifact\Artifact26.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

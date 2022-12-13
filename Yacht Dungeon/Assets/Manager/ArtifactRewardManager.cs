@@ -29,7 +29,7 @@ public class ArtifactRewardManager : MonoBehaviour {
     void SetIndexes() {
         List<int> list = ArtifactManager.Inst.RemainingIndexes();
         if (list.Count < rewardNumber) {
-            Debug.Log("Error!");
+            Debug.Log("Error, Remaining Indexes = " + list.Count);
             for (int i = 0; i < indexes.Length; i++) {
                 indexes[i] = -1;
             }
@@ -81,6 +81,8 @@ public class ArtifactRewardManager : MonoBehaviour {
     }
 
     public void ChoseReward() {
+        Camera.main.transform.position = new Vector3(0, 0, -10);
+        ArtifactManager.Inst.ArtifactRewardToMain();
         RoundManager.Inst.NextRound();
     }
 }

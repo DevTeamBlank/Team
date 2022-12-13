@@ -47,32 +47,34 @@ public class DiceRewardManager : MonoBehaviour {
         }
     }
 
+    GameObject reward0, reward1, reward2;
+
     void MakeRewards() {
         if (rewardNumber == 2) {
-            GameObject reward0 = DiceManager.Inst.RewardDice(indexes[0]);
+            reward0 = DiceManager.Inst.RewardDice(indexes[0]);
             reward0.transform.parent = positions_[0].transform;
             reward0.transform.position = positions_[0].transform.position;
             reward0.name = "Reward0: Dice" + indexes[0].ToString();
 
-            GameObject reward1 = DiceManager.Inst.RewardDice(indexes[1]);
+            reward1 = DiceManager.Inst.RewardDice(indexes[1]);
             reward1.transform.parent = positions_[1].transform;
             reward1.transform.position = positions_[1].transform.position;
             reward1.name = "Reward1: Dice" + indexes[1].ToString();
         } else { // if (rewardNumber == 3)
-            GameObject reward0 = DiceManager.Inst.RewardDice(indexes[0]);
+            reward0 = DiceManager.Inst.RewardDice(indexes[0]);
             reward0.transform.parent = positions_[3].transform;
             reward0.transform.position = positions_[3].transform.position;
             reward0.name = "Reward0: Dice" + indexes[0].ToString();
 
-            GameObject reward1 = DiceManager.Inst.RewardDice(indexes[1]);
+            reward1 = DiceManager.Inst.RewardDice(indexes[1]);
             reward1.transform.parent = positions_[4].transform;
             reward1.transform.position = positions_[4].transform.position;
             reward1.name = "Reward1: Dice" + indexes[1].ToString();
 
-            GameObject reward2 = DiceManager.Inst.RewardDice(indexes[2]);
-            reward1.transform.parent = positions_[5].transform;
-            reward1.transform.position = positions_[5].transform.position;
-            reward1.name = "Reward2: Dice" + indexes[2].ToString();
+            reward2 = DiceManager.Inst.RewardDice(indexes[2]);
+            reward2.transform.parent = positions_[5].transform;
+            reward2.transform.position = positions_[5].transform.position;
+            reward2.name = "Reward2: Dice" + indexes[2].ToString();
         }
     }
 
@@ -82,10 +84,13 @@ public class DiceRewardManager : MonoBehaviour {
 
     public void ChoseReward() {
         if (RoundManager.Inst.gettingArtifact) {
+            Set.Inst.DiceRewardToArtifactReward();
             Camera.main.transform.position = new Vector3(60, -15, -10);
+            ArtifactManager.Inst.DiceRewardToArtifactReward();
             ArtifactRewardManager.Inst.StartArtifactReward();
         } else {
             Camera.main.transform.position = new Vector3(0, 0, -10);
+            ArtifactManager.Inst.DiceRewardToMain();
             RoundManager.Inst.NextRound();
         }
     }

@@ -5,10 +5,9 @@ using UnityEngine;
 public class Artifact12 : Artifact {
 
     public override void EnableMade() {
-        Observer o = new Observer(this);
-        o.AddSubject(MadeTable.Inst.choiceS);
-        o.AddSubject(MadeTable.Inst.fourOfAKindS);
-        o.AddSubject(MadeTable.Inst.fullHouseS);
+        observer.GetComponent<Observer>().AddSubject(MadeTable.Inst.choiceS);
+        observer.GetComponent<Observer>().AddSubject(MadeTable.Inst.fourOfAKindS);
+        observer.GetComponent<Observer>().AddSubject(MadeTable.Inst.fullHouseS);
     }
 
     public override int CalculateBonus(int[] num) {

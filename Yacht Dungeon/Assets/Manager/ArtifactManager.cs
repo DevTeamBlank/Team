@@ -6,24 +6,21 @@ public class ArtifactManager : MonoBehaviour {
 
     public static ArtifactManager Inst { get; private set; }
 
+    int count = 0;
     [SerializeField] List<GameObject> artifacts = new List<GameObject>(15);
     [SerializeField] List<int> artifactIndex = new List<int>(15);
 
     public GameObject[] artifactDB_ = new GameObject[40]; // DataBase
-    public GameObject artifactPopUp_;
     bool[] artifactGet = new bool[40];
+
+    public GameObject artifactObserver_;
+    [SerializeField] GameObject[] artifactPositions = new GameObject[15];
 
     void Awake() {
         Inst = this;
     }
 
     public void StartGame() {
-        artifactIndex = new List<int>(15);
-        MakeList();
-    }
-
-    public void Load(Save save) {
-        artifactIndex = save.artifact;
         MakeList();
     }
 
@@ -32,30 +29,54 @@ public class ArtifactManager : MonoBehaviour {
         for (int i = 0; i < artifactGet.Length; i++) {
             artifactGet[i] = false;
         }
-        for (int i = 0; i < artifactIndex.Count; i++) {
-            TakeArtifact(artifactIndex[i]);
-        }
     }
 
     public void TakeArtifact(int index) {
-        GameObject go = artifactDB_[index];
+        Debug.Log("Taking this artifact");
+        GameObject go = Instantiate(artifactDB_[index]);
         artifacts.Add(go);
+        artifactIndex.Add(index);
         artifactGet[index] = true;
+        go.transform.position = artifactPositions[count].transform.position;
+        count++;
         go.GetComponent<Artifact>().Enable();
     }
 
     public List<int> RemainingIndexes() {
         List<int> list = new List<int>();
-        for (int i = 1; i < artifactDB_.Length; i++) {
-            if (!artifactDB_[i]) list.Add(i);
+        for (int i = 0; i < artifactGet.Length; i++) {
+            if (!artifactGet[i]) list.Add(i);
         }
         return list;
     }
 
-    [SerializeField] GameObject[] rewardArtifacts_ = new GameObject[40]; // This is different from Database, please put prefab here.
+    [SerializeField] GameObject[] rewardArtifacts_ = new GameObject[40]; // This is different from Database, please put prefabs here.
 
     public GameObject RewardArtifact(int index) {
         return Instantiate(rewardArtifacts_[index]);
     }
 
+    public void DiceRewardToArtifactReward() {
+        for (int i = 0; i < artifacts.Count; i++) {
+            artifacts[i].transform.Translate(new Vector2(0, -15));
+        }
+    }
+
+    public void ArtifactRewardToMain() {
+        for (int i = 0; i < artifacts.Count; i++) {
+            artifacts[i].transform.Translate(new Vector2(-60, 15));
+        }
+    }
+
+    public void MainToDiceReward() {
+        for (int i = 0; i < artifacts.Count; i++) {
+            artifacts[i].transform.Translate(new Vector2(60, 0));
+        }
+    }
+
+    public void DiceRewardToMain() {
+        for (int i = 0; i < artifacts.Count; i++) {
+            artifacts[i].transform.Translate(new Vector2(-60, 0));
+        }
+    }
 }

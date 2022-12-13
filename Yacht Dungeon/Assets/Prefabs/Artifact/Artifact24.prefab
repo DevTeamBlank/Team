@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7710189443511856743}
   - component: {fileID: 7710189443511856744}
+  - component: {fileID: -3667929492041708446}
   - component: {fileID: 5716671385386461583}
   m_Layer: 0
   m_Name: Artifact24
@@ -83,6 +84,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-3667929492041708446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7710189443511856746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072a6b4f9c985d54d817f1a319536627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnabled: 0
+  index_: 24
+  nomenclature_: Floor Plan
+  type_: 0
+  rarity_: 0
+  description_: // TODO
+  smallSprite_: {fileID: 21300000, guid: 4bb3769cdf67a2b4cbc06824959adb66, type: 3}
+  largeSprite_: {fileID: 21300000, guid: ba18124859c05d44aa1eb7c51810a651, type: 3}
+  observer: {fileID: 0}
 --- !u!61 &5716671385386461583
 BoxCollider2D:
   m_ObjectHideFlags: 0

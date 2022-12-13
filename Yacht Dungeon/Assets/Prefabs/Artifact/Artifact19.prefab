@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 312375503151230107}
   - component: {fileID: 312375503151230100}
+  - component: {fileID: -8769805803315321375}
   - component: {fileID: 2305963927864404851}
   m_Layer: 0
   m_Name: Artifact19
@@ -83,6 +84,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-8769805803315321375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312375503151230102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee522ba51ac00143a41e508c6cab5d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnabled: 0
+  index_: 19
+  nomenclature_: Gear
+  type_: 0
+  rarity_: 0
+  description_: TODO
+  smallSprite_: {fileID: 21300000, guid: e59648d81eeceb342ae672b44b816edc, type: 3}
+  largeSprite_: {fileID: 21300000, guid: a1e5d7f32ac52d64fa942d461930958f, type: 3}
+  observer: {fileID: 0}
 --- !u!61 &2305963927864404851
 BoxCollider2D:
   m_ObjectHideFlags: 0

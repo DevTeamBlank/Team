@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6968988327335782856}
   - component: {fileID: 6968988327335782855}
+  - component: {fileID: -6292776874751246207}
   - component: {fileID: 4963947352849477152}
   m_Layer: 0
   m_Name: Artifact22
@@ -83,6 +84,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-6292776874751246207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968988327335782853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 725ab92f80b6d1848be06a70bb090d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnabled: 0
+  index_: 22
+  nomenclature_: Paint
+  type_: 0
+  rarity_: 0
+  description_: // TODO
+  smallSprite_: {fileID: 21300000, guid: 528b09cdbe249e6478fd92edf2ff4a93, type: 3}
+  largeSprite_: {fileID: 21300000, guid: 0fb0079de28cff548b942afa3041aa53, type: 3}
+  observer: {fileID: 0}
 --- !u!61 &4963947352849477152
 BoxCollider2D:
   m_ObjectHideFlags: 0

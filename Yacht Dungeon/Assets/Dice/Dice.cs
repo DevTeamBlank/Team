@@ -35,6 +35,7 @@ public class Dice : MonoBehaviour {
     }
 
     public void SetDice() {
+        DestroyDiceKeep();
         isFixed = false;
         face = 0;
         count = 0;

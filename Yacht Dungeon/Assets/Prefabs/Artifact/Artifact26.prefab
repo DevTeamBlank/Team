@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8767303792258728410}
   - component: {fileID: 8767303792258728405}
+  - component: {fileID: 5570331493848719202}
   - component: {fileID: 6772871221640971826}
   m_Layer: 0
   m_Name: Artifact26
@@ -83,6 +84,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5570331493848719202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8767303792258728407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8788fec01a95c05499b8c49c27e9a36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnabled: 0
+  index_: 26
+  nomenclature_: Antenna
+  type_: 0
+  rarity_: 0
+  description_: "\uC801 \uCCB4\uB825 5% \uAC10\uC18C"
+  smallSprite_: {fileID: 21300000, guid: f6dc0e1b3bec2c743a198522231884de, type: 3}
+  largeSprite_: {fileID: 21300000, guid: 6493d8f4a71a24b4a85c61593d3495dc, type: 3}
+  observer: {fileID: 0}
 --- !u!61 &6772871221640971826
 BoxCollider2D:
   m_ObjectHideFlags: 0
