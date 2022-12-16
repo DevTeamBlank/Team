@@ -55,4 +55,8 @@ public class Enemy : Entity {
         }
     }
 
+    public void ResetAnimation() {
+        GetComponent<SpriteRenderer>().sprite = sprites_[0];
+    }
+
 }

@@ -104,8 +104,15 @@ public class MadeTable : MonoBehaviour {
         setS = new Subject();
     }
 
-    void ResetTable() {
+    public void ResetTable() {
+        for (int i = 0; i < banMade.Count; i++) {
+            madeBar_[(int)banMade[i]].GetComponent<MadeTableBar>().ResetMade();
+        }
+
         banMade = new List<Made>();
+        if (Player.Inst.GetChoice() == 0) {
+            banMade.Add(Made.Choice);
+        }
     }
 
     public enum Made {
@@ -367,6 +374,9 @@ public class MadeTable : MonoBehaviour {
             if (banMade[i] == made) return;
         }
         BanMade(made);
+        if (made == Made.Choice) {
+            Player.Inst.SetChoice(Player.Inst.GetChoice() - 1);
+        }
         int damage = madeDamage[(int)made] + madeBonus[(int)made] + setBonus;
         
         RoundManager.Inst.GetComponent<RoundManager>().SetDamage(damage);

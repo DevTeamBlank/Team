@@ -49,4 +49,8 @@ public class Meteor : Entity {
         }
     }
 
+    public void ResetAnimation() {
+        GetComponent<SpriteRenderer>().sprite = sprites_[0];
+    }
+
 }

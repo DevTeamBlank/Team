@@ -45,7 +45,7 @@ public class DiceReward : MonoBehaviour {
                     GetComponent<SpriteRenderer>().sprite = originalSprite;
                 } else {
                     DiceManager.Inst.ChangeDice(set10place / 10, set10place % 10, index_);
-                    Destroy(gameObject);
+                    // Destroy(gameObject);
                     DiceRewardManager.Inst.ChoseReward();
                 }
             }

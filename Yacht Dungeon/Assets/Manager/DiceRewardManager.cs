@@ -78,11 +78,23 @@ public class DiceRewardManager : MonoBehaviour {
         }
     }
 
+    void DestroyRewards() {
+        if (rewardNumber == 2) {
+            Destroy(reward0);
+            Destroy(reward1);
+        } else { // if (rewardNumber == 3)
+            Destroy(reward0);
+            Destroy(reward1);
+            Destroy(reward2);
+        }
+    }
+
     public void ChangeDescription(Sprite sprite) {
         description_.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
     public void ChoseReward() {
+        DestroyRewards();
         if (RoundManager.Inst.gettingArtifact) {
             Set.Inst.DiceRewardToArtifactReward();
             Camera.main.transform.position = new Vector3(60, -15, -10);

@@ -50,6 +50,9 @@ public class AttackManager : MonoBehaviour {
         isAttacking = false;
 
         Camera.main.transform.position = new Vector3(60, 0, -10);
+        meteor_.GetComponent<Meteor>().ResetAnimation();
+        enemy1_.GetComponent<Enemy>().ResetAnimation();
+        enemy2_.GetComponent<Enemy>().ResetAnimation();
         RoundManager.Inst.RoundEnd(!meteor_.GetComponent<Meteor>().IsAlive());
     }
 

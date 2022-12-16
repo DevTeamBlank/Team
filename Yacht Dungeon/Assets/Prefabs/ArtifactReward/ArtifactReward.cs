@@ -28,6 +28,7 @@ public class ArtifactReward : MonoBehaviour {
             if (hit.collider != null && hit.collider.gameObject == gameObject && isChosen) {
                 isChosen = false;
                 ArtifactManager.Inst.TakeArtifact(index_);
+                // Destroy(gameObject);
                 ArtifactRewardManager.Inst.ChoseReward();
             }
         }

@@ -80,6 +80,7 @@ public class RoundManager : MonoBehaviour {
 
     void RoundStart() {
         Debug.Log("Current Round is a Round " + currentRound);
+        SetDamageReset();
         currentSet = 1;
         currentRoll = 0;
         RerollButton.Inst.UpdateDot();
@@ -92,6 +93,7 @@ public class RoundManager : MonoBehaviour {
     public bool gettingArtifact = false;
 
     public void RoundEnd(bool getArtifact) {
+        MadeTable.Inst.ResetTable();
         gettingArtifact = getArtifact;
         DiceRewardManager.Inst.StartDiceReward();
     }
@@ -117,6 +119,15 @@ public class RoundManager : MonoBehaviour {
         NextSet();
     }
 
+    void SetDamageReset() {
+        set1Damage = 0;
+        setDamageBar_[0].GetComponent<SetDamageBar>().DamageUpdate(0);
+        set2Damage = 0;
+        setDamageBar_[1].GetComponent<SetDamageBar>().DamageUpdate(0);
+        set3Damage = 0;
+        setDamageBar_[2].GetComponent<SetDamageBar>().DamageUpdate(0);
+    }
+    
     void NextSet() {
         if (currentSet == 1 || currentSet == 2) {
             currentSet++;
